@@ -28,6 +28,7 @@
 		BCC6CEF4171714D5000A99CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BCC6CEF817171531000A99CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BCC6CEFA17171537000A99CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BCC6CF0117171844000A99CB /* TKConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +78,7 @@
 				BCC6CEE017171466000A99CB /* main.m */,
 				BCC6CEE317171466000A99CB /* AppDelegate.h */,
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
+				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
 			);
 			path = TapKitDemo;
@@ -90,6 +92,14 @@
 				BCC6CEF4171714D5000A99CB /* Default@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		BCC6CEFF1717182B000A99CB /* TapKit */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6CF0117171844000A99CB /* TKConfig.h */,
+			);
+			path = TapKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +273,7 @@
 				BCC6CEF017171466000A99CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
