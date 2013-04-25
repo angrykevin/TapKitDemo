@@ -14,6 +14,8 @@
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
+  NSLog(@"H%@H", TKDeviceModel());
+  
   _window.backgroundColor = [UIColor whiteColor];
   [_window makeKeyAndVisible];
   return YES;

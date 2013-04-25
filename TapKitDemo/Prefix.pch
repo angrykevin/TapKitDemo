@@ -13,4 +13,4 @@
   #import <Foundation/Foundation.h>
 #endif
 
-#import "TapKit/TapKit.h"
+#import "TapKit.h"

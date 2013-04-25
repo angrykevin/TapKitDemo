@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */; };
+		BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */; };
+		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
 		BCC6CEE117171466000A99CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE017171466000A99CB /* main.m */; };
 		BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE417171466000A99CB /* AppDelegate.m */; };
 		BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6CEF2171714D5000A99CB /* Default-568h@2x.png */; };
@@ -23,6 +26,12 @@
 		BC1B9485172968DF005C10D3 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		BC1B9487172968DF005C10D3 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
 		BC1B9489172968DF005C10D3 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		BC1B948A17296B5E005C10D3 /* TKCoreCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreCommon.h; sourceTree = "<group>"; };
+		BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreCommon.m; sourceTree = "<group>"; };
+		BC1B949017296DB9005C10D3 /* TKCoreCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreCompatibility.h; sourceTree = "<group>"; };
+		BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreCompatibility.m; sourceTree = "<group>"; };
+		BC1B949317296F3C005C10D3 /* TKNAIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNAIManager.h; sourceTree = "<group>"; };
+		BC1B949417296F3C005C10D3 /* TKNAIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNAIManager.m; sourceTree = "<group>"; };
 		BCC6CED117171466000A99CB /* TapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC6CEDC17171466000A99CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC6CEE017171466000A99CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,6 +79,10 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9485172968DF005C10D3 /* Core.h */,
+				BC1B948A17296B5E005C10D3 /* TKCoreCommon.h */,
+				BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */,
+				BC1B949017296DB9005C10D3 /* TKCoreCompatibility.h */,
+				BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -86,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9489172968DF005C10D3 /* Network.h */,
+				BC1B949317296F3C005C10D3 /* TKNAIManager.h */,
+				BC1B949417296F3C005C10D3 /* TKNAIManager.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -220,6 +235,9 @@
 			files = (
 				BCC6CEE117171466000A99CB /* main.m in Sources */,
 				BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */,
+				BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */,
+				BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */,
+				BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,9 +305,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TapKitDemo/Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = TapKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = $SRCROOT/TapKitDemo/TapKit;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -299,9 +319,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TapKitDemo/Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = TapKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = $SRCROOT/TapKitDemo/TapKit;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
