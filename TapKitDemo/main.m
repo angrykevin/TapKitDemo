@@ -2,7 +2,7 @@
 //  main.m
 //  TapKitDemo
 //
-//  Created by Kevin Wu on 4/11/13.
+//  Created by Wu Kevin on 4/11/13.
 //  Copyright (c) 2013 Telligenty. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 int main(int argc, char *argv[])
 {
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-    }
+  @autoreleasepool {
+    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+  }
 }

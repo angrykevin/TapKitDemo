@@ -17,6 +17,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC1B947A1729676E005C10D3 /* TapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapKit.h; sourceTree = "<group>"; };
+		BC1B9481172968DF005C10D3 /* Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Additions.h; sourceTree = "<group>"; };
+		BC1B9483172968DF005C10D3 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		BC1B9485172968DF005C10D3 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		BC1B9487172968DF005C10D3 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
+		BC1B9489172968DF005C10D3 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		BCC6CED117171466000A99CB /* TapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC6CEDC17171466000A99CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC6CEE017171466000A99CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,6 +50,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC1B9480172968DF005C10D3 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				BC1B9481172968DF005C10D3 /* Additions.h */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		BC1B9482172968DF005C10D3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BC1B9483172968DF005C10D3 /* Common.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BC1B9484172968DF005C10D3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BC1B9485172968DF005C10D3 /* Core.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BC1B9486172968DF005C10D3 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				BC1B9487172968DF005C10D3 /* DB.h */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		BC1B9488172968DF005C10D3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BC1B9489172968DF005C10D3 /* Network.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		BCC6CEC817171466000A99CB = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +143,13 @@
 		BCC6CEFF1717182B000A99CB /* TapKit */ = {
 			isa = PBXGroup;
 			children = (
+				BC1B947A1729676E005C10D3 /* TapKit.h */,
 				BCC6CF0117171844000A99CB /* TKConfig.h */,
+				BC1B9480172968DF005C10D3 /* Additions */,
+				BC1B9482172968DF005C10D3 /* Common */,
+				BC1B9484172968DF005C10D3 /* Core */,
+				BC1B9486172968DF005C10D3 /* DB */,
+				BC1B9488172968DF005C10D3 /* Network */,
 			);
 			path = TapKit;
 			sourceTree = "<group>";

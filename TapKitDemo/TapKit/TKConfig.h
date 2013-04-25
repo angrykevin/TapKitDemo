@@ -2,7 +2,7 @@
 //  TKConfig.h
 //  TapKitDemo
 //
-//  Created by Kevin Wu on 4/12/13.
+//  Created by Wu Kevin on 4/12/13.
 //  Copyright (c) 2013 Telligenty. All rights reserved.
 //
 
