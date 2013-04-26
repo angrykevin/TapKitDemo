@@ -81,7 +81,7 @@ NSString *TKDeviceFamily()
 BOOL TKIsRetina()
 {
   UIScreen *screen = [UIScreen mainScreen];
-  return ( screen.scale == 2.0f );
+  return ( screen.scale == 2.0 );
 }
 
 BOOL TKIsPad()

@@ -17,6 +17,8 @@
 		BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6CEF4171714D5000A99CB /* Default@2x.png */; };
 		BCC6CEF917171531000A99CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC6CEF817171531000A99CB /* UIKit.framework */; };
 		BCC6CEFB17171537000A99CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC6CEFA17171537000A99CB /* Foundation.framework */; };
+		BCD4FE75172AC87A00A7E0A3 /* TKCoreUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE74172AC87900A7E0A3 /* TKCoreUI.m */; };
+		BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,9 @@
 		BCC6CF0117171844000A99CB /* TKConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKConfig.h; sourceTree = "<group>"; };
 		BCD4FE71172AB56A00A7E0A3 /* TKDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDebug.h; sourceTree = "<group>"; };
 		BCD4FE72172AB57700A7E0A3 /* TKMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMacro.h; sourceTree = "<group>"; };
+		BCD4FE73172AC87900A7E0A3 /* TKCoreUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreUI.h; sourceTree = "<group>"; };
+		BCD4FE74172AC87900A7E0A3 /* TKCoreUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreUI.m; sourceTree = "<group>"; };
+		BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */,
 				BCC6CEFB17171537000A99CB /* Foundation.framework in Frameworks */,
 				BCC6CEF917171531000A99CB /* UIKit.framework in Frameworks */,
 			);
@@ -85,6 +91,8 @@
 				BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */,
 				BC1B949017296DB9005C10D3 /* TKCoreCompatibility.h */,
 				BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */,
+				BCD4FE73172AC87900A7E0A3 /* TKCoreUI.h */,
+				BCD4FE74172AC87900A7E0A3 /* TKCoreUI.m */,
 				BCD4FE71172AB56A00A7E0A3 /* TKDebug.h */,
 				BCD4FE72172AB57700A7E0A3 /* TKMacro.h */,
 			);
@@ -131,6 +139,7 @@
 			children = (
 				BCC6CEFA17171537000A99CB /* Foundation.framework */,
 				BCC6CEF817171531000A99CB /* UIKit.framework */,
+				BCD4FE78172ACC7500A7E0A3 /* Dependencies */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,6 +180,14 @@
 				BC1B9488172968DF005C10D3 /* Network */,
 			);
 			path = TapKit;
+			sourceTree = "<group>";
+		};
+		BCD4FE78172ACC7500A7E0A3 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */,
+			);
+			name = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +259,7 @@
 				BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */,
 				BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */,
 				BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */,
+				BCD4FE75172AC87A00A7E0A3 /* TKCoreUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

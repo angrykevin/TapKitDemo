@@ -10,16 +10,28 @@
 
 @implementation AppDelegate
 
+- (void)print:(NSString *)value, ... {
+  NSMutableArray *array = [[NSMutableArray alloc] init];
+  
+  TKValistToArray(value, array);
+  
+  NSLog(@"%@", array);
+  
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
+  [self print:@"AA", @"BB", @"CC", nil];
   
-  NSLog(@"%f", TKDegreesToRadians(180));
-  NSLog(@"%f", TKRadiansToDegrees(1.57));
+//  NSLog(@"%f", TKDegreesToRadians(180));
+//  NSLog(@"%f", TKRadiansToDegrees(1.57));
+//  
+//  NSString *path = TKPathForDocumentsResource(nil);
+//  NSLog(@"%@", path);
   
-  NSString *path = TKPathForDocumentsResource(nil);
-  NSLog(@"%@", path);
+  
   
   _window.backgroundColor = [UIColor whiteColor];
   [_window makeKeyAndVisible];
