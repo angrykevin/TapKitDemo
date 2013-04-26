@@ -20,8 +20,8 @@ NSComparisonResult TKCompareVersion(NSString *ver1, NSString *ver2)
   NSInteger count = MIN( [components1 count], [components2 count] );
   
   for ( NSInteger i=0; i<count; ++i ) {
-    NSInteger component1 = [[components1 objectAtIndex:i] intValue];
-    NSInteger component2 = [[components2 objectAtIndex:i] intValue];
+    NSInteger component1 = [[components1 objectAtIndex:i] integerValue];
+    NSInteger component2 = [[components2 objectAtIndex:i] integerValue];
     
     if ( component1 > component2 ) {
       return NSOrderedDescending;
@@ -184,8 +184,8 @@ BOOL TKIsSetWithItems(id object)
 
 NSDateFormatter *TKInternetDateFormatter()
 {
-  static NSDateFormatter *sharedInternetDateFormatter = nil;
-  if ( sharedInternetDateFormatter == nil ) {
+  static NSDateFormatter *internetDateFormatter = nil;
+  if ( internetDateFormatter == nil ) {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
@@ -195,9 +195,9 @@ NSDateFormatter *TKInternetDateFormatter()
     
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
-    sharedInternetDateFormatter = formatter;
+    internetDateFormatter = formatter;
   }
-  return sharedInternetDateFormatter;
+  return internetDateFormatter;
 }
 
 NSDate *TKDateFromInternetDateString(NSString *string)

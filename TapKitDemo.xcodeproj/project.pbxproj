@@ -19,6 +19,8 @@
 		BCC6CEFB17171537000A99CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC6CEFA17171537000A99CB /* Foundation.framework */; };
 		BCD4FE75172AC87A00A7E0A3 /* TKCoreUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE74172AC87900A7E0A3 /* TKCoreUI.m */; };
 		BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */; };
+		BCD4FE7B172AD50400A7E0A3 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */; };
+		BCD4FE7E172ADFF900A7E0A3 /* NSArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,10 @@
 		BCD4FE73172AC87900A7E0A3 /* TKCoreUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreUI.h; sourceTree = "<group>"; };
 		BCD4FE74172AC87900A7E0A3 /* TKCoreUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreUI.m; sourceTree = "<group>"; };
 		BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BCD4FE79172AD50400A7E0A3 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
+		BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
+		BCD4FE7C172ADFF800A7E0A3 /* NSArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayAdditions.h; sourceTree = "<group>"; };
+		BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,10 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9481172968DF005C10D3 /* Additions.h */,
+				BCD4FE7C172ADFF800A7E0A3 /* NSArrayAdditions.h */,
+				BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */,
+				BCD4FE79172AD50400A7E0A3 /* NSObjectAdditions.h */,
+				BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -260,6 +270,8 @@
 				BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */,
 				BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */,
 				BCD4FE75172AC87A00A7E0A3 /* TKCoreUI.m in Sources */,
+				BCD4FE7B172AD50400A7E0A3 /* NSObjectAdditions.m in Sources */,
+				BCD4FE7E172ADFF900A7E0A3 /* NSArrayAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
