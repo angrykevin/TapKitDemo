@@ -14,7 +14,12 @@
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
-  NSLog(@"H%@H", TKDeviceModel());
+  
+  NSLog(@"%f", TKDegreesToRadians(180));
+  NSLog(@"%f", TKRadiansToDegrees(1.57));
+  
+  NSString *path = TKPathForDocumentsResource(nil);
+  NSLog(@"%@", path);
   
   _window.backgroundColor = [UIColor whiteColor];
   [_window makeKeyAndVisible];

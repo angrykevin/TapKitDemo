@@ -44,6 +44,8 @@
 		BCC6CEF817171531000A99CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BCC6CEFA17171537000A99CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCC6CF0117171844000A99CB /* TKConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKConfig.h; sourceTree = "<group>"; };
+		BCD4FE71172AB56A00A7E0A3 /* TKDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDebug.h; sourceTree = "<group>"; };
+		BCD4FE72172AB57700A7E0A3 /* TKMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,8 @@
 				BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */,
 				BC1B949017296DB9005C10D3 /* TKCoreCompatibility.h */,
 				BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */,
+				BCD4FE71172AB56A00A7E0A3 /* TKDebug.h */,
+				BCD4FE72172AB57700A7E0A3 /* TKMacro.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";

@@ -44,41 +44,23 @@
  
  */
 
-typedef enum {
-  TKDeviceModelUnknow = 0,
-  
-  TKDeviceModelPhone2G,
-  TKDeviceModelPhone3G,
-  TKDeviceModelPhone3GS,
-  TKDeviceModelPhone4,
-  TKDeviceModelPhone4S,
-  TKDeviceModelPhone5,
-  
-  TKDeviceModelPod1G,
-  TKDeviceModelPod2G,
-  TKDeviceModelPod3G,
-  TKDeviceModelPod4G,
-  TKDeviceModelPod5G,
-  
-  TKDeviceModelPad1G,
-  TKDeviceModelPad2,
-  TKDeviceModelPadMini1G,
-  TKDeviceModelPad3,
-  TKDeviceModelPad4
-} TKDeviceModel;
+///-------------------------------
+/// Device compatibility
+///-------------------------------
 
-typedef enum {
-  TKDeviceFamilyUnknown = 0,
-  TKDeviceFamilyPhone,
-  TKDeviceFamilyPod,
-  TKDeviceFamilyPad
-} TKDeviceFamily;
+NSString *TKDevicePlatform();
+
+NSString *TKDeviceModel();
+
+NSString *TKDeviceFamily();
 
 
-NSString *TKCurrentDevicePlatform();
-TKDeviceModel TKCurrentDeviceModel();
-TKDeviceFamily TKCurrentDeviceFamily();
+///-------------------------------
+/// SDK compatibility
+///-------------------------------
 
 BOOL TKIsRetina();
+
 BOOL TKIsPad();
+
 BOOL TKIsPhone();

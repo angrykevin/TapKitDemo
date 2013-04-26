@@ -9,7 +9,11 @@
 #import "TKCoreCompatibility.h"
 #include <sys/sysctl.h>
 
-NSString *TKCurrentDevicePlatform()
+
+
+#pragma mark - Device compatibility
+
+NSString *TKDevicePlatform()
 {
   char buffer[128];
   bzero(buffer, 128);
@@ -21,55 +25,58 @@ NSString *TKCurrentDevicePlatform()
   return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
-TKDeviceModel TKCurrentDeviceModel()
+NSString *TKDeviceModel()
 {
-  NSString *platform = TKCurrentDevicePlatform();
+  NSString *platform = TKDevicePlatform();
   
-  if ( [platform isEqualToString:@"iPhone1,1"] ) return TKDeviceModelPhone2G;
-  if ( [platform isEqualToString:@"iPhone1,2"] ) return TKDeviceModelPhone3G;
-  if ( [platform isEqualToString:@"iPhone2,1"] ) return TKDeviceModelPhone3GS;
-  if ( [platform isEqualToString:@"iPhone3,1"] ) return TKDeviceModelPhone4;
-  if ( [platform isEqualToString:@"iPhone3,2"] ) return TKDeviceModelPhone4;
-  if ( [platform isEqualToString:@"iPhone3,3"] ) return TKDeviceModelPhone4;
-  if ( [platform isEqualToString:@"iPhone4,1"] ) return TKDeviceModelPhone4S;
-  if ( [platform isEqualToString:@"iPhone5,1"] ) return TKDeviceModelPhone5;
-  if ( [platform isEqualToString:@"iPhone5,2"] ) return TKDeviceModelPhone5;
+  if ( [platform isEqualToString:@"iPhone1,1"] ) return @"iPhone 2G";
+  if ( [platform isEqualToString:@"iPhone1,2"] ) return @"iPhone 3G";
+  if ( [platform isEqualToString:@"iPhone2,1"] ) return @"iPhone 3GS";
+  if ( [platform isEqualToString:@"iPhone3,1"] ) return @"iPhone 4";
+  if ( [platform isEqualToString:@"iPhone3,2"] ) return @"iPhone 4";
+  if ( [platform isEqualToString:@"iPhone3,3"] ) return @"iPhone 4";
+  if ( [platform isEqualToString:@"iPhone4,1"] ) return @"iPhone 4S";
+  if ( [platform isEqualToString:@"iPhone5,1"] ) return @"iPhone 5";
+  if ( [platform isEqualToString:@"iPhone5,2"] ) return @"iPhone 5";
   
-  if ( [platform isEqualToString:@"iPod1,1"] ) return TKDeviceModelPod1G;
-  if ( [platform isEqualToString:@"iPod2,1"] ) return TKDeviceModelPod2G;
-  if ( [platform isEqualToString:@"iPod3,1"] ) return TKDeviceModelPod3G;
-  if ( [platform isEqualToString:@"iPod4,1"] ) return TKDeviceModelPod4G;
-  if ( [platform isEqualToString:@"iPod5,1"] ) return TKDeviceModelPod5G;
+  if ( [platform isEqualToString:@"iPod1,1"] ) return @"iPod touch 1G";
+  if ( [platform isEqualToString:@"iPod2,1"] ) return @"iPod touch 2G";
+  if ( [platform isEqualToString:@"iPod3,1"] ) return @"iPod touch 3G";
+  if ( [platform isEqualToString:@"iPod4,1"] ) return @"iPod touch 4G";
+  if ( [platform isEqualToString:@"iPod5,1"] ) return @"iPod touch 5G";
   
-  if ( [platform isEqualToString:@"iPad1,1"] ) return TKDeviceModelPad1G;
-  if ( [platform isEqualToString:@"iPad2,1"] ) return TKDeviceModelPad2;
-  if ( [platform isEqualToString:@"iPad2,2"] ) return TKDeviceModelPad2;
-  if ( [platform isEqualToString:@"iPad2,3"] ) return TKDeviceModelPad2;
-  if ( [platform isEqualToString:@"iPad2,4"] ) return TKDeviceModelPad2;
-  if ( [platform isEqualToString:@"iPad2,5"] ) return TKDeviceModelPadMini1G;
-  if ( [platform isEqualToString:@"iPad2,6"] ) return TKDeviceModelPadMini1G;
-  if ( [platform isEqualToString:@"iPad2,7"] ) return TKDeviceModelPadMini1G;
-  if ( [platform isEqualToString:@"iPad3,1"] ) return TKDeviceModelPad3;
-  if ( [platform isEqualToString:@"iPad3,2"] ) return TKDeviceModelPad3;
-  if ( [platform isEqualToString:@"iPad3,3"] ) return TKDeviceModelPad3;
-  if ( [platform isEqualToString:@"iPad3,4"] ) return TKDeviceModelPad4;
-  if ( [platform isEqualToString:@"iPad3,5"] ) return TKDeviceModelPad4;
-  if ( [platform isEqualToString:@"iPad3,6"] ) return TKDeviceModelPad4;
+  if ( [platform isEqualToString:@"iPad1,1"] ) return @"iPad 1G";
+  if ( [platform isEqualToString:@"iPad2,1"] ) return @"iPad 2";
+  if ( [platform isEqualToString:@"iPad2,2"] ) return @"iPad 2";
+  if ( [platform isEqualToString:@"iPad2,3"] ) return @"iPad 2";
+  if ( [platform isEqualToString:@"iPad2,4"] ) return @"iPad 2";
+  if ( [platform isEqualToString:@"iPad2,5"] ) return @"iPad mini 1G";
+  if ( [platform isEqualToString:@"iPad2,6"] ) return @"iPad mini 1G";
+  if ( [platform isEqualToString:@"iPad2,7"] ) return @"iPad mini 1G";
+  if ( [platform isEqualToString:@"iPad3,1"] ) return @"iPad 3";
+  if ( [platform isEqualToString:@"iPad3,2"] ) return @"iPad 3";
+  if ( [platform isEqualToString:@"iPad3,3"] ) return @"iPad 3";
+  if ( [platform isEqualToString:@"iPad3,4"] ) return @"iPad 4";
+  if ( [platform isEqualToString:@"iPad3,5"] ) return @"iPad 4";
+  if ( [platform isEqualToString:@"iPad3,6"] ) return @"iPad 4";
   
-  return TKDeviceModelUnknow;
+  return nil;
 }
 
-TKDeviceFamily TKCurrentDeviceFamily()
+NSString *TKDeviceFamily()
 {
-  NSString *platform = TKCurrentDevicePlatform();
+  NSString *platform = TKDevicePlatform();
   
-  if ( [platform hasPrefix:@"iPhone"] ) return TKDeviceFamilyPhone;
-  if ( [platform hasPrefix:@"iPod"] ) return TKDeviceFamilyPod;
-  if ( [platform hasPrefix:@"iPad"] ) return TKDeviceFamilyPad;
+  if ( [platform hasPrefix:@"iPhone"] ) return @"iPhone";
+  if ( [platform hasPrefix:@"iPod"] ) return @"iPod touch";
+  if ( [platform hasPrefix:@"iPad"] ) return @"iPad";
   
-  return TKDeviceFamilyUnknown;
+  return nil;
 }
 
+
+
+#pragma mark - SDK compatibility
 
 BOOL TKIsRetina()
 {

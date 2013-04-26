@@ -8,3 +8,5 @@
 
 #import "TKCoreCommon.h"
 #import "TKCoreCompatibility.h"
+#import "TKDebug.h"
+#import "TKMacro.h"
