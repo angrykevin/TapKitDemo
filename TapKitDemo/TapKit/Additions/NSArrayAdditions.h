@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (Tint)
+@interface NSArray (TapKit)
 
 ///-------------------------------
 /// Querying
@@ -43,7 +43,7 @@
 
 
 
-@interface NSMutableArray (Tint)
+@interface NSMutableArray (TapKit)
 
 ///-------------------------------
 /// Adding and removing entries

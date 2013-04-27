@@ -23,14 +23,11 @@
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
-  [self print:@"AA", @"BB", @"CC", nil];
   
-//  NSLog(@"%f", TKDegreesToRadians(180));
-//  NSLog(@"%f", TKRadiansToDegrees(1.57));
-//  
-//  NSString *path = TKPathForDocumentsResource(nil);
-//  NSLog(@"%@", path);
   
+  NSString *string = @"";
+  //NSLog(@"%@", [[NSString alloc] initWithData:TKDecodeBase64(string) encoding:NSUTF8StringEncoding]);
+  NSLog(@"HH%@HH", TKEncodeBase64( [string dataUsingEncoding:NSUTF8StringEncoding] ));
   
   
   _window.backgroundColor = [UIColor whiteColor];

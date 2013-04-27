@@ -21,6 +21,11 @@
 		BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */; };
 		BCD4FE7B172AD50400A7E0A3 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */; };
 		BCD4FE7E172ADFF900A7E0A3 /* NSArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */; };
+		BCE720B8172BF8AB00602BED /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720B7172BF8AB00602BED /* NSDateAdditions.m */; };
+		BCE720BE172BFE6600602BED /* NSDictionaryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720BD172BFE6600602BED /* NSDictionaryAdditions.m */; };
+		BCE720C4172C0B5800602BED /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720C3172C0B5800602BED /* NSStringAdditions.m */; };
+		BCE720C7172C0BB400602BED /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720C6172C0BB300602BED /* NSDataAdditions.m */; };
+		BCE720CF172C0DB500602BED /* TKCoreBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720CE172C0DB500602BED /* TKCoreBase64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +62,16 @@
 		BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
 		BCD4FE7C172ADFF800A7E0A3 /* NSArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayAdditions.h; sourceTree = "<group>"; };
 		BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayAdditions.m; sourceTree = "<group>"; };
+		BCE720B6172BF8AB00602BED /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		BCE720B7172BF8AB00602BED /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		BCE720BC172BFE6600602BED /* NSDictionaryAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryAdditions.h; sourceTree = "<group>"; };
+		BCE720BD172BFE6600602BED /* NSDictionaryAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryAdditions.m; sourceTree = "<group>"; };
+		BCE720C2172C0B5700602BED /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
+		BCE720C3172C0B5800602BED /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		BCE720C5172C0BB300602BED /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		BCE720C6172C0BB300602BED /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		BCE720CD172C0DB500602BED /* TKCoreBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreBase64.h; sourceTree = "<group>"; };
+		BCE720CE172C0DB500602BED /* TKCoreBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreBase64.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +94,16 @@
 				BC1B9481172968DF005C10D3 /* Additions.h */,
 				BCD4FE7C172ADFF800A7E0A3 /* NSArrayAdditions.h */,
 				BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */,
+				BCE720B6172BF8AB00602BED /* NSDateAdditions.h */,
+				BCE720B7172BF8AB00602BED /* NSDateAdditions.m */,
+				BCE720BC172BFE6600602BED /* NSDictionaryAdditions.h */,
+				BCE720BD172BFE6600602BED /* NSDictionaryAdditions.m */,
 				BCD4FE79172AD50400A7E0A3 /* NSObjectAdditions.h */,
 				BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */,
+				BCE720C2172C0B5700602BED /* NSStringAdditions.h */,
+				BCE720C3172C0B5800602BED /* NSStringAdditions.m */,
+				BCE720C5172C0BB300602BED /* NSDataAdditions.h */,
+				BCE720C6172C0BB300602BED /* NSDataAdditions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -97,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9485172968DF005C10D3 /* Core.h */,
+				BCE720CD172C0DB500602BED /* TKCoreBase64.h */,
+				BCE720CE172C0DB500602BED /* TKCoreBase64.m */,
 				BC1B948A17296B5E005C10D3 /* TKCoreCommon.h */,
 				BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */,
 				BC1B949017296DB9005C10D3 /* TKCoreCompatibility.h */,
@@ -272,6 +297,11 @@
 				BCD4FE75172AC87A00A7E0A3 /* TKCoreUI.m in Sources */,
 				BCD4FE7B172AD50400A7E0A3 /* NSObjectAdditions.m in Sources */,
 				BCD4FE7E172ADFF900A7E0A3 /* NSArrayAdditions.m in Sources */,
+				BCE720B8172BF8AB00602BED /* NSDateAdditions.m in Sources */,
+				BCE720BE172BFE6600602BED /* NSDictionaryAdditions.m in Sources */,
+				BCE720C4172C0B5800602BED /* NSStringAdditions.m in Sources */,
+				BCE720C7172C0BB400602BED /* NSDataAdditions.m in Sources */,
+				BCE720CF172C0DB500602BED /* TKCoreBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

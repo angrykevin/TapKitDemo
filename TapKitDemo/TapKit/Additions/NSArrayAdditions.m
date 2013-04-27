@@ -8,7 +8,7 @@
 
 #import "NSArrayAdditions.h"
 
-@implementation NSArray (Tint)
+@implementation NSArray (TapKit)
 
 
 
@@ -53,42 +53,46 @@
 
 - (NSArray *)objectsForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  if ( [self count] > 0 ) {
+  NSMutableArray *array = nil;
+  
+  for ( NSInteger i=0; i<[self count]; ++i ) {
     
-    NSMutableArray *array = [NSMutableArray array];
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
-        [array addObject:object];
+    id object = [self objectAtIndex:i];
+    
+    if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
+      
+      if ( array == nil ) {
+        array = [[NSMutableArray alloc] init];
       }
-    }
-    
-    if ( [array count] > 0 ) {
-      return array;
+      [array addObject:object];
+      
     }
     
   }
-  return nil;
+  
+  return array;
 }
 
 - (NSArray *)objectsForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  if ( [self count] > 0 ) {
+  NSMutableArray *array = nil;
+  
+  for ( NSInteger i=0; i<[self count]; ++i ) {
     
-    NSMutableArray *array = [NSMutableArray array];
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [object valueForKeyPath:keyPath] == value ) {
-        [array addObject:object];
+    id object = [self objectAtIndex:i];
+    
+    if ( [object valueForKeyPath:keyPath] == value ) {
+      
+      if ( array == nil ) {
+        array = [[NSMutableArray alloc] init];
       }
-    }
-    
-    if ( [array count] > 0 ) {
-      return array;
+      [array addObject:object];
+      
     }
     
   }
-  return nil;
+  
+  return array;
 }
 
 
@@ -118,7 +122,7 @@
 
 
 
-@implementation NSMutableArray (Tint)
+@implementation NSMutableArray (TapKit)
 
 
 
@@ -135,8 +139,8 @@
 
 - (id)addUnequalObjectIfNotNil:(id)object
 {
-  if ((object) &&
-      ([self indexOfObject:object] == NSNotFound))
+  if ((object)
+      && ([self indexOfObject:object] == NSNotFound))
   {
     [self addObject:object];
     return object;
@@ -146,8 +150,8 @@
 
 - (id)addUnidenticalObjectIfNotNil:(id)object
 {
-  if ((object) &&
-      ([self indexOfObjectIdenticalTo:object] == NSNotFound))
+  if ((object)
+      && ([self indexOfObjectIdenticalTo:object] == NSNotFound))
   {
     [self addObject:object];
     return object;
@@ -158,8 +162,8 @@
 
 - (id)insertObject:(id)object atIndexIfNotNil:(NSUInteger)idx
 {
-  if ((object) &&
-      (idx <= [self count]))
+  if ((object)
+      && (idx <= [self count]))
   {
     [self insertObject:object atIndex:idx];
     return object;
@@ -170,9 +174,9 @@
 
 - (id)moveObjectAtIndex:(NSUInteger)idx toIndex:(NSUInteger)toIdx
 {
-  if ((idx != toIdx) &&
-      (idx < [self count]) &&
-      (toIdx < [self count]))
+  if ((idx != toIdx)
+      && (idx < [self count])
+      && (toIdx < [self count]))
   {
     id object = [self objectAtIndex:idx];
     [self removeObjectAtIndex:idx];
@@ -225,6 +229,7 @@
   if ( [self count] > 0 ) {
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
+    
     for ( NSInteger i=0; i<[self count]; ++i ) {
       id object = [self objectAtIndex:i];
       if ( [array indexOfObject:object] == NSNotFound ) {
@@ -246,6 +251,7 @@
   if ( [self count] > 0 ) {
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
+    
     for ( NSInteger i=0; i<[self count]; ++i ) {
       id object = [self objectAtIndex:i];
       if ( [array indexOfObjectIdenticalTo:object] == NSNotFound ) {

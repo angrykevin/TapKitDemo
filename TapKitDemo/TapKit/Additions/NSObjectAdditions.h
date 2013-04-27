@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (Tint)
+@interface NSObject (TapKit)
 
 ///-------------------------------
 /// Class string

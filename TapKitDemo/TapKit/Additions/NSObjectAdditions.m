@@ -9,7 +9,7 @@
 #import "NSObjectAdditions.h"
 #import <objc/runtime.h>
 
-@implementation NSObject (Tint)
+@implementation NSObject (TapKit)
 
 
 
@@ -60,51 +60,51 @@
 
 + (NSSet *)propertyNames
 {
-  NSMutableSet *set = [NSMutableSet set];
+  NSMutableSet *set = nil;
   
   unsigned int count = 0;
   objc_property_t *properties = class_copyPropertyList(self, &count);
-  if ( count > 0 ) {
+  
+  for ( int i=0; i<count; ++i ) {
     
-    for ( int i=0; i<count; ++i ) {
-      objc_property_t property = properties[i];
-      NSString *name = [NSString stringWithUTF8String:property_getName(property)];
-      [set addObject:name];
+    objc_property_t property = properties[i];
+    NSString *name = [NSString stringWithUTF8String:property_getName(property)];
+    
+    if ( set == nil ) {
+      set = [NSMutableSet set];
     }
+    [set addObject:name];
     
   }
+  
   free(properties);
   
-  if ( [set count] > 0 ) {
-    return set;
-  }
-  
-  return nil;
+  return set;
 }
 
 + (NSDictionary *)propertyAttributes
 {
-  NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+  NSMutableDictionary *dictionary = nil;
   
   unsigned int count = 0;
   objc_property_t *properties = class_copyPropertyList(self, &count);
-  if ( count > 0 ) {
+  
+  for ( int i=0; i<count; ++i ) {
     
-    for ( int i=0; i<count; ++i ) {
-      objc_property_t property = properties[i];
-      NSString *name = [NSString stringWithUTF8String:property_getName(property)];
-      NSString *attribute = [NSString stringWithUTF8String:property_getAttributes(property)];
-      [dictionary setObject:attribute forKey:name];
+    objc_property_t property = properties[i];
+    NSString *name = [NSString stringWithUTF8String:property_getName(property)];
+    NSString *attribute = [NSString stringWithUTF8String:property_getAttributes(property)];
+    
+    if ( dictionary == nil ) {
+      dictionary = [NSMutableDictionary dictionary];
     }
+    [dictionary setObject:attribute forKey:name];
     
   }
+  
   free(properties);
   
-  if ( [dictionary count] > 0 ) {
-    return dictionary;
-  }
-  
-  return nil;
+  return dictionary;
 }
 
 @end
