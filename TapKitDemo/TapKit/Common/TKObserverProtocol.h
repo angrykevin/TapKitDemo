@@ -12,7 +12,6 @@
 @protocol TKObserverProtocol <NSObject>
 
 - (NSMutableArray *)observerArray;
-- (void)destroyObserverArray;
 - (id)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
 - (void)removeAllObserver;

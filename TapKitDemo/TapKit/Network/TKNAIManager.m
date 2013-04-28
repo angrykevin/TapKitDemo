@@ -36,7 +36,7 @@
 {
   static TKNAIManager *NAIManager = nil;
   if ( NAIManager == nil ) {
-    NAIManager = [[TKNAIManager alloc] init];
+    NAIManager = [[self alloc] init];
   }
   return NAIManager;
 }

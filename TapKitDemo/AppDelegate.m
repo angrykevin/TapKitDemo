@@ -19,6 +19,11 @@
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
+  [self performSelector:@selector(doithaha) withObject:nil afterDelay:1.0];
+  
+  
+  NSLog(@"%d  %d", sizeof(int), sizeof(long long));
+  
 //  TSObject *object = [[TSObject alloc] init];
 //  
 //  UIView *v1 = [[UIView alloc] init];
