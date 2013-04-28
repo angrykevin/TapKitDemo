@@ -12,6 +12,7 @@
 @implementation TKNAIManager
 
 
+
 #pragma mark - Memory
 
 - (id)init
@@ -31,37 +32,56 @@
 
 #pragma mark - Public
 
-//- (void)addNetworkUser:(id)user
-//{
-//  [_lock lock];
-//  
-//  if ( [_networkUsers indexOfObjectIdenticalTo:user] == NSNotFound ) {
-//    [_networkUsers addObject:user];
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-//  }
-//  
-//  [_lock unlock];
-//}
-//
-//- (void)removeNetworkUser:(id)user
-//{
-//  @synchronized (self) {
-//    [_networkUsers removeObjectIdenticalTo:user];
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = TTIsArrayWithItems(_networkUsers);
-//  }
-//}
-//
-//- (void)removeAllNetworkUsers
-//{
-//  @synchronized (self) {
-//    [_networkUsers removeAllObjects];
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-//  }
-//}
-//
-//- (BOOL)isNetworkUser:(id)user
-//{
-//  return ( [_networkUsers indexOfObjectIdenticalTo:user] != NSNotFound );
-//}
++ (TKNAIManager *)sharedObject
+{
+  static TKNAIManager *NAIManager = nil;
+  if ( NAIManager == nil ) {
+    NAIManager = [[TKNAIManager alloc] init];
+  }
+  return NAIManager;
+}
+
+
+- (BOOL)isNetworkUser:(id)user
+{
+  [_lock lock];
+  
+  BOOL result = [_networkUsers hasObjectIdenticalTo:user];
+  
+  [_lock unlock];
+  
+  return result;
+}
+
+
+- (void)addNetworkUser:(id)user
+{
+  [_lock lock];
+  
+  [_networkUsers addUnidenticalObjectIfNotNil:user];
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = TKIsArrayWithItems(_networkUsers);
+  
+  [_lock unlock];
+}
+
+- (void)removeNetworkUser:(id)user
+{
+  [_lock lock];
+  
+  [_networkUsers removeObjectIdenticalTo:user];
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = TKIsArrayWithItems(_networkUsers);
+  
+  [_lock unlock];
+}
+
+- (void)removeAllNetworkUsers
+{
+  [_lock lock];
+  
+  [_networkUsers removeAllObjects];
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+  
+  [_lock unlock];
+}
 
 @end

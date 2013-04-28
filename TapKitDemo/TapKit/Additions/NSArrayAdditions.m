@@ -53,55 +53,53 @@
 
 - (NSArray *)objectsForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  NSMutableArray *array = nil;
-  
-  for ( NSInteger i=0; i<[self count]; ++i ) {
+  if ( [keyPath length] > 0 ) {
     
-    id object = [self objectAtIndex:i];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
     
-    if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
-      
-      if ( array == nil ) {
-        array = [[NSMutableArray alloc] init];
+    for ( NSInteger i=0; i<[self count]; ++i ) {
+      id object = [self objectAtIndex:i];
+      if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
+        [array addObject:object];
       }
-      [array addObject:object];
-      
     }
     
+    if ( [array count] > 0 ) {
+      return array;
+    }
   }
-  
-  return array;
+  return nil;
 }
 
 - (NSArray *)objectsForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  NSMutableArray *array = nil;
-  
-  for ( NSInteger i=0; i<[self count]; ++i ) {
+  if ( [keyPath length] > 0 ) {
     
-    id object = [self objectAtIndex:i];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
     
-    if ( [object valueForKeyPath:keyPath] == value ) {
-      
-      if ( array == nil ) {
-        array = [[NSMutableArray alloc] init];
+    for ( NSInteger i=0; i<[self count]; ++i ) {
+      id object = [self objectAtIndex:i];
+      if ( [object valueForKeyPath:keyPath] == value ) {
+        [array addObject:object];
       }
-      [array addObject:object];
-      
     }
     
+    if ( [array count] > 0 ) {
+      return array;
+    }
   }
-  
-  return array;
+  return nil;
 }
 
 
 - (id)firstObjectForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  for ( NSInteger i=0; i<[self count]; ++i ) {
-    id object = [self objectAtIndex:i];
-    if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
-      return object;
+  if ( [keyPath length] > 0 ) {
+    for ( NSInteger i=0; i<[self count]; ++i ) {
+      id object = [self objectAtIndex:i];
+      if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
+        return object;
+      }
     }
   }
   return nil;
@@ -109,10 +107,12 @@
 
 - (id)firstObjectForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  for ( NSInteger i=0; i<[self count]; ++i ) {
-    id object = [self objectAtIndex:i];
-    if ( [object valueForKeyPath:keyPath] == value ) {
-      return object;
+  if ( [keyPath length] > 0 ) {
+    for ( NSInteger i=0; i<[self count]; ++i ) {
+      id object = [self objectAtIndex:i];
+      if ( [object valueForKeyPath:keyPath] == value ) {
+        return object;
+      }
     }
   }
   return nil;

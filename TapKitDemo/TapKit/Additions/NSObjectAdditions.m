@@ -50,61 +50,61 @@
 
 - (BOOL)isValueForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  return [[self valueForKeyPath:keyPath] isEqual:value];
+  if ( [keyPath length] > 0 ) {
+    return [[self valueForKeyPath:keyPath] isEqual:value];
+  }
+  return NO;
 }
 
 - (BOOL)isValueForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  return ( [self valueForKeyPath:keyPath] == value );
+  if ( [keyPath length] > 0 ) {
+    return ( [self valueForKeyPath:keyPath] == value );
+  }
+  return NO;
 }
 
-+ (NSSet *)propertyNames
++ (NSArray *)propertyNames
 {
-  NSMutableSet *set = nil;
+  NSMutableArray *array = [[NSMutableArray alloc] init];
   
   unsigned int count = 0;
   objc_property_t *properties = class_copyPropertyList(self, &count);
   
   for ( int i=0; i<count; ++i ) {
-    
     objc_property_t property = properties[i];
     NSString *name = [NSString stringWithUTF8String:property_getName(property)];
-    
-    if ( set == nil ) {
-      set = [NSMutableSet set];
-    }
-    [set addObject:name];
-    
+    [array addObject:name];
   }
-  
   free(properties);
   
-  return set;
+  if ( [array count] > 0 ) {
+    return array;
+  }
+  
+  return nil;
 }
 
 + (NSDictionary *)propertyAttributes
 {
-  NSMutableDictionary *dictionary = nil;
+  NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
   
   unsigned int count = 0;
   objc_property_t *properties = class_copyPropertyList(self, &count);
   
   for ( int i=0; i<count; ++i ) {
-    
     objc_property_t property = properties[i];
     NSString *name = [NSString stringWithUTF8String:property_getName(property)];
     NSString *attribute = [NSString stringWithUTF8String:property_getAttributes(property)];
-    
-    if ( dictionary == nil ) {
-      dictionary = [NSMutableDictionary dictionary];
-    }
     [dictionary setObject:attribute forKey:name];
-    
   }
-  
   free(properties);
   
-  return dictionary;
+  if ( [dictionary count] > 0 ) {
+    return dictionary;
+  }
+  
+  return nil;
 }
 
 @end

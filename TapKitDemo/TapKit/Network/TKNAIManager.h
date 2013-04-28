@@ -21,10 +21,10 @@
 
 + (TKNAIManager *)sharedObject;
 
+- (BOOL)isNetworkUser:(id)user;
+
 - (void)addNetworkUser:(id)user;
 - (void)removeNetworkUser:(id)user;
 - (void)removeAllNetworkUsers;
-
-- (BOOL)isNetworkUser:(id)user;
 
 @end

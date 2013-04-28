@@ -126,11 +126,9 @@
                     | NSWeekdayCalendarUnit
                     | NSWeekdayOrdinalCalendarUnit
                     | NSQuarterCalendarUnit
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_5_0
                     | NSWeekOfMonthCalendarUnit
                     | NSWeekOfYearCalendarUnit
                     | NSYearForWeekOfYearCalendarUnit
-#endif
                     | NSCalendarCalendarUnit
                     | NSTimeZoneCalendarUnit;
   return [[NSCalendar currentCalendar] components:calendarUnit fromDate:self];

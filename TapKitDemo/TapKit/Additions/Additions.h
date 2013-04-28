@@ -7,6 +7,8 @@
 //
 
 #import "NSArrayAdditions.h"
+#import "NSDataAdditions.h"
 #import "NSDateAdditions.h"
 #import "NSDictionaryAdditions.h"
 #import "NSObjectAdditions.h"
+#import "NSStringAdditions.h"

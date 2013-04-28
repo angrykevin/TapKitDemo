@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC04C7D0172D4C2000F9EB2A /* TSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7CF172D4C2000F9EB2A /* TSObject.m */; };
 		BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */; };
 		BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */; };
 		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
@@ -29,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC04C7CE172D4C2000F9EB2A /* TSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSObject.h; sourceTree = "<group>"; };
+		BC04C7CF172D4C2000F9EB2A /* TSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSObject.m; sourceTree = "<group>"; };
+		BC04C7E8172D64F200F9EB2A /* TKObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKObserverProtocol.h; sourceTree = "<group>"; };
 		BC1B947A1729676E005C10D3 /* TapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapKit.h; sourceTree = "<group>"; };
 		BC1B9481172968DF005C10D3 /* Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Additions.h; sourceTree = "<group>"; };
 		BC1B9483172968DF005C10D3 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -88,12 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC1B9480172968DF005C10D3 /* Additions */ = {
+		BC04C7E7172D647700F9EB2A /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				BC1B9481172968DF005C10D3 /* Additions.h */,
 				BCD4FE7C172ADFF800A7E0A3 /* NSArrayAdditions.h */,
 				BCD4FE7D172ADFF900A7E0A3 /* NSArrayAdditions.m */,
+				BCE720C5172C0BB300602BED /* NSDataAdditions.h */,
+				BCE720C6172C0BB300602BED /* NSDataAdditions.m */,
 				BCE720B6172BF8AB00602BED /* NSDateAdditions.h */,
 				BCE720B7172BF8AB00602BED /* NSDateAdditions.m */,
 				BCE720BC172BFE6600602BED /* NSDictionaryAdditions.h */,
@@ -102,8 +107,15 @@
 				BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */,
 				BCE720C2172C0B5700602BED /* NSStringAdditions.h */,
 				BCE720C3172C0B5800602BED /* NSStringAdditions.m */,
-				BCE720C5172C0BB300602BED /* NSDataAdditions.h */,
-				BCE720C6172C0BB300602BED /* NSDataAdditions.m */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		BC1B9480172968DF005C10D3 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				BC1B9481172968DF005C10D3 /* Additions.h */,
+				BC04C7E7172D647700F9EB2A /* Foundation */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -112,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9483172968DF005C10D3 /* Common.h */,
+				BC04C7E8172D64F200F9EB2A /* TKObserverProtocol.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -187,6 +200,8 @@
 				BCC6CEE017171466000A99CB /* main.m */,
 				BCC6CEE317171466000A99CB /* AppDelegate.h */,
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
+				BC04C7CE172D4C2000F9EB2A /* TSObject.h */,
+				BC04C7CF172D4C2000F9EB2A /* TSObject.m */,
 				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
 			);
@@ -302,6 +317,7 @@
 				BCE720C4172C0B5800602BED /* NSStringAdditions.m in Sources */,
 				BCE720C7172C0BB400602BED /* NSDataAdditions.m in Sources */,
 				BCE720CF172C0DB500602BED /* TKCoreBase64.m in Sources */,
+				BC04C7D0172D4C2000F9EB2A /* TSObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,43 @@
 
 @interface NSString (TapKit)
 
-- (NSString *)UUIDString;
+///-------------------------------
+/// UUID
+///-------------------------------
+
++ (NSString *)UUIDString;
+
+
+///-------------------------------
+/// Validity
+///-------------------------------
+
+- (BOOL)isDecimalNumber;
+
+- (BOOL)isWhitespaceAndNewline;
+
+
+- (BOOL)isInCharacterSet:(NSCharacterSet *)characterSet;
+
+
+///-------------------------------
+/// Hash
+///-------------------------------
+
+- (NSString *)MD5HashString;
+
+- (NSString *)SHA1HashString;
+
+
+///-------------------------------
+/// URL
+///-------------------------------
+
+- (NSString *)URLEncodedString;
+- (NSString *)URLDecodedString;
+
+- (NSDictionary *)queryDictionary;
+- (NSString *)stringByAddingQueryDictionary:(NSDictionary *)dictionary;
+- (NSString *)stringByAppendingValue:(NSString *)value forKey:(NSString *)key;
 
 @end

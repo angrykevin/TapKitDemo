@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder<UIApplicationDelegate> {
+  NSArray *_observers;
   UIWindow *_window;
 }
 

@@ -30,9 +30,9 @@
 
 #define TKValistToArray(__first, __container) \
 if ( __first ) { \
-  id __object; \
   va_list __list; \
   va_start(__list, __first); \
+  id __object; \
   while ( (__object = va_arg(__list, id)) ) {\
     [__container addObject:__object]; \
   } \

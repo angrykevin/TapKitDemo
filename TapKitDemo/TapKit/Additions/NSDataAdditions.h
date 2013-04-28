@@ -10,7 +10,12 @@
 
 @interface NSData (TapKit)
 
+///-------------------------------
+/// Hash
+///-------------------------------
+
 - (NSString *)MD5HashString;
+
 - (NSString *)SHA1HashString;
 
 @end

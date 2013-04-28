@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionaryAdditions.h"
+#import "NSStringAdditions.h"
 
 @implementation NSDictionary (TapKit)
 
@@ -40,18 +41,18 @@
 
 - (NSString *)queryString
 {
-  if ( [self count] > 0 ) {
-    
-    NSMutableArray *parameters = [[NSMutableArray alloc] init];
-    
-    for ( NSString *key in [self keyEnumerator] ) {
-      NSString *value = [self objectForKey:key];
-      NSString *pair = [NSString stringWithFormat:@"%@=%@", key, value];
-      [parameters addObject:pair];
-    }
-    
-    return [parameters componentsJoinedByString:@"&"];
+  NSMutableArray *pairs = [[NSMutableArray alloc] init];
+  
+  for ( NSString *key in [self keyEnumerator] ) {
+    NSString *value = [[self objectForKey:key] URLEncodedString];
+    NSString *pair = [NSString stringWithFormat:@"%@=%@", key, value];
+    [pairs addObject:pair];
   }
+  
+  if ( [pairs count] > 0 ) {
+    return [pairs componentsJoinedByString:@"&"];
+  }
+  
   return nil;
 }
 

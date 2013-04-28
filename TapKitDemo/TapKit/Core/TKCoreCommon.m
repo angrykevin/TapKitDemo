@@ -186,16 +186,14 @@ NSDateFormatter *TKInternetDateFormatter()
 {
   static NSDateFormatter *internetDateFormatter = nil;
   if ( internetDateFormatter == nil ) {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    internetDateFormatter = [[NSDateFormatter alloc] init];
     
     NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    [formatter setLocale:enUSPOSIXLocale];
+    [internetDateFormatter setLocale:enUSPOSIXLocale];
     
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    [internetDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
     
-    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    internetDateFormatter = formatter;
+    [internetDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
   }
   return internetDateFormatter;
 }

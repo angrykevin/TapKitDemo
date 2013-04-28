@@ -8,26 +8,53 @@
 
 #import "AppDelegate.h"
 
-@implementation AppDelegate
+#import "TSObject.h"
+#import "TKNAIManager.h"
 
-- (void)print:(NSString *)value, ... {
-  NSMutableArray *array = [[NSMutableArray alloc] init];
-  
-  TKValistToArray(value, array);
-  
-  NSLog(@"%@", array);
-  
-}
+
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
+//  TSObject *object = [[TSObject alloc] init];
+//  
+//  UIView *v1 = [[UIView alloc] init];
+//  UIView *v2 = [[UIView alloc] init];
+//  //object.view1 = v1;
+//  object.view2 = v2;
+//  
+//  if ( [object isValueForKeyPath:@"view1" identicalToValue:nil] ) {
+//    NSLog(@"YES");
+//  } else {
+//    NSLog(@"NO");
+//  }
+//  
+//  if ( [object isValueForKeyPath:@"view2" equalToValue:v2] ) {
+//    NSLog(@"YES");
+//  } else {
+//    NSLog(@"NO");
+//  }
+//  
+//  
+//  NSArray *ary = @[ @"aks", @"aksd", @"kasd" ];
+//  if ( [ary indexOfObject:nil] == NSNotFound ) {
+//    NSLog(@"NOT FOUND");
+//  }
   
-  NSString *string = @"";
-  //NSLog(@"%@", [[NSString alloc] initWithData:TKDecodeBase64(string) encoding:NSUTF8StringEncoding]);
-  NSLog(@"HH%@HH", TKEncodeBase64( [string dataUsingEncoding:NSUTF8StringEncoding] ));
+//  NSString *str = @"lksdf";
+//  if ( [str isInCharacterSet:nil] ) {
+//    NSLog(@"IN SET");
+//  } else {
+//    NSLog(@"NOT IN SET");
+//  }
+  
+  
+  NSString *str = @"aa";
+  [[TKNAIManager sharedObject] addNetworkUser:str];
+  NSLog(@"H%@H", [str queryDictionary]);
   
   
   _window.backgroundColor = [UIColor whiteColor];
