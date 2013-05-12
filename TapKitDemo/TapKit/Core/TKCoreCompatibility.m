@@ -22,7 +22,7 @@ NSString *TKDevicePlatform()
   
   sysctlbyname("hw.machine", buffer, &size, NULL, 0);
   
-  return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+  return [[NSString alloc] initWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
 NSString *TKDeviceModel()
@@ -68,7 +68,7 @@ NSString *TKDeviceFamily()
   NSString *platform = TKDevicePlatform();
   
   if ( [platform hasPrefix:@"iPhone"] ) return @"iPhone";
-  if ( [platform hasPrefix:@"iPod"] ) return @"iPod touch";
+  if ( [platform hasPrefix:@"iPod"] ) return @"iPod";
   if ( [platform hasPrefix:@"iPad"] ) return @"iPad";
   
   return nil;

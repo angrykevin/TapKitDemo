@@ -51,7 +51,7 @@ NSString *TKEncodeBase64(NSData *data)
   const unsigned char *bytes = [data bytes];
   
   // Setup the String-based result placeholder and pointer within that placeholder
-  char *result = (char *)calloc(((length + 2) / 3) * 4, sizeof(char));
+  char *result = (char *)calloc(((length+2)/3)*4, sizeof(char));
   char *pointer = result;
   
   // Iterate through everything

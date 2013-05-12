@@ -47,7 +47,7 @@
 
 - (BOOL)isInCharacterSet:(NSCharacterSet *)characterSet
 {
-  for ( NSInteger i=0; i<[self length]; ++i ) {
+  for ( int i=0; i<[self length]; ++i ) {
     unichar c = [self characterAtIndex:i];
     if ( ![characterSet characterIsMember:c] ) {
       return NO;
@@ -100,7 +100,8 @@
   
   NSRange range = [self rangeOfString:@"?"];
   if ( range.location != NSNotFound ) {
-    string = [self substringFromIndex:range.location + range.length];
+    NSUInteger idx = range.location + range.length;
+    string = [self substringFromIndex:idx];
   }
   
   NSArray *pairs = [string componentsSeparatedByString:@"&"];
@@ -129,22 +130,21 @@
   
   if ( [query length] > 0 ) {
     
-    if ( [self rangeOfString:@"?"].location == NSNotFound ) {
-      
-      return [self stringByAppendingFormat:@"?%@", query];
-      
-    } else {
-      
-      if ([self hasSuffix:@"&"]
-          || [self hasSuffix:@"?"])
-      {
-        return [self stringByAppendingFormat:@"%@", query];
-      } else {
-        return [self stringByAppendingFormat:@"&%@", query];
-      }
-      
+    NSMutableString *string = [[NSMutableString alloc] initWithString:self];
+    
+    if ( [string rangeOfString:@"?"].location == NSNotFound ) {
+      [string appendString:@"?"];
     }
     
+    if (![string hasSuffix:@"&"]
+        && ![string hasSuffix:@"?"])
+    {
+      [string appendString:@"&"];
+    }
+    
+    [string appendString:query];
+    
+    return string;
   }
   return self;
 }
@@ -153,23 +153,22 @@
 {
   if ( [key length] > 0 ) {
     
-    NSString *newValue = (value == nil) ? @"" : value;
+    NSString *newValue = (value) ? value : @"";
+    NSMutableString *string = [[NSMutableString alloc] initWithString:self];
     
-    if ( [self rangeOfString:@"?"].location == NSNotFound ) {
-      
-      return [self stringByAppendingFormat:@"?%@=%@", key, newValue];
-      
-    } else {
-      
-      if ([self hasSuffix:@"&"]
-          || [self hasSuffix:@"?"])
-      {
-        return [self stringByAppendingFormat:@"%@=%@", key, newValue];
-      } else {
-        return [self stringByAppendingFormat:@"&%@=%@", key, newValue];
-      }
-      
+    if ( [string rangeOfString:@"?"].location == NSNotFound ) {
+      [string appendString:@"?"];
     }
+    
+    if (![string hasSuffix:@"&"]
+        && ![string hasSuffix:@"?"])
+    {
+      [string appendString:@"&"];
+    }
+    
+    [string appendFormat:@"%@=%@", key, newValue];
+    
+    return string;
     
   }
   return self;

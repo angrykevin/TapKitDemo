@@ -7,6 +7,7 @@
 //
 
 #import "NSArrayAdditions.h"
+#import "NSObjectAdditions.h"
 
 @implementation NSArray (TapKit)
 
@@ -53,53 +54,47 @@
 
 - (NSArray *)objectsForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  if ( [keyPath length] > 0 ) {
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
-        [array addObject:object];
-      }
-    }
-    
-    if ( [array count] > 0 ) {
-      return array;
+  NSMutableArray *array = [[NSMutableArray alloc] init];
+  
+  for ( int i=0; i<[self count]; ++i ) {
+    id object = [self objectAtIndex:i];
+    if ( [object isValueForKeyPath:keyPath equalToValue:value] ) {
+      [array addObject:object];
     }
   }
+  
+  if ( [array count] > 0 ) {
+    return array;
+  }
+  
   return nil;
 }
 
 - (NSArray *)objectsForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  if ( [keyPath length] > 0 ) {
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [object valueForKeyPath:keyPath] == value ) {
-        [array addObject:object];
-      }
-    }
-    
-    if ( [array count] > 0 ) {
-      return array;
+  NSMutableArray *array = [[NSMutableArray alloc] init];
+  
+  for ( int i=0; i<[self count]; ++i ) {
+    id object = [self objectAtIndex:i];
+    if ( [object isValueForKeyPath:keyPath identicalToValue:value] ) {
+      [array addObject:object];
     }
   }
+  
+  if ( [array count] > 0 ) {
+    return array;
+  }
+  
   return nil;
 }
 
 
 - (id)firstObjectForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  if ( [keyPath length] > 0 ) {
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [[object valueForKeyPath:keyPath] isEqual:value] ) {
-        return object;
-      }
+  for ( int i=0; i<[self count]; ++i ) {
+    id object = [self objectAtIndex:i];
+    if ( [object isValueForKeyPath:keyPath equalToValue:value] ) {
+      return object;
     }
   }
   return nil;
@@ -107,12 +102,10 @@
 
 - (id)firstObjectForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  if ( [keyPath length] > 0 ) {
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [object valueForKeyPath:keyPath] == value ) {
-        return object;
-      }
+  for ( int i=0; i<[self count]; ++i ) {
+    id object = [self objectAtIndex:i];
+    if ( [object isValueForKeyPath:keyPath identicalToValue:value] ) {
+      return object;
     }
   }
   return nil;
@@ -139,22 +132,16 @@
 
 - (id)addUnequalObjectIfNotNil:(id)object
 {
-  if ((object)
-      && ([self indexOfObject:object] == NSNotFound))
-  {
-    [self addObject:object];
-    return object;
+  if ( ![self hasObjectEqualTo:object] ) {
+    return [self addObjectIfNotNil:object];
   }
   return nil;
 }
 
 - (id)addUnidenticalObjectIfNotNil:(id)object
 {
-  if ((object)
-      && ([self indexOfObjectIdenticalTo:object] == NSNotFound))
-  {
-    [self addObject:object];
-    return object;
+  if ( ![self hasObjectIdenticalTo:object] ) {
+    return [self addObjectIfNotNil:object];
   }
   return nil;
 }
@@ -162,11 +149,11 @@
 
 - (id)insertObject:(id)object atIndexIfNotNil:(NSUInteger)idx
 {
-  if ((object)
-      && (idx <= [self count]))
-  {
-    [self insertObject:object atIndex:idx];
-    return object;
+  if ( object ) {
+    if ( idx <= [self count] ) {
+      [self insertObject:object atIndex:idx];
+      return object;
+    }
   }
   return nil;
 }
@@ -181,7 +168,7 @@
     id object = [self objectAtIndex:idx];
     [self removeObjectAtIndex:idx];
     [self insertObject:object atIndex:toIdx];
-    return [self objectAtIndex:toIdx];
+    return object;
   }
   return nil;
 }
@@ -208,63 +195,45 @@
       m <<= 1;
     } while ( m < i );
     
-    NSUInteger j;
+    NSUInteger j = 0;
     do {
       j = arc4random() % m;
     } while ( j >= i );
     
-    [self exchangeObjectAtIndex:(i - 1) withObjectAtIndex:j];
+    [self exchangeObjectAtIndex:(i-1) withObjectAtIndex:j];
   }
 }
 
 - (void)reverse
 {
-	for ( NSInteger i=0; i<(floor([self count] / 2.0)); ++i ) {
-		[self exchangeObjectAtIndex:i withObjectAtIndex:([self count] - (i + 1))];
+  int semi = floor( [self count]/2.0 );
+	for ( int i=0; i<semi; ++i ) {
+    NSUInteger idx = [self count] - (i+1);
+		[self exchangeObjectAtIndex:i withObjectAtIndex:idx];
   }
 }
 
 - (void)unequal
 {
-  if ( [self count] > 0 ) {
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [array indexOfObject:object] == NSNotFound ) {
-        [array addObject:object];
-      }
-    }
-    
-    [self removeAllObjects];
-    
-    for ( NSInteger i=0; i<[array count]; ++i ) {
-      [self addObject:[array objectAtIndex:i]];
-    }
-    
+  NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self];
+  
+  [self removeAllObjects];
+  
+  for ( int i=0; i<[array count]; ++i ) {
+    id object = [array objectAtIndex:i];
+    [self addUnequalObjectIfNotNil:object];
   }
 }
 
 - (void)unidentical
 {
-  if ( [self count] > 0 ) {
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    
-    for ( NSInteger i=0; i<[self count]; ++i ) {
-      id object = [self objectAtIndex:i];
-      if ( [array indexOfObjectIdenticalTo:object] == NSNotFound ) {
-        [array addObject:object];
-      }
-    }
-    
-    [self removeAllObjects];
-    
-    for ( NSInteger i=0; i<[array count]; ++i ) {
-      [self addObject:[array objectAtIndex:i]];
-    }
-    
+  NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self];
+  
+  [self removeAllObjects];
+  
+  for ( int i=0; i<[array count]; ++i ) {
+    id object = [array objectAtIndex:i];
+    [self addUnidenticalObjectIfNotNil:object];
   }
 }
 
@@ -279,12 +248,9 @@
 
 - (id)pop
 {
-  if ( [self count] > 0 ) {
-    id object = [self lastObject];
-    [self removeLastObject];
-    return object;
-  }
-  return nil;
+  id object = [self lastObject];
+  [self removeLastObject];
+  return object;
 }
 
 
@@ -298,12 +264,9 @@
 
 - (id)dequeue
 {
-  if ( [self count] > 0 ) {
-    id object = [self firstObject];
-    [self removeFirstObject];
-    return object;
-  }
-  return nil;
+  id object = [self firstObject];
+  [self removeFirstObject];
+  return object;
 }
 
 @end

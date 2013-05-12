@@ -11,6 +11,8 @@
 		BC04C7EB172D66E900F9EB2A /* TKOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7EA172D66E900F9EB2A /* TKOperation.m */; };
 		BC04C7EE172D770600F9EB2A /* UIButtonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7ED172D770500F9EB2A /* UIButtonAdditions.m */; };
 		BC04C7F2172D82FB00F9EB2A /* TKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7F1172D82FB00F9EB2A /* TKSettings.m */; };
+		BC04C7F5172D91A300F9EB2A /* TKDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7F4172D91A300F9EB2A /* TKDatabase.m */; };
+		BC04C7F8172D961900F9EB2A /* TKDatabaseRow.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7F7172D961900F9EB2A /* TKDatabaseRow.m */; };
 		BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */; };
 		BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */; };
 		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
@@ -42,6 +44,10 @@
 		BC04C7ED172D770500F9EB2A /* UIButtonAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtonAdditions.m; sourceTree = "<group>"; };
 		BC04C7F0172D82FB00F9EB2A /* TKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSettings.h; sourceTree = "<group>"; };
 		BC04C7F1172D82FB00F9EB2A /* TKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSettings.m; sourceTree = "<group>"; };
+		BC04C7F3172D91A300F9EB2A /* TKDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDatabase.h; sourceTree = "<group>"; };
+		BC04C7F4172D91A300F9EB2A /* TKDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDatabase.m; sourceTree = "<group>"; };
+		BC04C7F6172D961900F9EB2A /* TKDatabaseRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDatabaseRow.h; sourceTree = "<group>"; };
+		BC04C7F7172D961900F9EB2A /* TKDatabaseRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDatabaseRow.m; sourceTree = "<group>"; };
 		BC1B947A1729676E005C10D3 /* TapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapKit.h; sourceTree = "<group>"; };
 		BC1B9481172968DF005C10D3 /* Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Additions.h; sourceTree = "<group>"; };
 		BC1B9483172968DF005C10D3 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -174,6 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9487172968DF005C10D3 /* DB.h */,
+				BC04C7F3172D91A300F9EB2A /* TKDatabase.h */,
+				BC04C7F4172D91A300F9EB2A /* TKDatabase.m */,
+				BC04C7F6172D961900F9EB2A /* TKDatabaseRow.h */,
+				BC04C7F7172D961900F9EB2A /* TKDatabaseRow.m */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -344,6 +354,8 @@
 				BC04C7EB172D66E900F9EB2A /* TKOperation.m in Sources */,
 				BC04C7EE172D770600F9EB2A /* UIButtonAdditions.m in Sources */,
 				BC04C7F2172D82FB00F9EB2A /* TKSettings.m in Sources */,
+				BC04C7F5172D91A300F9EB2A /* TKDatabase.m in Sources */,
+				BC04C7F8172D961900F9EB2A /* TKDatabaseRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

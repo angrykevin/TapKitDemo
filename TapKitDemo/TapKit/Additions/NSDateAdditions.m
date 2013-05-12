@@ -33,28 +33,28 @@
 }
 
 
-- (NSDate *)dateByAddingSeconds:(NSInteger)seconds
+- (NSDate *)dateByAddingSeconds:(int)seconds
 {
   NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + seconds;
-  return [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
+  return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
 }
 
-- (NSDate *)dateByAddingMinutes:(NSInteger)minutes
+- (NSDate *)dateByAddingMinutes:(int)minutes
 {
 	NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + minutes * (60.0);
-  return [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
+  return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
 }
 
-- (NSDate *)dateByAddingHours:(NSInteger)hours
+- (NSDate *)dateByAddingHours:(int)hours
 {
 	NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + hours * (60.0*60.0);
-  return [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
+  return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
 }
 
-- (NSDate *)dateByAddingDays:(NSInteger)days
+- (NSDate *)dateByAddingDays:(int)days
 {
 	NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + days * (60.0*60.0*24);
-  return [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
+  return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
 }
 
 
@@ -98,13 +98,12 @@
   NSDateComponents *components1 = [self dateComponents];
   NSDateComponents *components2 = [date dateComponents];
 	
-	// Must be same week. 12/31 and 1/1 will both be week "1"
-  // if they are in the same week
+	// Must be same week. 12/31 and 1/1 will both be week "1" if they are in the same week
 	if ( [components1 week] != [components2 week] ) {
     return NO;
   }
 	
-	// Must have a time interval under 1 week. Thanks @aclark
+	// Must have a time interval under 1 week.
 	return ( abs([self timeIntervalSinceDate:date]) < (60.0*60.0*24*7) );
 }
 

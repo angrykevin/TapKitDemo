@@ -12,17 +12,45 @@
 #import "TKNAIManager.h"
 
 
+
+
 @implementation AppDelegate
+
+- (void)print:(NSString *)fmt, ...
+{
+  NSMutableArray *container = [[NSMutableArray alloc] init];
+  
+  TKValistToArray(container, fmt, 0);
+  
+  NSLog(@"%@", container);
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
-  [self performSelector:@selector(doithaha) withObject:nil afterDelay:1.0];
+  NSMutableArray *ary = [NSMutableArray array];
   
+//  TSObject *obj1 = [[TSObject alloc] init];
+//  obj1.view1 = [[UIView alloc] init];
+//  [ary addObject:obj1];
+//  
+//  TSObject *obj2 = [[TSObject alloc] init];
+//  obj2.view1 = [[UIView alloc] init];
+//  [ary addObject:obj2];
   
-  NSLog(@"%d  %d", sizeof(int), sizeof(long long));
+  [ary removeObjectAtIndex:0];
+  //[ary insertObject:nil atIndex:0];
+  
+//  if ( [ary indexOfObjectIdenticalTo:nil] == NSNotFound ) {
+//    NSLog(@"NOT");
+//  }
+//  
+//  [ary indexOfObject:nil];
+  
+  NSArray *tmp = [ary objectsForKeyPath:@"view2" identicalToValue:nil];
+  NSLog(@"%@", tmp);
   
 //  TSObject *object = [[TSObject alloc] init];
 //  

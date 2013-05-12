@@ -19,13 +19,13 @@
 - (NSDate *)noonDate;
 
 
-- (NSDate *)dateByAddingSeconds:(NSInteger)seconds;
+- (NSDate *)dateByAddingSeconds:(int)seconds;
 
-- (NSDate *)dateByAddingMinutes:(NSInteger)minutes;
+- (NSDate *)dateByAddingMinutes:(int)minutes;
 
-- (NSDate *)dateByAddingHours:(NSInteger)hours;
+- (NSDate *)dateByAddingHours:(int)hours;
 
-- (NSDate *)dateByAddingDays:(NSInteger)days;
+- (NSDate *)dateByAddingDays:(int)days;
 
 
 ///-------------------------------

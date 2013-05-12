@@ -12,13 +12,13 @@
 /// Version
 ///-------------------------------
 
-NSComparisonResult TKCompareVersion(NSString *ver1, NSString *ver2);
+NSComparisonResult TKCompareVersion(NSString *version1, NSString *version2);
 
-NSInteger TKMajorVersion(NSString *ver);
+int TKMajorVersion(NSString *version);
 
-NSInteger TKMinorVersion(NSString *ver);
+int TKMinorVersion(NSString *version);
 
-NSInteger TKBugfixVersion(NSString *ver);
+int TKBugfixVersion(NSString *version);
 
 
 ///-------------------------------

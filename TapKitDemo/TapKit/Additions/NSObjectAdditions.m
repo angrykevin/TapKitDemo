@@ -51,7 +51,10 @@
 - (BOOL)isValueForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
   if ( [keyPath length] > 0 ) {
-    return [[self valueForKeyPath:keyPath] isEqual:value];
+    id objectValue = [self valueForKeyPath:keyPath];
+    return ([objectValue isEqual:value]
+            || ((objectValue==nil) && (value==nil))
+            );
   }
   return NO;
 }
@@ -62,27 +65,6 @@
     return ( [self valueForKeyPath:keyPath] == value );
   }
   return NO;
-}
-
-+ (NSArray *)propertyNames
-{
-  NSMutableArray *array = [[NSMutableArray alloc] init];
-  
-  unsigned int count = 0;
-  objc_property_t *properties = class_copyPropertyList(self, &count);
-  
-  for ( int i=0; i<count; ++i ) {
-    objc_property_t property = properties[i];
-    NSString *name = [NSString stringWithUTF8String:property_getName(property)];
-    [array addObject:name];
-  }
-  free(properties);
-  
-  if ( [array count] > 0 ) {
-    return array;
-  }
-  
-  return nil;
 }
 
 + (NSDictionary *)propertyAttributes

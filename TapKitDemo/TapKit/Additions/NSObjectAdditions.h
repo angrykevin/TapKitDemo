@@ -38,8 +38,6 @@
 
 - (BOOL)isValueForKeyPath:(NSString *)keyPath identicalToValue:(id)value;
 
-+ (NSArray *)propertyNames;
-
 + (NSDictionary *)propertyAttributes;
 
 @end

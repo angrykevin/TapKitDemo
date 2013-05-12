@@ -12,16 +12,16 @@
 
 #pragma mark - Version
 
-NSComparisonResult TKCompareVersion(NSString *ver1, NSString *ver2)
+NSComparisonResult TKCompareVersion(NSString *version1, NSString *version2)
 {
-  NSArray *components1 = [ver1 componentsSeparatedByString:@"."];
-  NSArray *components2 = [ver2 componentsSeparatedByString:@"."];
+  NSArray *components1 = [version1 componentsSeparatedByString:@"."];
+  NSArray *components2 = [version2 componentsSeparatedByString:@"."];
   
-  NSInteger count = MIN( [components1 count], [components2 count] );
+  int count = MIN( [components1 count], [components2 count] );
   
-  for ( NSInteger i=0; i<count; ++i ) {
-    NSInteger component1 = [[components1 objectAtIndex:i] integerValue];
-    NSInteger component2 = [[components2 objectAtIndex:i] integerValue];
+  for ( int i=0; i<count; ++i ) {
+    int component1 = [[components1 objectAtIndex:i] intValue];
+    int component2 = [[components2 objectAtIndex:i] intValue];
     
     if ( component1 > component2 ) {
       return NSOrderedDescending;
@@ -34,29 +34,29 @@ NSComparisonResult TKCompareVersion(NSString *ver1, NSString *ver2)
   return NSOrderedSame;
 }
 
-NSInteger TKMajorVersion(NSString *ver)
+int TKMajorVersion(NSString *version)
 {
-  NSArray *components = [ver componentsSeparatedByString:@"."];
+  NSArray *components = [version componentsSeparatedByString:@"."];
   if ( [components count] >= 1 ) {
-    return [[components objectAtIndex:0] integerValue];
+    return [[components objectAtIndex:0] intValue];
   }
   return 0;
 }
 
-NSInteger TKMinorVersion(NSString *ver)
+int TKMinorVersion(NSString *version)
 {
-  NSArray *components = [ver componentsSeparatedByString:@"."];
+  NSArray *components = [version componentsSeparatedByString:@"."];
   if ( [components count] >= 2 ) {
-    return [[components objectAtIndex:1] integerValue];
+    return [[components objectAtIndex:1] intValue];
   }
   return 0;
 }
 
-NSInteger TKBugfixVersion(NSString *ver)
+int TKBugfixVersion(NSString *version)
 {
-  NSArray *components = [ver componentsSeparatedByString:@"."];
+  NSArray *components = [version componentsSeparatedByString:@"."];
   if ( [components count] >= 3 ) {
-    return [[components objectAtIndex:2] integerValue];
+    return [[components objectAtIndex:2] intValue];
   }
   return 0;
 }
@@ -67,7 +67,7 @@ NSInteger TKBugfixVersion(NSString *ver)
 
 NSString *TKPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 {
-  NSString *resourcePath = [( (bundle == nil) ? [NSBundle mainBundle] : bundle ) resourcePath];
+  NSString *resourcePath = [( (bundle) ? bundle : [NSBundle mainBundle] ) resourcePath];
   return [resourcePath stringByAppendingPathComponent:relativePath];
 }
 

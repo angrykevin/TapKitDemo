@@ -28,13 +28,18 @@
 /// Variable argument lists
 ///-------------------------------
 
-#define TKValistToArray(__first, __container) \
-if ( __first ) { \
-  va_list __list; \
-  va_start(__list, __first); \
-  id __object; \
-  while ( (__object = va_arg(__list, id)) ) {\
+#define TKValistToArray(__container, __start, __count) \
+va_list __list; \
+va_start(__list, __start); \
+if ( __count > 0 ) { \
+  for ( int i=0; i<__count; ++i ) { \
+    id __object = va_arg(__list, id); \
+    [__container addObject:((__object) ? __object : [NSNull null])]; \
+  } \
+} else { \
+  id __object = nil; \
+  while ( (__object = va_arg(__list, id)) ) { \
     [__container addObject:__object]; \
   } \
-  va_end(__list); \
-}
+} \
+va_end(__list);
