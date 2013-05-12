@@ -12,7 +12,6 @@
 @implementation NSDictionary (TapKit)
 
 
-
 #pragma mark - Querying
 
 - (BOOL)hasObjectEqualTo:(id)object
@@ -61,7 +60,6 @@
 
 
 @implementation NSMutableDictionary (TapKit)
-
 
 
 #pragma mark - Adding and removing entries

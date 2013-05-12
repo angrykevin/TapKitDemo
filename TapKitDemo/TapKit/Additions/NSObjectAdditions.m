@@ -12,7 +12,6 @@
 @implementation NSObject (TapKit)
 
 
-
 #pragma mark - Class string
 
 + (NSString *)classString

@@ -30,6 +30,22 @@ const NSUInteger TTViewAutoresizingKeepMargin =
 
 
 
+#pragma mark - Image
+
+NSString *TKDeviceSpecificImageName(NSString *name)
+{
+}
+
+UIImage *TKLoadImage(id target, SEL selector, NSString *name)
+{
+  NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:nil];
+  UIImage *image = [[UIImage alloc] initWithContentsOfFile:path];
+  [target performSelector:selector withObject:image];
+  return image;
+}
+
+
+
 #pragma mark - Keyboard
 
 BOOL TKIsKeyboardVisible()

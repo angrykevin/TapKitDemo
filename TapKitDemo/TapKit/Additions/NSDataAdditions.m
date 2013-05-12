@@ -12,7 +12,6 @@
 @implementation NSData (TapKit)
 
 
-
 #pragma mark - Hash
 
 - (NSString *)MD5HashString

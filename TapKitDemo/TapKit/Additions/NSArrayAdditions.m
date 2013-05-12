@@ -12,7 +12,6 @@
 @implementation NSArray (TapKit)
 
 
-
 #pragma mark - Querying
 
 - (id)objectOrNilAtIndex:(NSUInteger)idx
@@ -116,7 +115,6 @@
 
 
 @implementation NSMutableArray (TapKit)
-
 
 
 #pragma mark - Adding and removing entries

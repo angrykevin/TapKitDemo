@@ -23,6 +23,10 @@
 		BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6CEF4171714D5000A99CB /* Default@2x.png */; };
 		BCC6CEF917171531000A99CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC6CEF817171531000A99CB /* UIKit.framework */; };
 		BCC6CEFB17171537000A99CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC6CEFA17171537000A99CB /* Foundation.framework */; };
+		BCCBC880173FF4560050F475 /* UIImageViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCBC87F173FF4560050F475 /* UIImageViewAdditions.m */; };
+		BCCBC883173FF7910050F475 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCBC881173FF7900050F475 /* a.png */; };
+		BCCBC884173FF7910050F475 /* a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCBC882173FF7900050F475 /* a@2x.png */; };
+		BCCBC887173FF8C90050F475 /* UITableViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCBC886173FF8C90050F475 /* UITableViewAdditions.m */; };
 		BCD4FE75172AC87A00A7E0A3 /* TKCoreUI.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE74172AC87900A7E0A3 /* TKCoreUI.m */; };
 		BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */; };
 		BCD4FE7B172AD50400A7E0A3 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4FE7A172AD50400A7E0A3 /* NSObjectAdditions.m */; };
@@ -72,6 +76,12 @@
 		BCC6CEF817171531000A99CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BCC6CEFA17171537000A99CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCC6CF0117171844000A99CB /* TKConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKConfig.h; sourceTree = "<group>"; };
+		BCCBC87E173FF4560050F475 /* UIImageViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewAdditions.h; sourceTree = "<group>"; };
+		BCCBC87F173FF4560050F475 /* UIImageViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAdditions.m; sourceTree = "<group>"; };
+		BCCBC881173FF7900050F475 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
+		BCCBC882173FF7900050F475 /* a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "a@2x.png"; sourceTree = "<group>"; };
+		BCCBC885173FF8C90050F475 /* UITableViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewAdditions.h; sourceTree = "<group>"; };
+		BCCBC886173FF8C90050F475 /* UITableViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewAdditions.m; sourceTree = "<group>"; };
 		BCD4FE71172AB56A00A7E0A3 /* TKDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDebug.h; sourceTree = "<group>"; };
 		BCD4FE72172AB57700A7E0A3 /* TKMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMacro.h; sourceTree = "<group>"; };
 		BCD4FE73172AC87900A7E0A3 /* TKCoreUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreUI.h; sourceTree = "<group>"; };
@@ -131,6 +141,10 @@
 			children = (
 				BC04C7EC172D770500F9EB2A /* UIButtonAdditions.h */,
 				BC04C7ED172D770500F9EB2A /* UIButtonAdditions.m */,
+				BCCBC87E173FF4560050F475 /* UIImageViewAdditions.h */,
+				BCCBC87F173FF4560050F475 /* UIImageViewAdditions.m */,
+				BCCBC885173FF8C90050F475 /* UITableViewAdditions.h */,
+				BCCBC886173FF8C90050F475 /* UITableViewAdditions.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -235,6 +249,8 @@
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
 				BC04C7CE172D4C2000F9EB2A /* TSObject.h */,
 				BC04C7CF172D4C2000F9EB2A /* TSObject.m */,
+				BCCBC881173FF7900050F475 /* a.png */,
+				BCCBC882173FF7900050F475 /* a@2x.png */,
 				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
 			);
@@ -327,6 +343,8 @@
 				BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */,
 				BCC6CEF6171714D5000A99CB /* Default.png in Resources */,
 				BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */,
+				BCCBC883173FF7910050F475 /* a.png in Resources */,
+				BCCBC884173FF7910050F475 /* a@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +374,8 @@
 				BC04C7F2172D82FB00F9EB2A /* TKSettings.m in Sources */,
 				BC04C7F5172D91A300F9EB2A /* TKDatabase.m in Sources */,
 				BC04C7F8172D961900F9EB2A /* TKDatabaseRow.m in Sources */,
+				BCCBC880173FF4560050F475 /* UIImageViewAdditions.m in Sources */,
+				BCCBC887173FF8C90050F475 /* UITableViewAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

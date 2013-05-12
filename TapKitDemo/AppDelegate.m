@@ -30,6 +30,17 @@
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
+  NSString *path1 = TKPathForBundleResource(nil, @"a.png");
+  UIImage *image1 = [[UIImage alloc] initWithContentsOfFile:path1];
+  
+  
+  NSString *path2 = TKPathForBundleResource(nil, @"b@2x.png");
+  UIImage *image2 = [[UIImage alloc] initWithContentsOfFile:path2];
+  
+  UIImage *image = [UIImage imageNamed:@"a.png"];
+  
+  NSLog(@"%f %f %f", image1.scale, image2.scale, image.scale);
+  
   NSMutableArray *ary = [NSMutableArray array];
   
 //  TSObject *obj1 = [[TSObject alloc] init];

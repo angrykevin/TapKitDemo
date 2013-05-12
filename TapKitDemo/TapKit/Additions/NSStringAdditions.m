@@ -13,7 +13,6 @@
 @implementation NSString (TapKit)
 
 
-
 #pragma mark - UUID
 
 + (NSString *)UUIDString

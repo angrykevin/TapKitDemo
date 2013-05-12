@@ -11,7 +11,6 @@
 @implementation NSDate (TapKit)
 
 
-
 #pragma mark - Adjusting
 
 - (NSDate *)startDate
