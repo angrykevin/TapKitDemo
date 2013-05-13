@@ -12,3 +12,9 @@
 #import "NSDictionaryAdditions.h"
 #import "NSObjectAdditions.h"
 #import "NSStringAdditions.h"
+
+#import "UIButtonAdditions.h"
+#import "UIImageViewAdditions.h"
+#import "UIScrollViewAdditions.h"
+#import "UITableViewAdditions.h"
+#import "UIViewAdditions.h"

@@ -8,101 +8,36 @@
 
 #import "AppDelegate.h"
 
-#import "TSObject.h"
-#import "TKNAIManager.h"
-
 
 
 
 @implementation AppDelegate
 
-- (void)print:(NSString *)fmt, ...
-{
-  NSMutableArray *container = [[NSMutableArray alloc] init];
-  
-  TKValistToArray(container, fmt, 0);
-  
-  NSLog(@"%@", container);
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
-//  NSString *path1 = TKPathForBundleResource(nil, @"a.png");
-//  UIImage *image1 = [[UIImage alloc] initWithContentsOfFile:path1];
-//  
-//  
-//  NSString *path2 = TKPathForBundleResource(nil, @"b@2x.png");
-//  UIImage *image2 = [[UIImage alloc] initWithContentsOfFile:path2];
-//  
-//  UIImage *image = [UIImage imageNamed:@"a.png"];
-//  
-//  NSLog(@"%f %f %f", image1.scale, image2.scale, image.scale);
-//  
-//  NSMutableArray *ary = [NSMutableArray array];
+  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 30, 300, 440)];
+  [_window addSubview:view];
   
   
-  NSLog(@"%@", TKDeviceSpecificImageName(@"somepicture.png"));
+  UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 20)];
+  [view addSubview:view1];
+  
+  UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 280, 390)];
+  [view addSubview:view2];
   
   
-//  TSObject *obj1 = [[TSObject alloc] init];
-//  obj1.view1 = [[UIView alloc] init];
-//  [ary addObject:obj1];
-//  
-//  TSObject *obj2 = [[TSObject alloc] init];
-//  obj2.view1 = [[UIView alloc] init];
-//  [ary addObject:obj2];
+  UIView *view21 = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 260, 20)];
+  [view2 addSubview:view21];
   
-//  [ary removeObjectAtIndex:0];
-  //[ary insertObject:nil atIndex:0];
+  UIView *view22 = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 260, 340)];
+  [view2 addSubview:view22];
   
-//  if ( [ary indexOfObjectIdenticalTo:nil] == NSNotFound ) {
-//    NSLog(@"NOT");
-//  }
-//  
-//  [ary indexOfObject:nil];
-  
-//  NSArray *tmp = [ary objectsForKeyPath:@"view2" identicalToValue:nil];
-//  NSLog(@"%@", tmp);
-  
-//  TSObject *object = [[TSObject alloc] init];
-//  
-//  UIView *v1 = [[UIView alloc] init];
-//  UIView *v2 = [[UIView alloc] init];
-//  //object.view1 = v1;
-//  object.view2 = v2;
-//  
-//  if ( [object isValueForKeyPath:@"view1" identicalToValue:nil] ) {
-//    NSLog(@"YES");
-//  } else {
-//    NSLog(@"NO");
-//  }
-//  
-//  if ( [object isValueForKeyPath:@"view2" equalToValue:v2] ) {
-//    NSLog(@"YES");
-//  } else {
-//    NSLog(@"NO");
-//  }
-//  
-//  
-//  NSArray *ary = @[ @"aks", @"aksd", @"kasd" ];
-//  if ( [ary indexOfObject:nil] == NSNotFound ) {
-//    NSLog(@"NOT FOUND");
-//  }
-  
-//  NSString *str = @"lksdf";
-//  if ( [str isInCharacterSet:nil] ) {
-//    NSLog(@"IN SET");
-//  } else {
-//    NSLog(@"NOT IN SET");
-//  }
-  
-  
-  NSString *str = @"aa";
-  [[TKNAIManager sharedObject] addNetworkUser:str];
-  NSLog(@"H%@H", [str queryDictionary]);
+  [UIView showBorder:_window level:0];
+  [UIView dumpView:_window level:0];
   
   
   _window.backgroundColor = [UIColor whiteColor];

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Telligenty. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface UITableView (TapKit)
