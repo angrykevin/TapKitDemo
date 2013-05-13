@@ -12,15 +12,14 @@
 @implementation TKNAIManager
 
 
-
-#pragma mark - Memory
+#pragma mark - NSObject
 
 - (id)init
 {
   self = [super init];
   if ( self ) {
     
-    _networkUsers = TKCreateWeakMutableArray();
+    _users = TKCreateWeakMutableArray();
     
     _lock = [[NSLock alloc] init];
     
@@ -46,7 +45,7 @@
 {
   [_lock lock];
   
-  BOOL result = [_networkUsers hasObjectIdenticalTo:user];
+  BOOL result = [_users hasObjectIdenticalTo:user];
   
   [_lock unlock];
   
@@ -58,8 +57,8 @@
 {
   [_lock lock];
   
-  [_networkUsers addUnidenticalObjectIfNotNil:user];
-  [UIApplication sharedApplication].networkActivityIndicatorVisible = TKIsArrayWithItems(_networkUsers);
+  [_users addUnidenticalObjectIfNotNil:user];
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = TKIsArrayWithItems(_users);
   
   [_lock unlock];
 }
@@ -68,8 +67,8 @@
 {
   [_lock lock];
   
-  [_networkUsers removeObjectIdenticalTo:user];
-  [UIApplication sharedApplication].networkActivityIndicatorVisible = TKIsArrayWithItems(_networkUsers);
+  [_users removeObjectIdenticalTo:user];
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = TKIsArrayWithItems(_users);
   
   [_lock unlock];
 }
@@ -78,7 +77,7 @@
 {
   [_lock lock];
   
-  [_networkUsers removeAllObjects];
+  [_users removeAllObjects];
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
   
   [_lock unlock];

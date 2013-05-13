@@ -13,7 +13,7 @@
 
 @interface TKNAIManager : NSObject {
   
-  NSMutableArray *_networkUsers;
+  NSMutableArray *_users;
   
   NSLock *_lock;
   

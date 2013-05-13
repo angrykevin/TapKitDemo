@@ -11,7 +11,6 @@
 @implementation TKSettings
 
 
-
 #pragma mark - NSObject
 
 - (id)init
@@ -20,12 +19,10 @@
   if ( self ) {
     
     NSString *path = TKPathForDocumentsResource(@"AppSettings.xml");
-    _settingEntries = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    if ( _settingEntries == nil ) {
-      _settingEntries = [[NSMutableDictionary alloc] init];
+    _settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    if ( _settings == nil ) {
+      _settings = [[NSMutableDictionary alloc] init];
     }
-    
-    _lock = [[NSLock alloc] init];
     
   }
   return self;
@@ -45,69 +42,105 @@
 }
 
 
-- (id)objectForKey:(NSString *)key
-{
-  [_lock lock];
-  
-  id object = [_settingEntries objectForKey:key];
-  
-  [_lock unlock];
-  
-  return object;
-}
-
-- (void)setObject:(NSObject *)object forKey:(NSString *)key
-{
-  [_lock lock];
-  
-  if ( object ) {
-    [_settingEntries setObject:object forKeyIfNotNil:key];
-  } else {
-    [_settingEntries removeObjectForKeyIfNotNil:key];
-  }
-  
-  [_lock unlock];
-}
-
-
 - (NSArray *)keys
 {
-  [_lock lock];
-  
-  NSArray *array = [_settingEntries allKeys];
-  
-  [_lock unlock];
-  
-  return array;
+  return [_settings allKeys];
 }
 
 - (BOOL)synchronize
 {
-  [_lock lock];
-  
   NSString *path = TKPathForDocumentsResource(@"AppSettings.xml");
-  BOOL result = [_settingEntries writeToFile:path atomically:YES];
-  
-  [_lock unlock];
-  
-  return result;
+  return [_settings writeToFile:path atomically:YES];
 }
 
 - (void)dump
 {
 #ifdef DEBUG
-  [_lock lock];
   NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
   NSLog(@"+");
-  NSLog(@"+ total: %d", [_settingEntries count]);
+  NSLog(@"+ total: %d", [_settings count]);
   NSLog(@"+");
   NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-  for ( NSString *key in [_settingEntries keyEnumerator] ) {
-    NSLog(@"+ %@ = %@", key, [_settingEntries objectForKey:key]);
+  for ( NSString *key in [_settings keyEnumerator] ) {
+    NSLog(@"+ %@ = %@", key, [_settings objectForKey:key]);
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
   }
-  [_lock unlock];
 #endif
+}
+
+- (BOOL)hasValueForKey:(NSString *)key
+{
+  return ( [_settings objectForKey:key] != nil );
+}
+
+
+- (BOOL)boolForKey:(NSString *)key
+{
+  return [[_settings objectForKey:key] boolValue];
+}
+
+- (int)intForKey:(NSString *)key
+{
+  return [[_settings objectForKey:key] intValue];
+}
+
+- (long long)longLongForKey:(NSString *)key
+{
+  return [[_settings objectForKey:key] longLongValue];
+}
+
+- (double)doubleForKey:(NSString *)key
+{
+  return [[_settings objectForKey:key] doubleValue];
+}
+
+- (NSDate *)dateForKey:(NSString *)key
+{
+  return TKDateFromInternetDateString([self stringForKey:key]);
+}
+
+- (NSString *)stringForKey:(NSString *)key
+{
+  return [_settings objectForKey:key];
+}
+
+
+- (void)setBool:(BOOL)value forKey:(NSString *)key
+{
+  NSNumber *object = [[NSNumber alloc] initWithBool:value];
+  [self setString:(NSString *)object forKey:key];
+}
+
+- (void)setInt:(int)value forKey:(NSString *)key
+{
+  NSNumber *object = [[NSNumber alloc] initWithInt:value];
+  [self setString:(NSString *)object forKey:key];
+}
+
+- (void)setLongLong:(long long)value forKey:(NSString *)key
+{
+  NSNumber *object = [[NSNumber alloc] initWithLongLong:value];
+  [self setString:(NSString *)object forKey:key];
+}
+
+- (void)setDouble:(double)value forKey:(NSString *)key
+{
+  NSNumber *object = [[NSNumber alloc] initWithDouble:value];
+  [self setString:(NSString *)object forKey:key];
+}
+
+- (void)setDate:(NSDate *)value forKey:(NSString *)key
+{
+  [self setString:TKInternetDateStringFromDate(value) forKey:key];
+}
+
+- (void)setString:(NSString *)value forKey:(NSString *)key
+{
+  if ( value ) {
+    [_settings setObject:value forKeyIfNotNil:key];
+  } else {
+    [_settings removeObjectForKeyIfNotNil:key];
+  }
 }
 
 @end
