@@ -76,22 +76,22 @@
 
 - (BOOL)boolForKey:(NSString *)key
 {
-  return [[_settings objectForKey:key] boolValue];
+  return [[self stringForKey:key] boolValue];
 }
 
 - (int)intForKey:(NSString *)key
 {
-  return [[_settings objectForKey:key] intValue];
+  return [[self stringForKey:key] intValue];
 }
 
 - (long long)longLongForKey:(NSString *)key
 {
-  return [[_settings objectForKey:key] longLongValue];
+  return [[self stringForKey:key] longLongValue];
 }
 
 - (double)doubleForKey:(NSString *)key
 {
-  return [[_settings objectForKey:key] doubleValue];
+  return [[self stringForKey:key] doubleValue];
 }
 
 - (NSDate *)dateForKey:(NSString *)key
@@ -107,26 +107,22 @@
 
 - (void)setBool:(BOOL)value forKey:(NSString *)key
 {
-  NSNumber *object = [[NSNumber alloc] initWithBool:value];
-  [self setString:(NSString *)object forKey:key];
+  [self setString:(NSString *)[NSNumber numberWithBool:value] forKey:key];
 }
 
 - (void)setInt:(int)value forKey:(NSString *)key
 {
-  NSNumber *object = [[NSNumber alloc] initWithInt:value];
-  [self setString:(NSString *)object forKey:key];
+  [self setString:(NSString *)[NSNumber numberWithInt:value] forKey:key];
 }
 
 - (void)setLongLong:(long long)value forKey:(NSString *)key
 {
-  NSNumber *object = [[NSNumber alloc] initWithLongLong:value];
-  [self setString:(NSString *)object forKey:key];
+  [self setString:(NSString *)[NSNumber numberWithLongLong:value] forKey:key];
 }
 
 - (void)setDouble:(double)value forKey:(NSString *)key
 {
-  NSNumber *object = [[NSNumber alloc] initWithDouble:value];
-  [self setString:(NSString *)object forKey:key];
+  [self setString:(NSString *)[NSNumber numberWithDouble:value] forKey:key];
 }
 
 - (void)setDate:(NSDate *)value forKey:(NSString *)key

@@ -21,9 +21,11 @@
 @property (nonatomic, strong) NSArray *columns;
 
 - (BOOL)boolForName:(NSString *)name;
-- (NSInteger)integerForName:(NSString *)name;
-- (CGFloat)floatForName:(NSString *)name;
-- (NSString *)stringForName:(NSString *)name;
+- (int)intForName:(NSString *)name;
+- (long long)longLongForName:(NSString *)name;
+- (double)doubleForName:(NSString *)name;
 - (NSDate *)dateForName:(NSString *)name;
+- (NSString *)stringForName:(NSString *)name;
+- (NSData *)dataForName:(NSString *)name;
 
 @end
