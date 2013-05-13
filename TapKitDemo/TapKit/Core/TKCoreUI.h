@@ -18,11 +18,10 @@ extern const NSUInteger TKViewAutoresizingKeepMargin;
 
 
 ///-------------------------------
-/// Image
+/// Image name
 ///-------------------------------
 
 NSString *TKDeviceSpecificImageName(NSString *name);
-UIImage *TKLoadImage(id target, SEL selector, NSString *name);
 
 
 ///-------------------------------

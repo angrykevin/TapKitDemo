@@ -30,18 +30,22 @@
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
-  NSString *path1 = TKPathForBundleResource(nil, @"a.png");
-  UIImage *image1 = [[UIImage alloc] initWithContentsOfFile:path1];
+//  NSString *path1 = TKPathForBundleResource(nil, @"a.png");
+//  UIImage *image1 = [[UIImage alloc] initWithContentsOfFile:path1];
+//  
+//  
+//  NSString *path2 = TKPathForBundleResource(nil, @"b@2x.png");
+//  UIImage *image2 = [[UIImage alloc] initWithContentsOfFile:path2];
+//  
+//  UIImage *image = [UIImage imageNamed:@"a.png"];
+//  
+//  NSLog(@"%f %f %f", image1.scale, image2.scale, image.scale);
+//  
+//  NSMutableArray *ary = [NSMutableArray array];
   
   
-  NSString *path2 = TKPathForBundleResource(nil, @"b@2x.png");
-  UIImage *image2 = [[UIImage alloc] initWithContentsOfFile:path2];
+  NSLog(@"%@", TKDeviceSpecificImageName(@"somepicture.png"));
   
-  UIImage *image = [UIImage imageNamed:@"a.png"];
-  
-  NSLog(@"%f %f %f", image1.scale, image2.scale, image.scale);
-  
-  NSMutableArray *ary = [NSMutableArray array];
   
 //  TSObject *obj1 = [[TSObject alloc] init];
 //  obj1.view1 = [[UIView alloc] init];
@@ -51,7 +55,7 @@
 //  obj2.view1 = [[UIView alloc] init];
 //  [ary addObject:obj2];
   
-  [ary removeObjectAtIndex:0];
+//  [ary removeObjectAtIndex:0];
   //[ary insertObject:nil atIndex:0];
   
 //  if ( [ary indexOfObjectIdenticalTo:nil] == NSNotFound ) {
@@ -60,8 +64,8 @@
 //  
 //  [ary indexOfObject:nil];
   
-  NSArray *tmp = [ary objectsForKeyPath:@"view2" identicalToValue:nil];
-  NSLog(@"%@", tmp);
+//  NSArray *tmp = [ary objectsForKeyPath:@"view2" identicalToValue:nil];
+//  NSLog(@"%@", tmp);
   
 //  TSObject *object = [[TSObject alloc] init];
 //  

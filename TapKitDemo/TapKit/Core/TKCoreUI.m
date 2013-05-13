@@ -30,18 +30,31 @@ const NSUInteger TTViewAutoresizingKeepMargin =
 
 
 
-#pragma mark - Image
+#pragma mark - Image name
 
 NSString *TKDeviceSpecificImageName(NSString *name)
 {
-}
-
-UIImage *TKLoadImage(id target, SEL selector, NSString *name)
-{
-  NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:nil];
-  UIImage *image = [[UIImage alloc] initWithContentsOfFile:path];
-  [target performSelector:selector withObject:image];
-  return image;
+  if ( [UIScreen mainScreen].scale == 2.0 ) {
+    
+    NSString *extension = [name pathExtension];
+    
+    NSRange range = [name rangeOfString:@"."];
+    NSString *body = [name substringToIndex:range.location];
+    
+    NSMutableString *final = [[NSMutableString alloc] initWithString:body];
+    
+    if (([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
+        && ([UIScreen mainScreen].bounds.size.height > 480.0))
+    {
+      [final appendString:@"-568h"];
+    }
+    
+    [final appendString:@"@2x"];
+    [final appendFormat:@".%@", extension];
+    
+    return final;
+  }
+  return name;
 }
 
 

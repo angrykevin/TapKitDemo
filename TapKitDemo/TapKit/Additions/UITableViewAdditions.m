@@ -19,9 +19,7 @@
     
     NSString *identifier = NSStringFromClass(cls);
     
-    UITableViewCell *cell = nil;
-    
-    cell = [self dequeueReusableCellWithIdentifier:identifier];
+    UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:identifier];
     
     if ( cell == nil ) {
       cell = [[cls alloc] init];
@@ -31,28 +29,6 @@
   }
   
   return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-}
-
-- (UITableViewCell *)firstRowInSection:(NSUInteger)section
-{
-  if ( section < [self numberOfSections] ) {
-    NSUInteger rows = [self numberOfRowsInSection:section];
-    if ( rows > 0 ) {
-      return [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]];
-    }
-  }
-  return nil;
-}
-
-- (UITableViewCell *)lastRowInSection:(NSUInteger)section
-{
-  if ( section < [self numberOfSections] ) {
-    NSUInteger rows = [self numberOfRowsInSection:section];
-    if ( rows > 0 ) {
-      return [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(rows-1) inSection:section]];
-    }
-  }
-  return nil;
 }
 
 @end

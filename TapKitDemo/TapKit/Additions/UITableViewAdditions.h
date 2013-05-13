@@ -15,8 +15,6 @@
 ///-------------------------------
 
 - (UITableViewCell *)dequeueReusableCellWithClass:(Class)cls;
-- (UITableViewCell *)firstRowInSection:(NSUInteger)section;
-- (UITableViewCell *)lastRowInSection:(NSUInteger)section;
 
 @end
 
