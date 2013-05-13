@@ -11,7 +11,6 @@
 @implementation TKOperation
 
 
-
 #pragma mark - NSOperation
 
 - (void)cancel
@@ -129,31 +128,6 @@
     for ( id object in _observers ) {
       if ( [object respondsToSelector:@selector(operationDidFail:)] ) {
         [object operationDidFail:self];
-      }
-    }
-    
-  }
-}
-
-- (void)notifyObserversOperationWillFinish
-{
-  if ( _notifyOnMainThread ) {
-    
-    dispatch_sync(dispatch_get_main_queue(), ^{
-      _willFinishBlock(self);
-      for ( id object in _observers ) {
-        if ( [object respondsToSelector:@selector(operationWillFinish:)] ) {
-          [object operationWillFinish:self];
-        }
-      }
-    });
-    
-  } else {
-    
-    _willFinishBlock(self);
-    for ( id object in _observers ) {
-      if ( [object respondsToSelector:@selector(operationWillFinish:)] ) {
-        [object operationWillFinish:self];
       }
     }
     

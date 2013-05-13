@@ -21,9 +21,6 @@ typedef enum {
 typedef void(^TKOperationBlock)(id operation);
 
 
-@protocol TKOperationDelegate;
-
-
 @interface TKOperation : NSOperation<TKObserverProtocol> {
   NSError *_error;
   TKOperationStep _step;
@@ -33,7 +30,6 @@ typedef void(^TKOperationBlock)(id operation);
   TKOperationBlock _didStartBlock;
   TKOperationBlock _didUpdateBlock;
   TKOperationBlock _didFailBlock;
-  TKOperationBlock _willFinishBlock;
   TKOperationBlock _didFinishBlock;
   
   BOOL _ready;
@@ -52,14 +48,12 @@ typedef void(^TKOperationBlock)(id operation);
 @property (nonatomic, copy) TKOperationBlock didStartBlock;
 @property (nonatomic, copy) TKOperationBlock didUpdateBlock;
 @property (nonatomic, copy) TKOperationBlock didFailBlock;
-@property (nonatomic, copy) TKOperationBlock willFinishBlock;
 @property (nonatomic, copy) TKOperationBlock didFinishBlock;
 
 
 - (void)notifyObserversOperationDidStart;
 - (void)notifyObserversOperationDidUpdate;
 - (void)notifyObserversOperationDidFail;
-- (void)notifyObserversOperationWillFinish;
 - (void)notifyObserversOperationDidFinish;
 
 @end
@@ -70,6 +64,5 @@ typedef void(^TKOperationBlock)(id operation);
 - (void)operationDidStart:(TKOperation *)operation;
 - (void)operationDidUpdate:(TKOperation *)operation;
 - (void)operationDidFail:(TKOperation *)operation;
-- (void)operationWillFinish:(TKOperation *)operation;
 - (void)operationDidFinish:(TKOperation *)operation;
 @end
