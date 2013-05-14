@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 
-
+#import "TKDatabase.h"
+#import "TKDatabaseRow.h"
 
 
 @implementation AppDelegate
@@ -19,25 +20,46 @@
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   
-  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 30, 300, 440)];
-  [_window addSubview:view];
+  NSData *data = [NSData dataWithContentsOfFile:TKPathForBundleResource(nil, @"a.png")];
+  
+  TKDatabase *db = [[TKDatabase alloc] init];
+  db.path = TKPathForDocumentsResource(@"asdf.db");
+  [db open];
+  
+  //[db executeUpdate:@"CREATE TABLE user(pk INTEGER PRIMARY KEY, b INTEGER, i INTEGER, l INTEGER, d REAL, dt TEXT, str TEXT, oth BLOB);"];
+  
+//  [db executeUpdate:@"INSERT INTO user(pk, b, i, l, d, dt, str, oth) VALUES(1, ?, ?, ?, ?, ?, ?, ?);", nil, nil, nil, nil, nil, nil, nil];
+//  
+//  [db executeUpdate:@"INSERT INTO user(pk, b, i, l, d, dt, str, oth) VALUES(2, ?, ?, ?, ?, ?, ?, ?);",
+//   [NSNumber numberWithBool:YES],
+//   [NSNumber numberWithInt:11],
+//   [NSNumber numberWithLongLong:101],
+//   [NSNumber numberWithDouble:1.1],
+//   [NSDate date],
+//   @"god is a girl",
+//   data];
+  
+//  [db executeUpdate:@"INSERT INTO user(pk, b, i, l, d, dt, str, oth) VALUES(3, ?, ?, ?, ?, ?, ?, ?);",
+//   [NSNumber numberWithBool:YES],
+//   [NSNumber numberWithInt:11],
+//   [NSNumber numberWithLongLong:101],
+//   [NSNumber numberWithDouble:1.1],
+//   nil,
+//   @"god is a girl",
+//   data];
   
   
-  UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 20)];
-  [view addSubview:view1];
-  
-  UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 280, 390)];
-  [view addSubview:view2];
-  
-  
-  UIView *view21 = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 260, 20)];
-  [view2 addSubview:view21];
-  
-  UIView *view22 = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 260, 340)];
-  [view2 addSubview:view22];
-  
-  [UIView showBorder:_window level:0];
-  [UIView dumpView:_window level:0];
+  NSArray *rows = [db executeQuery:@"SELECT * FROM user;"];
+  for ( int i=0; i<[rows count]; ++i ) {
+    TKDatabaseRow *row = [rows objectAtIndex:i];
+    BOOL b = [row boolForName:@"b"];
+    int i = [row intForName:@"i"];
+    long long l = [row longLongForName:@"l"];
+    double d = [row doubleForName:@"d"];
+    NSDate *dt = [row dateForName:@"dt"];
+    NSString *str = [row stringForName:@"str"];
+    NSData *oth = [row dataForName:@"oth"];
+  }
   
   
   _window.backgroundColor = [UIColor whiteColor];

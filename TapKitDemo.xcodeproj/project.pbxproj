@@ -16,6 +16,7 @@
 		BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */; };
 		BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */; };
 		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
+		BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */; };
 		BCC6CEE117171466000A99CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE017171466000A99CB /* main.m */; };
 		BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE417171466000A99CB /* AppDelegate.m */; };
 		BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6CEF2171714D5000A99CB /* Default-568h@2x.png */; };
@@ -66,6 +67,7 @@
 		BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreCompatibility.m; sourceTree = "<group>"; };
 		BC1B949317296F3C005C10D3 /* TKNAIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNAIManager.h; sourceTree = "<group>"; };
 		BC1B949417296F3C005C10D3 /* TKNAIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNAIManager.m; sourceTree = "<group>"; };
+		BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BCC6CED117171466000A99CB /* TapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC6CEDC17171466000A99CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCC6CEE017171466000A99CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */,
+				BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */,
 				BCC6CEFB17171537000A99CB /* Foundation.framework in Frameworks */,
 				BCC6CEF917171531000A99CB /* UIKit.framework in Frameworks */,
 			);
@@ -295,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */,
+				BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";

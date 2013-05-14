@@ -36,7 +36,7 @@ if ( __count > 0 ) { \
     id __object = va_arg(__list, id); \
     [__container addObject:((__object) ? __object : [NSNull null])]; \
   } \
-} else { \
+} else if ( __count == 0 ) { \
   id __object = nil; \
   while ( (__object = va_arg(__list, id)) ) { \
     [__container addObject:__object]; \
