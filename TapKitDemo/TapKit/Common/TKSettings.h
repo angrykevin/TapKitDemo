@@ -12,27 +12,16 @@
 
 @interface TKSettings : NSObject {
   NSMutableDictionary *_settings;
+  NSLock *_lock;
 }
 
 + (TKSettings *)sharedObject;
 
 - (NSArray *)keys;
-- (BOOL)synchronize;
+- (void)synchronize;
 - (void)dump;
-- (BOOL)hasValueForKey:(NSString *)key;
 
-- (BOOL)boolForKey:(NSString *)key;
-- (int)intForKey:(NSString *)key;
-- (long long)longLongForKey:(NSString *)key;
-- (double)doubleForKey:(NSString *)key;
-- (NSDate *)dateForKey:(NSString *)key;
-- (NSString *)stringForKey:(NSString *)key;
-
-- (void)setBool:(BOOL)value forKey:(NSString *)key;
-- (void)setInt:(int)value forKey:(NSString *)key;
-- (void)setLongLong:(long long)value forKey:(NSString *)key;
-- (void)setDouble:(double)value forKey:(NSString *)key;
-- (void)setDate:(NSDate *)value forKey:(NSString *)key;
-- (void)setString:(NSString *)value forKey:(NSString *)key;
+- (id)objectForKey:(NSString *)key;
+- (void)setObject:(id)object forKey:(NSString *)key;
 
 @end

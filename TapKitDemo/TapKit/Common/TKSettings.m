@@ -24,6 +24,8 @@
       _settings = [[NSMutableDictionary alloc] init];
     }
     
+    _lock = [[NSLock alloc] init];
+    
   }
   return self;
 }
@@ -44,18 +46,29 @@
 
 - (NSArray *)keys
 {
-  return [_settings allKeys];
+  [_lock lock];
+  
+  NSArray *keys = [_settings allKeys];
+  
+  [_lock unlock];
+  
+  return keys;
 }
 
-- (BOOL)synchronize
+- (void)synchronize
 {
+  [_lock lock];
+  
   NSString *path = TKPathForDocumentsResource(@"AppSettings.xml");
-  return [_settings writeToFile:path atomically:YES];
+  [_settings writeToFile:path atomically:YES];
+  
+  [_lock unlock];
 }
 
 - (void)dump
 {
 #ifdef DEBUG
+  [_lock lock];
   NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
   NSLog(@"+");
   NSLog(@"+ total: %d", [_settings count]);
@@ -65,78 +78,33 @@
     NSLog(@"+ %@ = %@", key, [_settings objectForKey:key]);
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
   }
+  [_lock unlock];
 #endif
 }
 
-- (BOOL)hasValueForKey:(NSString *)key
+
+- (id)objectForKey:(NSString *)key
 {
-  return ( [_settings objectForKey:key] != nil );
+  [_lock lock];
+  
+  id object = [_settings objectForKey:key];
+  
+  [_lock unlock];
+  
+  return object;
 }
 
-
-- (BOOL)boolForKey:(NSString *)key
+- (void)setObject:(id)object forKey:(NSString *)key
 {
-  return [[self stringForKey:key] boolValue];
-}
-
-- (int)intForKey:(NSString *)key
-{
-  return [[self stringForKey:key] intValue];
-}
-
-- (long long)longLongForKey:(NSString *)key
-{
-  return [[self stringForKey:key] longLongValue];
-}
-
-- (double)doubleForKey:(NSString *)key
-{
-  return [[self stringForKey:key] doubleValue];
-}
-
-- (NSDate *)dateForKey:(NSString *)key
-{
-  return TKDateFromInternetDateString([self stringForKey:key]);
-}
-
-- (NSString *)stringForKey:(NSString *)key
-{
-  return [_settings objectForKey:key];
-}
-
-
-- (void)setBool:(BOOL)value forKey:(NSString *)key
-{
-  [self setString:(NSString *)[NSNumber numberWithBool:value] forKey:key];
-}
-
-- (void)setInt:(int)value forKey:(NSString *)key
-{
-  [self setString:(NSString *)[NSNumber numberWithInt:value] forKey:key];
-}
-
-- (void)setLongLong:(long long)value forKey:(NSString *)key
-{
-  [self setString:(NSString *)[NSNumber numberWithLongLong:value] forKey:key];
-}
-
-- (void)setDouble:(double)value forKey:(NSString *)key
-{
-  [self setString:(NSString *)[NSNumber numberWithDouble:value] forKey:key];
-}
-
-- (void)setDate:(NSDate *)value forKey:(NSString *)key
-{
-  [self setString:TKInternetDateStringFromDate(value) forKey:key];
-}
-
-- (void)setString:(NSString *)value forKey:(NSString *)key
-{
-  if ( value ) {
-    [_settings setObject:value forKeyIfNotNil:key];
+  [_lock lock];
+  
+  if ( object ) {
+    [_settings setObject:object forKeyIfNotNil:key];
   } else {
     [_settings removeObjectForKeyIfNotNil:key];
   }
+  
+  [_lock unlock];
 }
 
 @end

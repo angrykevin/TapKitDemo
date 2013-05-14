@@ -12,11 +12,8 @@
 
 
 @interface TKNAIManager : NSObject {
-  
   NSMutableArray *_users;
-  
   NSLock *_lock;
-  
 }
 
 + (TKNAIManager *)sharedObject;
