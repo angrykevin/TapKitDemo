@@ -26,7 +26,7 @@
   db.path = TKPathForDocumentsResource(@"asdf.db");
   [db open];
   
-  //[db executeUpdate:@"CREATE TABLE user(pk INTEGER PRIMARY KEY, b INTEGER, i INTEGER, l INTEGER, d REAL, dt TEXT, str TEXT, oth BLOB);"];
+  [db executeUpdate:@"CREATE TABLE user(pk INTEGER PRIMARY KEY, b INTEGER, i INTEGER, l INTEGER, d REAL, dt TEXT, str TEXT, oth BLOB);"];
   
 //  [db executeUpdate:@"INSERT INTO user(pk, b, i, l, d, dt, str, oth) VALUES(1, ?, ?, ?, ?, ?, ?, ?);", nil, nil, nil, nil, nil, nil, nil];
 //  
@@ -49,17 +49,25 @@
 //   data];
   
   
-  NSArray *rows = [db executeQuery:@"SELECT * FROM user;"];
-  for ( int i=0; i<[rows count]; ++i ) {
-    TKDatabaseRow *row = [rows objectAtIndex:i];
-    BOOL b = [row boolForName:@"b"];
-    int i = [row intForName:@"i"];
-    long long l = [row longLongForName:@"l"];
-    double d = [row doubleForName:@"d"];
-    NSDate *dt = [row dateForName:@"dt"];
-    NSString *str = [row stringForName:@"str"];
-    NSData *oth = [row dataForName:@"oth"];
+//  NSArray *rows = [db executeQuery:@"SELECT * FROM user;"];
+//  for ( int i=0; i<[rows count]; ++i ) {
+//    TKDatabaseRow *row = [rows objectAtIndex:i];
+//    BOOL b = [row boolForName:@"b"];
+//    int i = [row intForName:@"i"];
+//    long long l = [row longLongForName:@"l"];
+//    double d = [row doubleForName:@"d"];
+//    NSDate *dt = [row dateForName:@"dt"];
+//    NSString *str = [row stringForName:@"str"];
+//    NSData *oth = [row dataForName:@"oth"];
+//  }
+  
+  if ( [db goodConnection] ) {
+    NSLog(@"YES");
+  } else {
+    NSLog(@"NO");
   }
+  
+  //NSLog(@"%d", [db hasTableNamed:@"user"]);
   
   
   _window.backgroundColor = [UIColor whiteColor];

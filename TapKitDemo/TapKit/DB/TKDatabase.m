@@ -123,7 +123,6 @@ static TKDatabase *database = nil;
 - (BOOL)goodConnection
 {
   if ( _handle ) {
-    // TODO: Check
     NSString *sql = @"SELECT * FROM sqlite_master WHERE type='table';";
     return ( [self executeQuery:sql] != nil );
   }
@@ -237,12 +236,19 @@ static TKDatabase *database = nil;
   int count = sqlite3_column_count(statement);
   for ( int i=0; i<count; ++i ) {
     
-    NSString *name = [[NSString alloc] initWithUTF8String:sqlite3_column_name(statement, i)];
-    [names addObject:name];
+    const char *name = sqlite3_column_name(statement, i);
+    if ( name ) {
+      [names addObject:[[NSString alloc] initWithUTF8String:name]];
+    } else {
+      [names addObject:[[NSString alloc] initWithFormat:@"%d", i]];
+    }
     
-    NSString *type = [[NSString alloc] initWithUTF8String:sqlite3_column_decltype(statement, i)];
-    [types addObject:type];
-    
+    const char *type = sqlite3_column_decltype(statement, i);
+    if ( type ) {
+      [types addObject:[[NSString alloc] initWithUTF8String:type]];
+    } else {
+      [types addObject:@""];
+    }
   }
   
   NSMutableArray *rows = [[NSMutableArray alloc] init];
@@ -258,7 +264,7 @@ static TKDatabase *database = nil;
     
     for ( int i=0; i<count; ++i ) {
       
-      NSString *type = [types objectAtIndex:i];
+      NSString *type = [[types objectAtIndex:i] uppercaseString];
       
       if ( [type isEqualToString:@"INTEGER"] ) {
         id object = [NSNull null];
@@ -328,9 +334,7 @@ static TKDatabase *database = nil;
 - (BOOL)hadError
 {
   int lastErrorCode = [self lastErrorCode];
-  return ((lastErrorCode > SQLITE_OK)
-          && (lastErrorCode < SQLITE_ROW)
-          );
+  return ( (lastErrorCode > SQLITE_OK) && (lastErrorCode < SQLITE_ROW) );
 }
 
 
@@ -349,13 +353,11 @@ static TKDatabase *database = nil;
 
 - (BOOL)hasTableNamed:(NSString *)tableName
 {
-  // TODO: Update
-  if ( _handle && tableName ) {
+  if ( [self open] ) {
     NSString *sql = @"SELECT COUNT(*) AS count FROM sqlite_master WHERE type='table' AND name=?;";
     NSArray *result = [self executeQuery:sql, tableName];
-    
-    TKDatabaseRow *row = [result objectOrNilAtIndex:0];
-    return ( [row intForName:@"count"] > 0 );
+    TKDatabaseRow *row = [result firstObject];
+    return ( [[row stringForName:@"count"] intValue] > 0 );
   }
   return NO;
 }
