@@ -51,6 +51,10 @@ typedef void(^TKOperationBlock)(id operation);
 @property (nonatomic, copy) TKOperationBlock didFinishBlock;
 
 
+///-------------------------------
+/// Notify routines
+///-------------------------------
+
 - (void)notifyObserversOperationDidStart;
 - (void)notifyObserversOperationDidUpdate;
 - (void)notifyObserversOperationDidFail;

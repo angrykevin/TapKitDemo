@@ -11,7 +11,7 @@
 @implementation TKDatabaseRow
 
 
-#pragma mark - Public
+#pragma mark - Getting values
 
 - (BOOL)boolForName:(NSString *)name
 {

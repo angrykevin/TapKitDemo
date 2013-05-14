@@ -32,7 +32,6 @@
 ///-------------------------------
 
 + (TKDatabase *)sharedObject;
-+ (void)setSharedObject:(TKDatabase *)object;
 
 
 ///-------------------------------
@@ -41,7 +40,6 @@
 
 - (BOOL)open;
 - (void)close;
-- (BOOL)goodConnection;
 
 
 ///-------------------------------

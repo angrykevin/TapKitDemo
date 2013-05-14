@@ -81,16 +81,13 @@
 
 #pragma mark - Singleton
 
-static TKDatabase *database = nil;
-
 + (TKDatabase *)sharedObject
 {
+  static TKDatabase *database = nil;
+  if ( database == nil ) {
+    database = [[self alloc] init];
+  }
   return database;
-}
-
-+ (void)setSharedObject:(TKDatabase *)object
-{
-  database = object;
 }
 
 
@@ -118,15 +115,6 @@ static TKDatabase *database = nil;
     sqlite3_close(_handle);
     _opened = NO;
   }
-}
-
-- (BOOL)goodConnection
-{
-  if ( _handle ) {
-    NSString *sql = @"SELECT * FROM sqlite_master WHERE type='table';";
-    return ( [self executeQuery:sql] != nil );
-  }
-  return NO;
 }
 
 
@@ -238,29 +226,33 @@ static TKDatabase *database = nil;
     
     const char *name = sqlite3_column_name(statement, i);
     if ( name ) {
-      [names addObject:[[NSString alloc] initWithUTF8String:name]];
+      NSString *tmp = [[NSString alloc] initWithUTF8String:name];
+      [names addObject:tmp];
     } else {
-      [names addObject:[[NSString alloc] initWithFormat:@"%d", i]];
+      NSString *tmp = [[NSString alloc] initWithFormat:@"%d", i];
+      [names addObject:tmp];
     }
     
     const char *type = sqlite3_column_decltype(statement, i);
     if ( type ) {
-      [types addObject:[[NSString alloc] initWithUTF8String:type]];
+      NSString *tmp = [[NSString alloc] initWithUTF8String:type];
+      [types addObject:tmp];
     } else {
       [types addObject:@""];
     }
   }
   
   NSMutableArray *rows = [[NSMutableArray alloc] init];
+  
   while ( sqlite3_step(statement) == SQLITE_ROW ) {
+    
     TKDatabaseRow *row = [[TKDatabaseRow alloc] init];
     [rows addObject:row];
     
-    row.names = names;
-    row.types = types;
-    
     NSMutableArray *columns = [[NSMutableArray alloc] init];
     row.columns = columns;
+    row.names = names;
+    row.types = types;
     
     for ( int i=0; i<count; ++i ) {
       

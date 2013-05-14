@@ -57,7 +57,7 @@
 
 
 
-#pragma mark - Public
+#pragma mark - Notify routines
 
 - (void)notifyObserversOperationDidStart
 {

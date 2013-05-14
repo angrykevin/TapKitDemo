@@ -15,13 +15,28 @@
   NSLock *_lock;
 }
 
+
+///-------------------------------
+/// Singleton
+///-------------------------------
+
 + (TKSettings *)sharedObject;
+
+
+///-------------------------------
+/// Accessing values
+///-------------------------------
+
+- (id)objectForKey:(NSString *)key;
+- (void)setObject:(id)object forKey:(NSString *)key;
+
+
+///-------------------------------
+/// Basic routines
+///-------------------------------
 
 - (NSArray *)keys;
 - (void)synchronize;
 - (void)dump;
-
-- (id)objectForKey:(NSString *)key;
-- (void)setObject:(id)object forKey:(NSString *)key;
 
 @end

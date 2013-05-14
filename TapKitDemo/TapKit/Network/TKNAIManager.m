@@ -29,7 +29,7 @@
 
 
 
-#pragma mark - Public
+#pragma mark - Singleton
 
 + (TKNAIManager *)sharedObject
 {
@@ -40,6 +40,9 @@
   return NAIManager;
 }
 
+
+
+#pragma mark - User routines
 
 - (BOOL)isNetworkUser:(id)user
 {

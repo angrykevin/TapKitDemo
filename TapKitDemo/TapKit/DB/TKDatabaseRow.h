@@ -20,6 +20,11 @@
 @property (nonatomic, strong) NSArray *types;
 @property (nonatomic, strong) NSArray *columns;
 
+
+///-------------------------------
+/// Getting values
+///-------------------------------
+
 - (BOOL)boolForName:(NSString *)name;
 - (int)intForName:(NSString *)name;
 - (long long)longLongForName:(NSString *)name;

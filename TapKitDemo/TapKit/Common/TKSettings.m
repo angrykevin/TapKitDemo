@@ -32,7 +32,7 @@
 
 
 
-#pragma mark - Public
+#pragma mark - Singleton
 
 + (TKSettings *)sharedObject
 {
@@ -43,6 +43,37 @@
   return settings;
 }
 
+
+
+#pragma mark - Accessing values
+
+- (id)objectForKey:(NSString *)key
+{
+  [_lock lock];
+  
+  id object = [_settings objectForKey:key];
+  
+  [_lock unlock];
+  
+  return object;
+}
+
+- (void)setObject:(id)object forKey:(NSString *)key
+{
+  [_lock lock];
+  
+  if ( object ) {
+    [_settings setObject:object forKeyIfNotNil:key];
+  } else {
+    [_settings removeObjectForKeyIfNotNil:key];
+  }
+  
+  [_lock unlock];
+}
+
+
+
+#pragma mark - Basic routines
 
 - (NSArray *)keys
 {
@@ -80,31 +111,6 @@
   }
   [_lock unlock];
 #endif
-}
-
-
-- (id)objectForKey:(NSString *)key
-{
-  [_lock lock];
-  
-  id object = [_settings objectForKey:key];
-  
-  [_lock unlock];
-  
-  return object;
-}
-
-- (void)setObject:(id)object forKey:(NSString *)key
-{
-  [_lock lock];
-  
-  if ( object ) {
-    [_settings setObject:object forKeyIfNotNil:key];
-  } else {
-    [_settings removeObjectForKeyIfNotNil:key];
-  }
-  
-  [_lock unlock];
 }
 
 @end
