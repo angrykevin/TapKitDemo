@@ -31,6 +31,7 @@
     
     NSString *path = TKPathForDocumentsResource(@"Caches/profile.dt");
     NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
     for ( TKCacheItem *item in items ) {
       if ( [item.expiryDate earlierThan:[NSDate date]] ) {
         [[NSFileManager defaultManager] removeItemAtPath:item.path error:NULL];
@@ -38,6 +39,7 @@
         [_items addObject:item];
       }
     }
+    
     
     _lock = [[NSLock alloc] init];
     
@@ -193,6 +195,7 @@
   
   [_items removeAllObjects];
   
+  
   NSString *cacheRoot = TKPathForDocumentsResource(@"Caches");
   
   [[NSFileManager defaultManager] removeItemAtPath:cacheRoot error:NULL];
@@ -283,8 +286,8 @@
   if ( self ) {
     _key = [decoder decodeObjectForKey:@"kKey"];
     _path = [decoder decodeObjectForKey:@"kPath"];
-    _size = [decoder decodeIntForKey:@"kSize"];
     _expiryDate = [decoder decodeObjectForKey:@"kExpiryDate"];
+    _size = [decoder decodeIntForKey:@"kSize"];
   }
   return self;
 }
@@ -293,8 +296,8 @@
 {
   [encoder encodeObject:_key forKey:@"kKey"];
   [encoder encodeObject:_path forKey:@"kPath"];
-  [encoder encodeInt:_size forKey:@"kSize"];
   [encoder encodeObject:_expiryDate forKey:@"kExpiryDate"];
+  [encoder encodeInt:_size forKey:@"kSize"];
 }
 
 @end

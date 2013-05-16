@@ -63,13 +63,13 @@
 @interface TKCacheItem : NSObject<NSCoding> {
   NSString *_key;
   NSString *_path;
-  int _size;
   NSDate *_expiryDate;
+  int _size;
 }
 
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *path;
-@property (nonatomic, assign) int size;
 @property (nonatomic, strong) NSDate *expiryDate;
+@property (nonatomic, assign) int size;
 
 @end
