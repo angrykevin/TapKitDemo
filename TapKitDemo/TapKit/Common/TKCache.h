@@ -10,6 +10,9 @@
 #import "Core/Core.h"
 #import "Additions/Additions.h"
 
+
+@class TKCacheItem;
+
 @interface TKCache : NSObject {
   NSMutableArray *_items;
   NSLock *_lock;
@@ -27,10 +30,9 @@
 /// Accessing caches
 ///-------------------------------
 
+- (void)addCacheItem:(TKCacheItem *)item;
 - (NSData *)dataForKey:(NSString *)key;
 - (BOOL)setData:(NSData *)data forKey:(NSString *)key withTimeoutInterval:(NSTimeInterval)timeoutInterval;
-- (BOOL)copyFileAtPath:(NSString *)filePath asKey:(NSString *)key withTimeoutInterval:(NSTimeInterval)timeoutInterval;
-- (BOOL)moveFileAtPath:(NSString *)filePath asKey:(NSString *)key withTimeoutInterval:(NSTimeInterval)timeoutInterval;
 
 
 ///-------------------------------
@@ -46,7 +48,13 @@
 - (int)cacheSize;
 - (void)synchronize;
 
-- (BOOL)createCacheDirectory;
+
+///-------------------------------
+/// Paths
+///-------------------------------
+
+- (NSString *)cacheRootDirectory;
+- (NSString *)cachePathForKey:(NSString *)key;
 
 @end
 

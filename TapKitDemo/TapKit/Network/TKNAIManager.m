@@ -46,10 +46,10 @@
 
 - (BOOL)isNetworkUser:(id)user
 {
+  BOOL result = NO;
+  
   [_lock lock];
-  
-  BOOL result = [_users hasObjectIdenticalTo:user];
-  
+  result = [_users hasObjectIdenticalTo:user];
   [_lock unlock];
   
   return result;

@@ -49,10 +49,10 @@
 
 - (id)objectForKey:(NSString *)key
 {
+  id object = nil;
+  
   [_lock lock];
-  
-  id object = [_settings objectForKey:key];
-  
+  object = [_settings objectForKey:key];
   [_lock unlock];
   
   return object;
@@ -77,10 +77,10 @@
 
 - (NSArray *)keys
 {
+  NSArray *keys = nil;
+  
   [_lock lock];
-  
-  NSArray *keys = [_settings allKeys];
-  
+  keys = [_settings allKeys];
   [_lock unlock];
   
   return keys;

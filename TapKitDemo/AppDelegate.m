@@ -43,8 +43,29 @@
 //    NSLog(@"%@", item);
 //  }
   
+//  NSString *key = nil;
+//  NSString *path = [[NSString alloc] initWithFormat:@"caches/%@", key];
+//  NSLog(@"%@", TKPathForDocumentsResource(path));
+  
   
   TKCache *cache = [TKCache sharedObject];
+//  [cache setData:nil forKey:@"img1" withTimeoutInterval:0];
+//  [cache setData:[NSData data] forKey:@"img2" withTimeoutInterval:10];
+//  [cache synchronize];
+  
+  if ( [cache hasCacheForKey:@"img1"] ) {
+    NSLog(@"has 1");
+  } else {
+    NSLog(@"has not 1");
+  }
+  
+  if ( [cache hasCacheForKey:@"img2"] ) {
+    NSLog(@"has 2");
+  } else {
+    NSLog(@"has not 2");
+  }
+  
+  
   
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
