@@ -18,9 +18,9 @@
   self = [super init];
   if ( self ) {
     
-    NSString *root = TKPathForDocumentsResource(@"Caches");
-    if ( ![[NSFileManager defaultManager] fileExistsAtPath:root isDirectory:NULL] ) {
-      [[NSFileManager defaultManager] createDirectoryAtPath:root
+    NSString *cacheRoot = TKPathForDocumentsResource(@"Caches");
+    if ( ![[NSFileManager defaultManager] fileExistsAtPath:cacheRoot isDirectory:NULL] ) {
+      [[NSFileManager defaultManager] createDirectoryAtPath:cacheRoot
                                 withIntermediateDirectories:YES
                                                  attributes:nil
                                                       error:NULL];
@@ -193,12 +193,12 @@
   
   [_items removeAllObjects];
   
-  NSString *root = TKPathForDocumentsResource(@"Caches");
+  NSString *cacheRoot = TKPathForDocumentsResource(@"Caches");
   
-  [[NSFileManager defaultManager] removeItemAtPath:root error:NULL];
+  [[NSFileManager defaultManager] removeItemAtPath:cacheRoot error:NULL];
   
-  if ( ![[NSFileManager defaultManager] fileExistsAtPath:root isDirectory:NULL] ) {
-    [[NSFileManager defaultManager] createDirectoryAtPath:root
+  if ( ![[NSFileManager defaultManager] fileExistsAtPath:cacheRoot isDirectory:NULL] ) {
+    [[NSFileManager defaultManager] createDirectoryAtPath:cacheRoot
                               withIntermediateDirectories:YES
                                                attributes:nil
                                                     error:NULL];

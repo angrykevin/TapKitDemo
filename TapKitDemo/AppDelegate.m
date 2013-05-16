@@ -49,21 +49,22 @@
   
   
   TKCache *cache = [TKCache sharedObject];
-//  [cache setData:nil forKey:@"img1" withTimeoutInterval:0];
-//  [cache setData:[NSData data] forKey:@"img2" withTimeoutInterval:10];
-//  [cache synchronize];
+  [cache setData:nil forKey:@"img1" withTimeoutInterval:0];
+  [cache setData:[NSData data] forKey:@"img2" withTimeoutInterval:1000];
+  [cache setData:[@"xxx" dataUsingEncoding:NSUTF8StringEncoding] forKey:@"img3" withTimeoutInterval:1000];
+  [cache synchronize];
   
-  if ( [cache hasCacheForKey:@"img1"] ) {
-    NSLog(@"has 1");
-  } else {
-    NSLog(@"has not 1");
-  }
-  
-  if ( [cache hasCacheForKey:@"img2"] ) {
-    NSLog(@"has 2");
-  } else {
-    NSLog(@"has not 2");
-  }
+//  if ( [cache hasCacheForKey:@"img1"] ) {
+//    NSLog(@"has 1");
+//  } else {
+//    NSLog(@"has not 1");
+//  }
+//  
+//  if ( [cache hasCacheForKey:@"img2"] ) {
+//    NSLog(@"has 2");
+//  } else {
+//    NSLog(@"has not 2");
+//  }
   
   
   
