@@ -42,8 +42,8 @@
 - (BOOL)hasCacheForKey:(NSString *)key;
 - (void)removeCacheForKey:(NSString *)key;
 
-- (int)count;
-- (void)clearCache;
+- (NSUInteger)count;
+- (void)clear;
 - (void)cleanUp;
 - (int)cacheSize;
 - (void)synchronize;

@@ -53,7 +53,7 @@
 
 + (id)sharedObject
 {
-  TKCache *cache = nil;
+  static TKCache *cache = nil;
   if ( cache == nil ) {
     cache = [[self alloc] init];
   }
@@ -93,8 +93,10 @@
   if ( [key length] > 0 ) {
     [_lock lock];
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
-    if ( ![item.expiryDate earlierThan:[NSDate date]] ) {
-      data = [[NSData alloc] initWithContentsOfFile:item.path];
+    if ( item ) {
+      if ( ![item.expiryDate earlierThan:[NSDate date]] ) {
+        data = [[NSData alloc] initWithContentsOfFile:item.path];
+      }
     }
     [_lock unlock];
   }
@@ -152,9 +154,7 @@
     [_lock lock];
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
     if ( item ) {
-      if ( ![item.expiryDate earlierThan:[NSDate date]] ) {
-        result = YES;
-      }
+      result = ( ![item.expiryDate earlierThan:[NSDate date]] );
     }
     [_lock unlock];
   }
@@ -166,21 +166,19 @@
 {
   if ( [key length] > 0 ) {
     [_lock lock];
-    
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
     if ( item ) {
       [_items removeObjectIdenticalTo:item];
       [[NSFileManager defaultManager] removeItemAtPath:item.path error:NULL];
     }
-    
     [_lock unlock];
   }
 }
 
 
-- (int)count
+- (NSUInteger)count
 {
-  int amount = 0;
+  NSUInteger amount = 0;
   
   [_lock lock];
   amount = [_items count];
@@ -189,7 +187,7 @@
   return amount;
 }
 
-- (void)clearCache
+- (void)clear
 {
   [_lock lock];
   
@@ -214,15 +212,16 @@
 {
   [_lock lock];
   
-  NSArray *items = [[NSArray alloc] initWithArray:_items];
-  [_items removeAllObjects];
-  for ( TKCacheItem *item in items ) {
+  NSMutableArray *items = [[NSMutableArray alloc] init];
+  for ( TKCacheItem *item in _items ) {
     if ( [item.expiryDate earlierThan:[NSDate date]] ) {
       [[NSFileManager defaultManager] removeItemAtPath:item.path error:NULL];
     } else {
-      [_items addObject:item];
+      [items addObject:item];
     }
   }
+  
+  _items = items;
   
   [_lock unlock];
 }

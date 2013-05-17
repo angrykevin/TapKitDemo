@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TTMainViewController : UIViewController
+@interface TTMainViewController : UIViewController {
+  NSLock *_lock;
+  NSMutableArray *_keys;
+  NSMutableArray *_datas;
+}
 
 @end
