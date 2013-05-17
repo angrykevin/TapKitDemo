@@ -196,12 +196,12 @@
 			children = (
 				BC1B9483172968DF005C10D3 /* Common.h */,
 				BC04C7E8172D64F200F9EB2A /* TKObserverProtocol.h */,
+				BC4DFBBC174280AD0075E918 /* TKCache.h */,
+				BC4DFBBD174280AD0075E918 /* TKCache.m */,
 				BC04C7E9172D66E900F9EB2A /* TKOperation.h */,
 				BC04C7EA172D66E900F9EB2A /* TKOperation.m */,
 				BC04C7F0172D82FB00F9EB2A /* TKSettings.h */,
 				BC04C7F1172D82FB00F9EB2A /* TKSettings.m */,
-				BC4DFBBC174280AD0075E918 /* TKCache.h */,
-				BC4DFBBD174280AD0075E918 /* TKCache.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -228,7 +228,10 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9487172968DF005C10D3 /* DB.h */,
-				BC4DFBBA17427E6E0075E918 /* Database */,
+				BC04C7F3172D91A300F9EB2A /* TKDatabase.h */,
+				BC04C7F4172D91A300F9EB2A /* TKDatabase.m */,
+				BC04C7F6172D961900F9EB2A /* TKDatabaseRow.h */,
+				BC04C7F7172D961900F9EB2A /* TKDatabaseRow.m */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -241,17 +244,6 @@
 				BC1B949417296F3C005C10D3 /* TKNAIManager.m */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		BC4DFBBA17427E6E0075E918 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				BC04C7F3172D91A300F9EB2A /* TKDatabase.h */,
-				BC04C7F4172D91A300F9EB2A /* TKDatabase.m */,
-				BC04C7F6172D961900F9EB2A /* TKDatabaseRow.h */,
-				BC04C7F7172D961900F9EB2A /* TKDatabaseRow.m */,
-			);
-			name = Database;
 			sourceTree = "<group>";
 		};
 		BC768DFC1745F5CE00F23945 /* dt */ = {

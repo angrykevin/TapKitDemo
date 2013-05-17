@@ -6,4 +6,8 @@
 //  Copyright (c) 2013 Telligenty. All rights reserved.
 //
 
+#import "TKObserverProtocol.h"
 
+#import "TKCache.h"
+#import "TKOperation.h"
+#import "TKSettings.h"

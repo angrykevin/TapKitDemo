@@ -34,13 +34,13 @@
 - (NSData *)dataForKey:(NSString *)key;
 - (BOOL)setData:(NSData *)data forKey:(NSString *)key withTimeoutInterval:(NSTimeInterval)timeoutInterval;
 
+- (BOOL)hasCacheForKey:(NSString *)key;
+- (void)removeCacheForKey:(NSString *)key;
+
 
 ///-------------------------------
 /// Basic routines
 ///-------------------------------
-
-- (BOOL)hasCacheForKey:(NSString *)key;
-- (void)removeCacheForKey:(NSString *)key;
 
 - (NSUInteger)count;
 - (void)clear;

@@ -69,6 +69,6 @@
 + (BOOL)isSQLiteThreadSafe;
 + (NSString *)sqliteLibVersion;
 - (BOOL)hasTableNamed:(NSString *)tableName;
-- (unsigned long long)databaseFileSize;
+- (NSUInteger)databaseFileSize;
 
 @end

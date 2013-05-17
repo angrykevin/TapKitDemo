@@ -143,9 +143,6 @@
 }
 
 
-
-#pragma mark - Basic routines
-
 - (BOOL)hasCacheForKey:(NSString *)key
 {
   BOOL result = NO;
@@ -175,6 +172,9 @@
   }
 }
 
+
+
+#pragma mark - Basic routines
 
 - (NSUInteger)count
 {

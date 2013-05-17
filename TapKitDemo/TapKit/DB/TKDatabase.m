@@ -165,7 +165,7 @@
     return NO;
   }
   
-  code = sqlite3_step(statement);
+  sqlite3_step(statement);
   
   code = sqlite3_finalize(statement);
   
@@ -354,7 +354,7 @@
   return NO;
 }
 
-- (unsigned long long)databaseFileSize
+- (NSUInteger)databaseFileSize
 {
   NSFileManager *manager = [NSFileManager defaultManager];
   NSDictionary *attributes = [manager attributesOfItemAtPath:_path error:NULL];
