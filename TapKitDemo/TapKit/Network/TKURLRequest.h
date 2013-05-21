@@ -14,13 +14,28 @@
   
   NSMutableDictionary *_headers;
   NSData *_body;
-  NSString *_boundary;
 }
+
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *method;
+
+@property (nonatomic, strong) NSMutableDictionary *headers;
+@property (nonatomic, strong) NSData *body;
+
+
+///-------------------------------
+/// Creating request
+///-------------------------------
 
 - (id)initWithAddress:(NSString *)address;
 
-- (void)addHeader:(NSString *)header value:(NSString *)value;
 
-- (void)addBody:(NSData *)body;
+///-------------------------------
+/// Accessing request data
+///-------------------------------
+
+- (void)addValue:(NSString *)value forHeader:(NSString *)header;
+
+- (void)addFormFields:(NSDictionary *)fields;
 
 @end
