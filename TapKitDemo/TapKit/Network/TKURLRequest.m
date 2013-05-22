@@ -83,18 +83,20 @@
       NSString *filename = value[ @"filename" ];
       NSData *data = value[ @"data" ];
       
-      NSMutableString *disposition = [[NSMutableString alloc] init];
-      [disposition appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename];
-      [disposition appendFormat:@"Content-Type: %@\r\n\r\n", [filename MIMEType]];
-      [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
+      NSMutableString *field = [[NSMutableString alloc] init];
+      [field appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename];
+      [field appendFormat:@"Content-Type: %@\r\n\r\n", [filename MIMEType]];
+      
+      [body appendData:[field dataUsingEncoding:NSUTF8StringEncoding]];
       [body appendData:data];
       [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
       
     } else {
-      NSMutableString *disposition = [[NSMutableString alloc] init];
-      [disposition appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", name];
-      [disposition appendFormat:@"%@\r\n", value];
-      [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
+      NSMutableString *field = [[NSMutableString alloc] init];
+      [field appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", name];
+      [field appendFormat:@"%@\r\n", value];
+      
+      [body appendData:[field dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
   }

@@ -190,6 +190,10 @@
     CFRelease(UTIType);
   }
   
+  if ( [MIMEType length] <= 0 ) {
+    return @"application/octet-stream";
+  }
+  
   return MIMEType;
 }
 

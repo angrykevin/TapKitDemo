@@ -16,6 +16,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
+  NSLog(@"%@", [@"xxx.dt" MIMEType]);
+  
   TKURLRequest *request = [[TKURLRequest alloc] init];
   
   NSData *dt1 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"aaa.jpg")];
