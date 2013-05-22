@@ -62,65 +62,46 @@
   [self addValue:value forHeader:header];
   
   
-  NSMutableData *data = [[NSMutableData alloc] init];
+  NSMutableData *body = [[NSMutableData alloc] init];
   
   
   NSString *prefixString = [[NSString alloc] initWithFormat:@"--%@\r\n", boundary];
   NSData *prefixData = [prefixString dataUsingEncoding:NSUTF8StringEncoding];
   
-  NSString *suffixString = [[NSString alloc] initWithFormat:@"\r\n--%@--\r\n", boundary];
+  NSString *suffixString = [[NSString alloc] initWithFormat:@"--%@--\r\n", boundary];
   NSData *suffixData = [suffixString dataUsingEncoding:NSUTF8StringEncoding];
   
   
-  // Begin
-  [data appendData:prefixData];
-  
-  int index = 1;
-  
-  for ( NSString *key in fields ) {
+  for ( NSString *name in fields ) {
     
-    id value = [fields objectForKey:key];
+    [body appendData:prefixData];
     
-    if ( [value isKindOfClass:[UIImage class]] ) {
-      NSString *name = [[NSString alloc] initWithFormat:@"image%d.png", index];
-      index++;
+    id value = [fields objectForKey:name];
+    
+    if ( [value isKindOfClass:[NSDictionary class]] ) {
       
-      NSString *fmt = @"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n";
-      NSString *disposition = [[NSString alloc] initWithFormat:fmt, key, name];
-      NSData *dispositionData = [disposition dataUsingEncoding:NSUTF8StringEncoding];
-      [data appendData:dispositionData];
+      NSString *filename = value[ @"filename" ];
+      NSData *data = value[ @"data" ];
       
-      NSString *type = @"Content-Type: image/png\r\nContent-Transfer-Encoding: binary\r\n\r\n";
-      NSData *typeData = [type dataUsingEncoding:NSUTF8StringEncoding];
-      [data appendData:typeData];
-      
-      NSData *imageData = UIImagePNGRepresentation((UIImage *)value);
-      [data appendData:imageData];
-      
-    } else if ( [value isKindOfClass:[NSData class]] ) {
-      NSString *fmt = @"Content-Disposition: form-data; name=\"%@\"\r\n";
-      NSString *disposition = [[NSString alloc] initWithFormat:fmt, key];
-      NSData *dispositionData = [disposition dataUsingEncoding:NSUTF8StringEncoding];
-      [data appendData:dispositionData];
-      
-      NSString *type = @"Content-Type: content/unknown\r\nContent-Transfer-Encoding: binary\r\n\r\n";
-      NSData *typeData = [type dataUsingEncoding:NSUTF8StringEncoding];
-      [data appendData:typeData];
-      
-      [data appendData:(NSData *)value];
+      NSMutableString *disposition = [[NSMutableString alloc] init];
+      [disposition appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename];
+      [disposition appendFormat:@"Content-Type: %@\r\n\r\n", [filename MIMEType]];
+      [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
+      [body appendData:data];
+      [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
       
     } else {
-      NSString *fmt = @"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n";
-      NSString *disposition = [[NSString alloc] initWithFormat:fmt, key, value];
-      NSData *dispositionData = [disposition dataUsingEncoding:NSUTF8StringEncoding];
-      [data appendData:dispositionData];
+      NSMutableString *disposition = [[NSMutableString alloc] init];
+      [disposition appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", name];
+      [disposition appendFormat:@"%@\r\n", value];
+      [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    
-    [data appendData:suffixData];
     
   }
   
-  _body = data;
+  [body appendData:suffixData];
+  
+  _body = body;
 }
 
 @end

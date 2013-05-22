@@ -49,4 +49,11 @@
 - (NSString *)stringByAddingQueryDictionary:(NSDictionary *)dictionary;
 - (NSString *)stringByAppendingValue:(NSString *)value forKey:(NSString *)key;
 
+
+///-------------------------------
+/// MIME types
+///-------------------------------
+
+- (NSString *)MIMEType;
+
 @end

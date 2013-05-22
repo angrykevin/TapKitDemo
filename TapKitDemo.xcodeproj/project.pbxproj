@@ -15,19 +15,23 @@
 		BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */; };
 		BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */; };
 		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
+		BC1EB6AA174CAF62009B5D76 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */; };
+		BC1EB6AE174CB9B3009B5D76 /* aaa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC1EB6AB174CB9B3009B5D76 /* aaa.jpg */; };
+		BC1EB6AF174CB9B3009B5D76 /* bbb.zip in Resources */ = {isa = PBXBuildFile; fileRef = BC1EB6AC174CB9B3009B5D76 /* bbb.zip */; };
+		BC1EB6B0174CB9B3009B5D76 /* ccc.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC1EB6AD174CB9B3009B5D76 /* ccc.mp3 */; };
 		BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DFBBD174280AD0075E918 /* TKCache.m */; };
 		BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */; };
 		BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC768DE41745F48000F23945 /* TTMainViewController.m */; };
-		BC768DE91745F52400F23945 /* test2.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DE81745F52400F23945 /* test2.dt */; };
+		BC768DE91745F52400F23945 /* test2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC768DE81745F52400F23945 /* test2.mp3 */; };
 		BC768DEB1745F53600F23945 /* test3.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DEA1745F53600F23945 /* test3.dt */; };
-		BC768DED1745F54D00F23945 /* test1.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DEC1745F54D00F23945 /* test1.dt */; };
+		BC768DED1745F54D00F23945 /* test1.zip in Resources */ = {isa = PBXBuildFile; fileRef = BC768DEC1745F54D00F23945 /* test1.zip */; };
 		BC768DEF1745F56E00F23945 /* test4.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DEE1745F56E00F23945 /* test4.dt */; };
 		BC768DF11745F57800F23945 /* test5.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF01745F57800F23945 /* test5.dt */; };
 		BC768DF31745F58000F23945 /* test6.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF21745F58000F23945 /* test6.dt */; };
 		BC768DF51745F58700F23945 /* test7.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF41745F58700F23945 /* test7.dt */; };
 		BC768DF71745F59000F23945 /* test8.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF61745F59000F23945 /* test8.dt */; };
 		BC768DF91745F59600F23945 /* test9.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF81745F59600F23945 /* test9.dt */; };
-		BC768DFB1745F59D00F23945 /* test0.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DFA1745F59D00F23945 /* test0.dt */; };
+		BC768DFB1745F59D00F23945 /* test0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC768DFA1745F59D00F23945 /* test0.jpg */; };
 		BC9C2E04174B5C41003829C9 /* TKURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9C2E03174B5C41003829C9 /* TKURLRequest.m */; };
 		BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */; };
 		BCC6CEE117171466000A99CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE017171466000A99CB /* main.m */; };
@@ -76,21 +80,25 @@
 		BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreCompatibility.m; sourceTree = "<group>"; };
 		BC1B949317296F3C005C10D3 /* TKNAIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNAIManager.h; sourceTree = "<group>"; };
 		BC1B949417296F3C005C10D3 /* TKNAIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNAIManager.m; sourceTree = "<group>"; };
+		BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BC1EB6AB174CB9B3009B5D76 /* aaa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aaa.jpg; sourceTree = "<group>"; };
+		BC1EB6AC174CB9B3009B5D76 /* bbb.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bbb.zip; sourceTree = "<group>"; };
+		BC1EB6AD174CB9B3009B5D76 /* ccc.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ccc.mp3; sourceTree = "<group>"; };
 		BC4DFBBC174280AD0075E918 /* TKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCache.h; sourceTree = "<group>"; };
 		BC4DFBBD174280AD0075E918 /* TKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCache.m; sourceTree = "<group>"; };
 		BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BC768DE31745F48000F23945 /* TTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMainViewController.h; sourceTree = "<group>"; };
 		BC768DE41745F48000F23945 /* TTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMainViewController.m; sourceTree = "<group>"; };
-		BC768DE81745F52400F23945 /* test2.dt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test2.dt; sourceTree = "<group>"; };
+		BC768DE81745F52400F23945 /* test2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test2.mp3; sourceTree = "<group>"; };
 		BC768DEA1745F53600F23945 /* test3.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test3.dt; sourceTree = "<group>"; };
-		BC768DEC1745F54D00F23945 /* test1.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test1.dt; sourceTree = "<group>"; };
+		BC768DEC1745F54D00F23945 /* test1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = test1.zip; sourceTree = "<group>"; };
 		BC768DEE1745F56E00F23945 /* test4.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test4.dt; sourceTree = "<group>"; };
 		BC768DF01745F57800F23945 /* test5.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test5.dt; sourceTree = "<group>"; };
 		BC768DF21745F58000F23945 /* test6.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test6.dt; sourceTree = "<group>"; };
 		BC768DF41745F58700F23945 /* test7.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test7.dt; sourceTree = "<group>"; };
 		BC768DF61745F59000F23945 /* test8.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test8.dt; sourceTree = "<group>"; };
 		BC768DF81745F59600F23945 /* test9.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test9.dt; sourceTree = "<group>"; };
-		BC768DFA1745F59D00F23945 /* test0.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test0.dt; sourceTree = "<group>"; };
+		BC768DFA1745F59D00F23945 /* test0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test0.jpg; sourceTree = "<group>"; };
 		BC9C2E02174B5C41003829C9 /* TKURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLRequest.h; sourceTree = "<group>"; };
 		BC9C2E03174B5C41003829C9 /* TKURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKURLRequest.m; sourceTree = "<group>"; };
 		BC9C2E05174B5E05003829C9 /* TKURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLConnectionOperation.h; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1EB6AA174CAF62009B5D76 /* MobileCoreServices.framework in Frameworks */,
 				BCD4FE77172ACC6A00A7E0A3 /* CoreGraphics.framework in Frameworks */,
 				BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */,
 				BCC6CEFB17171537000A99CB /* Foundation.framework in Frameworks */,
@@ -259,9 +268,12 @@
 		BC768DFC1745F5CE00F23945 /* dt */ = {
 			isa = PBXGroup;
 			children = (
-				BC768DFA1745F59D00F23945 /* test0.dt */,
-				BC768DEC1745F54D00F23945 /* test1.dt */,
-				BC768DE81745F52400F23945 /* test2.dt */,
+				BC1EB6AB174CB9B3009B5D76 /* aaa.jpg */,
+				BC1EB6AC174CB9B3009B5D76 /* bbb.zip */,
+				BC1EB6AD174CB9B3009B5D76 /* ccc.mp3 */,
+				BC768DFA1745F59D00F23945 /* test0.jpg */,
+				BC768DEC1745F54D00F23945 /* test1.zip */,
+				BC768DE81745F52400F23945 /* test2.mp3 */,
 				BC768DEA1745F53600F23945 /* test3.dt */,
 				BC768DEE1745F56E00F23945 /* test4.dt */,
 				BC768DF01745F57800F23945 /* test5.dt */,
@@ -344,6 +356,7 @@
 		BCD4FE78172ACC7500A7E0A3 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */,
 				BCD4FE76172ACC6A00A7E0A3 /* CoreGraphics.framework */,
 				BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */,
 			);
@@ -404,16 +417,19 @@
 				BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */,
 				BCC6CEF6171714D5000A99CB /* Default.png in Resources */,
 				BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */,
-				BC768DE91745F52400F23945 /* test2.dt in Resources */,
+				BC768DE91745F52400F23945 /* test2.mp3 in Resources */,
 				BC768DEB1745F53600F23945 /* test3.dt in Resources */,
-				BC768DED1745F54D00F23945 /* test1.dt in Resources */,
+				BC768DED1745F54D00F23945 /* test1.zip in Resources */,
 				BC768DEF1745F56E00F23945 /* test4.dt in Resources */,
 				BC768DF11745F57800F23945 /* test5.dt in Resources */,
 				BC768DF31745F58000F23945 /* test6.dt in Resources */,
 				BC768DF51745F58700F23945 /* test7.dt in Resources */,
 				BC768DF71745F59000F23945 /* test8.dt in Resources */,
 				BC768DF91745F59600F23945 /* test9.dt in Resources */,
-				BC768DFB1745F59D00F23945 /* test0.dt in Resources */,
+				BC768DFB1745F59D00F23945 /* test0.jpg in Resources */,
+				BC1EB6AE174CB9B3009B5D76 /* aaa.jpg in Resources */,
+				BC1EB6AF174CB9B3009B5D76 /* bbb.zip in Resources */,
+				BC1EB6B0174CB9B3009B5D76 /* ccc.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
