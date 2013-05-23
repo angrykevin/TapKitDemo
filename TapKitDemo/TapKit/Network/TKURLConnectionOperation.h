@@ -17,6 +17,13 @@
   NSURLRequestCachePolicy _cachePolicy;
   NSTimeInterval _timeoutInterval;
   NSString *_method;
+  
+  BOOL _shouldUpdateNetworkActivityIndicator;
+  
+  NSString *_runLoopMode;
+  
+  NSURLConnection *_connection;
+  
   NSDictionary *_headers;
   NSData *_body;
   
@@ -25,50 +32,72 @@
   NSString *_responseFilePath;
   NSFileHandle *_responseFileHandle;
   
-  NSURLConnection *_connection;
+  int _bytesWritten;
+  int _totalBytesWritten;
+  int _totalBytesExpectedToWrite;
   
-  NSString *_runLoopMode;
-  
-  BOOL _shouldUpdateNetworkActivityIndicator;
-  
-  int _bytesHandled;
-  int _totalBytesHandled;
-  int _totalBytesExpectedToHandle;
+  int _bytesRead;
+  int _totalBytesRead;
+  int _totalBytesExpectedToRead;
 }
 
-@property (nonatomic, strong, readonly) NSString *address;
+@property (nonatomic, readonly, copy) NSString *address;
 @property (nonatomic, readonly) NSURLRequestCachePolicy cachePolicy;
 @property (nonatomic, readonly) NSTimeInterval timeoutInterval;
-@property (nonatomic, copy, readonly) NSString *method;
-@property (nonatomic, strong, readonly) NSDictionary *headers;
-@property (nonatomic, strong, readonly) NSData *body;
-
-@property (nonatomic, strong, readonly) NSURLResponse *response;
-@property (nonatomic, strong, readonly) NSData *responseData;
-@property (nonatomic, copy) NSString *responseFilePath;
-@property (nonatomic, strong, readonly) NSFileHandle *responseFileHandle;
-
-@property (nonatomic, strong, readonly) NSURLConnection *connection;
-
-@property (nonatomic, copy) NSString *runLoopMode;
+@property (nonatomic, readonly, copy) NSString *method;
 
 @property (nonatomic, assign) BOOL shouldUpdateNetworkActivityIndicator;
 
-@property (nonatomic, readonly) int bytesHandled;
-@property (nonatomic, readonly) int totalBytesHandled;
-@property (nonatomic, readonly) int totalBytesExpectedToHandle;
+@property (nonatomic, copy) NSString *runLoopMode;
 
+@property (nonatomic, readonly, strong) NSURLConnection *connection;
+
+@property (nonatomic, readonly, strong) NSDictionary *headers;
+@property (nonatomic, readonly, strong) NSData *body;
+
+@property (nonatomic, readonly, strong) NSURLResponse *response;
+@property (nonatomic, readonly, strong) NSData *responseData;
+@property (nonatomic, copy) NSString *responseFilePath;
+@property (nonatomic, readonly, strong) NSFileHandle *responseFileHandle;
+
+@property (nonatomic, readonly) int bytesWritten;
+@property (nonatomic, readonly) int totalBytesWritten;
+@property (nonatomic, readonly) int totalBytesExpectedToWrite;
+
+@property (nonatomic, readonly) int bytesRead;
+@property (nonatomic, readonly) int totalBytesRead;
+@property (nonatomic, readonly) int totalBytesExpectedToRead;
+
+
+///-------------------------------
+/// Initializing
+///-------------------------------
 
 - (id)initWithAddress:(NSString *)address
           cachePolicy:(NSURLRequestCachePolicy)cachePolicy
       timeoutInterval:(NSTimeInterval)timeoutInterval
                method:(NSString *)method;
 
+
+///-------------------------------
+/// Launch request
+///-------------------------------
+
 - (void)startAsynchronous;
 - (NSData *)startSynchronous;
 
+
+///-------------------------------
+/// Request header
+///-------------------------------
+
 - (void)addValue:(NSString *)value forRequestHeader:(NSString *)header;
 - (void)setRequestHeaders:(NSDictionary *)headers;
+
+
+///-------------------------------
+/// Request body
+///-------------------------------
 
 - (void)setRequestBody:(NSData *)body;
 - (void)setFormFields:(NSDictionary *)fields;

@@ -32,7 +32,6 @@
 		BC768DF71745F59000F23945 /* test8.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF61745F59000F23945 /* test8.dt */; };
 		BC768DF91745F59600F23945 /* test9.dt in Resources */ = {isa = PBXBuildFile; fileRef = BC768DF81745F59600F23945 /* test9.dt */; };
 		BC768DFB1745F59D00F23945 /* test0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC768DFA1745F59D00F23945 /* test0.jpg */; };
-		BC9C2E04174B5C41003829C9 /* TKURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9C2E03174B5C41003829C9 /* TKURLRequest.m */; };
 		BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */; };
 		BCC6CEE117171466000A99CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE017171466000A99CB /* main.m */; };
 		BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE417171466000A99CB /* AppDelegate.m */; };
@@ -99,8 +98,6 @@
 		BC768DF61745F59000F23945 /* test8.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test8.dt; sourceTree = "<group>"; };
 		BC768DF81745F59600F23945 /* test9.dt */ = {isa = PBXFileReference; lastKnownFileType = file; path = test9.dt; sourceTree = "<group>"; };
 		BC768DFA1745F59D00F23945 /* test0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test0.jpg; sourceTree = "<group>"; };
-		BC9C2E02174B5C41003829C9 /* TKURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLRequest.h; sourceTree = "<group>"; };
-		BC9C2E03174B5C41003829C9 /* TKURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKURLRequest.m; sourceTree = "<group>"; };
 		BC9C2E05174B5E05003829C9 /* TKURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLConnectionOperation.h; sourceTree = "<group>"; };
 		BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKURLConnectionOperation.m; sourceTree = "<group>"; };
 		BCC6CED117171466000A99CB /* TapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,8 +256,6 @@
 				BC1B949417296F3C005C10D3 /* TKNAIManager.m */,
 				BC9C2E05174B5E05003829C9 /* TKURLConnectionOperation.h */,
 				BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */,
-				BC9C2E02174B5C41003829C9 /* TKURLRequest.h */,
-				BC9C2E03174B5C41003829C9 /* TKURLRequest.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -464,7 +459,6 @@
 				BCCBEE6217413B0F00FF59CE /* UIViewAdditions.m in Sources */,
 				BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */,
 				BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */,
-				BC9C2E04174B5C41003829C9 /* TKURLRequest.m in Sources */,
 				BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

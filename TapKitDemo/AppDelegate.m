@@ -8,17 +8,13 @@
 
 #import "AppDelegate.h"
 #import "TTMainViewController.h"
-#import "TKURLRequest.h"
+#import "TKURLConnectionOperation.h"
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
-  NSLog(@"%@", [@"xxx.dt" MIMEType]);
-  
-  TKURLRequest *request = [[TKURLRequest alloc] init];
   
   NSData *dt1 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"aaa.jpg")];
   NSData *dt2 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"bbb.zip")];
@@ -41,10 +37,28 @@
                           @"dt3": dict3
                           };
   
-  [request addFormFields:dict];
+  TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:@"http://www.baidu.com/"
+                                                                               cachePolicy:0
+                                                                           timeoutInterval:0
+                                                                                    method:nil];
   
-  NSString *path = TKPathForDocumentsResource(@"abc.c");
-  [request.body writeToFile:path atomically:YES];
+  connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
+    TKPRINT(@"did start");
+  };
+  
+  connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
+    TKPRINT(@"did update");
+  };
+  
+  connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
+    TKPRINT(@"did fail");
+  };
+  
+  connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
+    TKPRINT(@"did finish");
+  };
+  
+  [connection startAsynchronous];
   
   
   
