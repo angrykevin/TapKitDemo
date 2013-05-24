@@ -56,7 +56,7 @@
     [(NSMutableDictionary *)_headers setObject:@"gzip" forKey:@"Accept-Encoding"];
   }
   if ( ![_headers hasKeyEqualTo:@"User-Agent"] ) {
-    [(NSMutableDictionary *)_headers setObject:@"tapkit" forKey:@"User-Agent"];
+    [(NSMutableDictionary *)_headers setObject:@"tapkit/0.1" forKey:@"User-Agent"];
   }
   for ( NSString *header in _headers ) {
     NSString *value = [_headers objectForKey:header];
@@ -406,11 +406,13 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+  TKPRINTMETHOD();
+  
   [_responseFileHandle closeFile];
   _responseFileHandle = nil;
   
   _connection = nil;
-  TKPRINTMETHOD();
+  
   [self notifyObserversOperationDidFinish];
   
   
@@ -436,6 +438,8 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+  TKPRINTMETHOD();
+  
   _response = nil;
   _responseData = nil;
   //_responseFilePath = nil;
@@ -444,7 +448,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   [[NSFileManager defaultManager] removeItemAtPath:_responseFilePath error:NULL];
   
   _connection = nil;
-  TKPRINTMETHOD();
+  
   [self notifyObserversOperationDidFail];
   
   
