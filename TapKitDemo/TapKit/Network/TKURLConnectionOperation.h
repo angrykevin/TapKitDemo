@@ -17,13 +17,6 @@
   NSURLRequestCachePolicy _cachePolicy;
   NSTimeInterval _timeoutInterval;
   NSString *_method;
-  
-  BOOL _shouldUpdateNetworkActivityIndicator;
-  
-  NSString *_runLoopMode;
-  
-  NSURLConnection *_connection;
-  
   NSDictionary *_headers;
   NSData *_body;
   
@@ -31,6 +24,12 @@
   NSData *_responseData;
   NSString *_responseFilePath;
   NSFileHandle *_responseFileHandle;
+  
+  BOOL _shouldUpdateNetworkActivityIndicator;
+  
+  NSString *_runLoopMode;
+  
+  NSURLConnection *_connection;
   
   int _bytesWritten;
   int _totalBytesWritten;
@@ -45,13 +44,6 @@
 @property (nonatomic, readonly) NSURLRequestCachePolicy cachePolicy;
 @property (nonatomic, readonly) NSTimeInterval timeoutInterval;
 @property (nonatomic, readonly, copy) NSString *method;
-
-@property (nonatomic, assign) BOOL shouldUpdateNetworkActivityIndicator;
-
-@property (nonatomic, copy) NSString *runLoopMode;
-
-@property (nonatomic, readonly, strong) NSURLConnection *connection;
-
 @property (nonatomic, readonly, strong) NSDictionary *headers;
 @property (nonatomic, readonly, strong) NSData *body;
 
@@ -59,6 +51,12 @@
 @property (nonatomic, readonly, strong) NSData *responseData;
 @property (nonatomic, copy) NSString *responseFilePath;
 @property (nonatomic, readonly, strong) NSFileHandle *responseFileHandle;
+
+@property (nonatomic, assign) BOOL shouldUpdateNetworkActivityIndicator;
+
+@property (nonatomic, copy) NSString *runLoopMode;
+
+@property (nonatomic, readonly, strong) NSURLConnection *connection;
 
 @property (nonatomic, readonly) int bytesWritten;
 @property (nonatomic, readonly) int totalBytesWritten;
@@ -84,7 +82,6 @@
 ///-------------------------------
 
 - (void)startAsynchronous;
-- (NSData *)startSynchronous;
 
 
 ///-------------------------------

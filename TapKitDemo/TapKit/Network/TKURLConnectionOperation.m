@@ -52,7 +52,6 @@
                                         forKey:@"Content-Length"];
   }
   
-  
   if ( ![_headers hasKeyEqualTo:@"Accept-Encoding"] ) {
     [(NSMutableDictionary *)_headers setObject:@"gzip" forKey:@"Accept-Encoding"];
   }
@@ -121,28 +120,28 @@
     _cachePolicy = (cachePolicy == 0) ? NSURLRequestUseProtocolCachePolicy : cachePolicy;
     _timeoutInterval = (timeoutInterval > 0) ? timeoutInterval : 10.0;
     _method = ([method length] > 0) ? method : @"GET";
+    _headers = [[NSMutableDictionary alloc] init];
+    //_body = nil;
+    
+    //_response = nil;
+    //_responseData = nil;
+    //_responseFilePath = nil;
+    //_responseFileHandle = nil;
     
     _shouldUpdateNetworkActivityIndicator = YES;
     
     _runLoopMode = NSRunLoopCommonModes;
     
-//    _connection = nil;
-//    
-//    _headers = nil;
-//    _body = nil;
-//    
-//    _response = nil;
-//    _responseData = nil;
-//    _responseFilePath = nil;
-//    _responseFileHandle = nil;
-//
-//    _bytesWritten = 0;
-//    _totalBytesWritten = 0;
-//    _totalBytesExpectedToWrite = 0;
-//    
-//    _bytesRead = 0;
-//    _totalBytesRead = 0;
-//    _totalBytesExpectedToRead = 0;
+    //_connection = nil;
+    
+    //_bytesWritten = 0;
+    //_totalBytesWritten = 0;
+    //_totalBytesExpectedToWrite = 0;
+    
+    //_bytesRead = 0;
+    //_totalBytesRead = 0;
+    //_totalBytesExpectedToRead = 0;
+    
     
     _step = TKOperationStepReady;
     [self willChangeValueForKey:@"isReady"];
@@ -161,11 +160,6 @@
   [[[self class] operationQueue] addOperation:self];
 }
 
-- (NSData *)startSynchronous
-{
-  return nil;
-}
-
 
 
 #pragma mark - Request header
@@ -173,10 +167,6 @@
 - (void)addValue:(NSString *)value forRequestHeader:(NSString *)header
 {
   if ( [header length] > 0 ) {
-    
-    if ( _headers == nil ) {
-      _headers = [[NSMutableDictionary alloc] init];
-    }
     
     if ( value ) {
       [(NSMutableDictionary *)_headers setObject:value forKey:header];
@@ -189,10 +179,6 @@
 
 - (void)setRequestHeaders:(NSDictionary *)headers
 {
-  if ( _headers == nil ) {
-    _headers = [[NSMutableDictionary alloc] init];
-  }
-  
   [(NSMutableDictionary *)_headers removeAllObjects];
   
   for ( NSString *header in [headers keyEnumerator] ) {
@@ -217,9 +203,8 @@
   
   NSString *boundary = [NSString UUIDString];
   
-  NSString *header = @"Content-Type";
-  NSString *value = [[NSString alloc] initWithFormat:@"multipart/form-data; boundary=%@", boundary];
-  [self addValue:value forRequestHeader:header];
+  [self addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary]
+forRequestHeader:@"Content-Type"];
   
   
   NSMutableData *body = [[NSMutableData alloc] init];
@@ -260,6 +245,7 @@
   [body appendData:suffixData];
   
   _body = body;
+  TKPRINT(@"body length: %d", [_body length]);
 }
 
 
@@ -288,7 +274,7 @@
                  onThread:[[self class] operationThread]
                withObject:nil
             waitUntilDone:YES
-                    modes:[NSArray arrayWithObject:_runLoopMode]];
+                    modes:@[ _runLoopMode ]];
   }
 }
 
@@ -385,6 +371,7 @@
   _bytesRead = 0;
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
+  TKPRINT(@"%d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -401,6 +388,7 @@
   _bytesRead = [data length];
   _totalBytesRead += _bytesRead;
   //_totalBytesExpectedToRead = 0;
+  TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -412,6 +400,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _bytesWritten = bytesWritten;
   _totalBytesWritten = totalBytesWritten;
   _totalBytesExpectedToWrite = totalBytesExpectedToWrite;
+  TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -421,7 +410,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _responseFileHandle = nil;
   
   _connection = nil;
-  
+  TKPRINTMETHOD();
   [self notifyObserversOperationDidFinish];
   
   
@@ -455,7 +444,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   [[NSFileManager defaultManager] removeItemAtPath:_responseFilePath error:NULL];
   
   _connection = nil;
-  
+  TKPRINTMETHOD();
   [self notifyObserversOperationDidFail];
   
   

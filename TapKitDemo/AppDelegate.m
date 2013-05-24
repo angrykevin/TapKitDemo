@@ -16,49 +16,34 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
-  NSData *dt1 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"aaa.jpg")];
-  NSData *dt2 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"bbb.zip")];
-  NSData *dt3 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"ccc.mp3")];
+//  NSData *dt1 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"aaa.jpg")];
+//  
+//  NSDictionary *dict1 = @{ @"filename": @"aaa.jpg",
+//                           @"data": dt1
+//                           };
+//  
+//  NSDictionary *dict = @{ @"key1": @"value1",
+//                          @"dt1": dict1
+//                          };
   
-  NSDictionary *dict1 = @{ @"filename": @"aaa.jpg",
-                           @"data": dt1
-                           };
-  NSDictionary *dict2 = @{ @"filename": @"bbb.zip",
-                           @"data": dt2
-                           };
-  NSDictionary *dict3 = @{ @"filename": @"ccc.mp3",
-                           @"data": dt3
-                           };
   
-  NSDictionary *dict = @{ @"key1": @"value1",
-                          @"dt1": dict1,
-                          @"dt2": dict2,
-                          @"key2": @"value2",
-                          @"dt3": dict3
-                          };
+//  connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
+//    TKPRINT(@"did start");
+//  };
+//
+//  connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
+//    TKPRINT(@"did update");
+//  };
+//  
+//  connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
+//    TKPRINT(@"did fail");
+//  };
+//  
+//  connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
+//    TKPRINT(@"did finish");
+//  };
   
-  TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:@"http://www.baidu.com/"
-                                                                               cachePolicy:0
-                                                                           timeoutInterval:0
-                                                                                    method:nil];
   
-  connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
-    TKPRINT(@"did start");
-  };
-  
-  connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-    TKPRINT(@"did update");
-  };
-  
-  connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
-    TKPRINT(@"did fail");
-  };
-  
-  connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
-    TKPRINT(@"did finish");
-  };
-  
-  [connection startAsynchronous];
   
   
   

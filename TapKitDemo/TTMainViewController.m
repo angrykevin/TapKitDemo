@@ -117,43 +117,55 @@
 
 - (void)doit:(id)sender
 {
-  int tag = [sender tag];
   
-  TKCache *cache = [TKCache sharedObject];
+  TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:@"http://www.cnblogs.com/"
+                                                                               cachePolicy:0
+                                                                           timeoutInterval:0
+                                                                                    method:@"POST"];
+  connection.responseFilePath = TKPathForDocumentsResource(@"aa.html");
+  [connection setFormFields: @{ @"key1": @"value1" }];
   
-  if ( tag == 1 ) {
-    
-    [cache setData:[_datas randomObject] forKey:@"1" withTimeoutInterval:5];
-    [cache setData:[_datas randomObject] forKey:@"2" withTimeoutInterval:10];
-    [cache setData:[_datas randomObject] forKey:@"3" withTimeoutInterval:20];
-    [cache synchronize];
-    
-  } else if ( tag == 2 ) {
-    
-    if ( [cache hasCacheForKey:@"1"] ) NSLog(@"has 1");
-    else NSLog(@"has not 1");
-    
-    if ( [cache hasCacheForKey:@"2"] ) NSLog(@"has 2");
-    else NSLog(@"has not 2");
-    
-    if ( [cache hasCacheForKey:@"3"] ) NSLog(@"has 3");
-    else NSLog(@"has not 3");
-    
-  } else if ( tag == 3 ) {
-    
-    NSData *data1 = [cache dataForKey:@"1"];
-    NSData *data2 = [cache dataForKey:@"2"];
-    NSData *data3 = [cache dataForKey:@"3"];
-    
-    NSLog(@"%d %d %d", [data1 length], [data2 length], [data3 length]);
-    
-  } else if ( tag == 4 ) {
-    
-    NSLog(@"%d", [cache cacheSize]);
-    
-    [cache cleanUp];
-    [cache synchronize];
-  }
+  [connection startAsynchronous];
+  connection = nil;
+  
+  
+//  int tag = [sender tag];
+//  
+//  TKCache *cache = [TKCache sharedObject];
+//  
+//  if ( tag == 1 ) {
+//    
+//    [cache setData:[_datas randomObject] forKey:@"1" withTimeoutInterval:5];
+//    [cache setData:[_datas randomObject] forKey:@"2" withTimeoutInterval:10];
+//    [cache setData:[_datas randomObject] forKey:@"3" withTimeoutInterval:20];
+//    [cache synchronize];
+//    
+//  } else if ( tag == 2 ) {
+//    
+//    if ( [cache hasCacheForKey:@"1"] ) NSLog(@"has 1");
+//    else NSLog(@"has not 1");
+//    
+//    if ( [cache hasCacheForKey:@"2"] ) NSLog(@"has 2");
+//    else NSLog(@"has not 2");
+//    
+//    if ( [cache hasCacheForKey:@"3"] ) NSLog(@"has 3");
+//    else NSLog(@"has not 3");
+//    
+//  } else if ( tag == 3 ) {
+//    
+//    NSData *data1 = [cache dataForKey:@"1"];
+//    NSData *data2 = [cache dataForKey:@"2"];
+//    NSData *data3 = [cache dataForKey:@"3"];
+//    
+//    NSLog(@"%d %d %d", [data1 length], [data2 length], [data3 length]);
+//    
+//  } else if ( tag == 4 ) {
+//    
+//    NSLog(@"%d", [cache cacheSize]);
+//    
+//    [cache cleanUp];
+//    [cache synchronize];
+//  }
   
 //  int tag = [sender tag];
 //  
@@ -204,12 +216,12 @@
   _keys = [[NSMutableArray alloc] init];
   
   _datas = [[NSMutableArray alloc] init];
-  for ( int i=0; i<10; ++i ) {
-    NSString *name = [[NSString alloc] initWithFormat:@"test%d.dt", i];
-    NSString *path = TKPathForBundleResource(nil, name);
-    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-    [_datas addObject:data];
-  }
+//  for ( int i=0; i<10; ++i ) {
+//    NSString *name = [[NSString alloc] initWithFormat:@"test%d.dt", i];
+//    NSString *path = TKPathForBundleResource(nil, name);
+//    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+//    [_datas addObject:data];
+//  }
 }
 
 @end

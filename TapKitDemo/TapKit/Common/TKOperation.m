@@ -64,7 +64,9 @@
   if ( _notifyOnMainThread ) {
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-      _didStartBlock(self);
+      if ( _didStartBlock ) {
+        _didStartBlock(self);
+      }
       for ( id object in _observers ) {
         if ( [object respondsToSelector:@selector(operationDidStart:)] ) {
           [object operationDidStart:self];
@@ -74,7 +76,9 @@
     
   } else {
     
-    _didStartBlock(self);
+    if ( _didStartBlock ) {
+      _didStartBlock(self);
+    }
     for ( id object in _observers ) {
       if ( [object respondsToSelector:@selector(operationDidStart:)] ) {
         [object operationDidStart:self];
@@ -89,7 +93,9 @@
   if ( _notifyOnMainThread ) {
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-      _didUpdateBlock(self);
+      if ( _didUpdateBlock ) {
+        _didUpdateBlock(self);
+      }
       for ( id object in _observers ) {
         if ( [object respondsToSelector:@selector(operationDidUpdate:)] ) {
           [object operationDidUpdate:self];
@@ -99,7 +105,9 @@
     
   } else {
     
-    _didUpdateBlock(self);
+    if ( _didUpdateBlock ) {
+      _didUpdateBlock(self);
+    }
     for ( id object in _observers ) {
       if ( [object respondsToSelector:@selector(operationDidUpdate:)] ) {
         [object operationDidUpdate:self];
@@ -114,7 +122,9 @@
   if ( _notifyOnMainThread ) {
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-      _didFailBlock(self);
+      if ( _didFailBlock ) {
+        _didFailBlock(self);
+      }
       for ( id object in _observers ) {
         if ( [object respondsToSelector:@selector(operationDidFail:)] ) {
           [object operationDidFail:self];
@@ -124,7 +134,9 @@
     
   } else {
     
-    _didFailBlock(self);
+    if ( _didFailBlock ) {
+      _didFailBlock(self);
+    }
     for ( id object in _observers ) {
       if ( [object respondsToSelector:@selector(operationDidFail:)] ) {
         [object operationDidFail:self];
@@ -139,7 +151,9 @@
   if ( _notifyOnMainThread ) {
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-      _didFinishBlock(self);
+      if ( _didFinishBlock ) {
+        _didFinishBlock(self);
+      }
       for ( id object in _observers ) {
         if ( [object respondsToSelector:@selector(operationDidFinish:)] ) {
           [object operationDidFinish:self];
@@ -148,12 +162,16 @@
     });
     
   } else {
-    _didFinishBlock(self);
+    
+    if ( _didFinishBlock ) {
+      _didFinishBlock(self);
+    }
     for ( id object in _observers ) {
       if ( [object respondsToSelector:@selector(operationDidFinish:)] ) {
         [object operationDidFinish:self];
       }
     }
+    
   }
 }
 
