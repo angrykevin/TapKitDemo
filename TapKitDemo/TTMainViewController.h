@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TTMainViewController : UIViewController {
-  NSLock *_lock;
-  NSMutableArray *_keys;
-  NSMutableArray *_datas;
+  NSArray *_urls;
+  NSMutableArray *_connections;
 }
 
 @end

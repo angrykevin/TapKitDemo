@@ -151,6 +151,10 @@
   return self;
 }
 
+- (void)dealloc
+{
+  TKPRINT(@"dealloc: %@", _address);
+}
 
 
 #pragma mark - Launch request
@@ -371,7 +375,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = 0;
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
-  TKPRINT(@"%d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  //TKPRINT(@"%d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -388,7 +392,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = [data length];
   _totalBytesRead += _bytesRead;
   //_totalBytesExpectedToRead = 0;
-  TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -400,13 +404,13 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _bytesWritten = bytesWritten;
   _totalBytesWritten = totalBytesWritten;
   _totalBytesExpectedToWrite = totalBytesExpectedToWrite;
-  TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
+  //TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
   [self notifyObserversOperationDidUpdate];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  TKPRINTMETHOD();
+  //TKPRINTMETHOD();
   
   [_responseFileHandle closeFile];
   _responseFileHandle = nil;

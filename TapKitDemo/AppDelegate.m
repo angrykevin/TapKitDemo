@@ -15,38 +15,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
-//  NSData *dt1 = [[NSData alloc] initWithContentsOfFile:TKPathForBundleResource(nil, @"aaa.jpg")];
-//  
-//  NSDictionary *dict1 = @{ @"filename": @"aaa.jpg",
-//                           @"data": dt1
-//                           };
-//  
-//  NSDictionary *dict = @{ @"key1": @"value1",
-//                          @"dt1": dict1
-//                          };
-  
-  
-//  connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
-//    TKPRINT(@"did start");
-//  };
-//
-//  connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-//    TKPRINT(@"did update");
-//  };
-//  
-//  connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
-//    TKPRINT(@"did fail");
-//  };
-//  
-//  connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
-//    TKPRINT(@"did finish");
-//  };
-  
-  
-  
-  
-  
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   _window.rootViewController = [[TTMainViewController alloc] init];
