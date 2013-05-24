@@ -16,6 +16,7 @@
 		BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */; };
 		BC1B949217296DBA005C10D3 /* TKCoreCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */; };
 		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
+		BC1BD3F3174F1D4C00998EFF /* TKURLImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1BD3F2174F1D4B00998EFF /* TKURLImageManager.m */; };
 		BC1EB6AA174CAF62009B5D76 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */; };
 		BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DFBBD174280AD0075E918 /* TKCache.m */; };
 		BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */; };
@@ -68,6 +69,8 @@
 		BC1B949117296DB9005C10D3 /* TKCoreCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreCompatibility.m; sourceTree = "<group>"; };
 		BC1B949317296F3C005C10D3 /* TKNAIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNAIManager.h; sourceTree = "<group>"; };
 		BC1B949417296F3C005C10D3 /* TKNAIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNAIManager.m; sourceTree = "<group>"; };
+		BC1BD3F1174F1D4B00998EFF /* TKURLImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLImageManager.h; sourceTree = "<group>"; };
+		BC1BD3F2174F1D4B00998EFF /* TKURLImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKURLImageManager.m; sourceTree = "<group>"; };
 		BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BC4DFBBC174280AD0075E918 /* TKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCache.h; sourceTree = "<group>"; };
 		BC4DFBBD174280AD0075E918 /* TKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCache.m; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				BC1B949417296F3C005C10D3 /* TKNAIManager.m */,
 				BC9C2E05174B5E05003829C9 /* TKURLConnectionOperation.h */,
 				BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */,
+				BC1BD3F1174F1D4B00998EFF /* TKURLImageManager.h */,
+				BC1BD3F2174F1D4B00998EFF /* TKURLImageManager.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */,
 				BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */,
 				BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */,
+				BC1BD3F3174F1D4C00998EFF /* TKURLImageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

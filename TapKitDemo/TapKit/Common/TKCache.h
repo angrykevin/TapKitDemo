@@ -23,7 +23,7 @@
 /// Singleton
 ///-------------------------------
 
-+ (id)sharedObject;
++ (TKCache *)sharedObject;
 
 
 ///-------------------------------

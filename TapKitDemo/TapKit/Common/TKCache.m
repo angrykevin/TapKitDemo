@@ -51,7 +51,7 @@
 
 #pragma mark - Singleton
 
-+ (id)sharedObject
++ (TKCache *)sharedObject
 {
   static TKCache *cache = nil;
   if ( cache == nil ) {

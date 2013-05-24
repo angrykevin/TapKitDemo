@@ -8,3 +8,4 @@
 
 #import "TKNAIManager.h"
 #import "TKURLConnectionOperation.h"
+#import "TKURLImageManager.h"
