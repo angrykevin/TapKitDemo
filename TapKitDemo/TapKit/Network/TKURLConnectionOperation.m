@@ -151,10 +151,6 @@
   return self;
 }
 
-- (void)dealloc
-{
-  TKPRINT(@"dealloc: %@", _address);
-}
 
 
 #pragma mark - Launch request
@@ -249,7 +245,7 @@ forRequestHeader:@"Content-Type"];
   [body appendData:suffixData];
   
   _body = body;
-  TKPRINT(@"body length: %d", [_body length]);
+  TKPRINT(@"BODY: %d", [_body length]);
 }
 
 
@@ -375,7 +371,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = 0;
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
-  //TKPRINT(@"%d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -410,8 +406,6 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  //TKPRINTMETHOD();
-  
   [_responseFileHandle closeFile];
   _responseFileHandle = nil;
   
