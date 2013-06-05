@@ -29,7 +29,7 @@
     
     _items = [[NSMutableArray alloc] init];
     
-    NSString *path = TKPathForDocumentsResource(@"Caches/profile.dt");
+    NSString *path = TKPathForDocumentsResource(@"Caches/CacheProfile.dt");
     NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
     for ( TKCacheItem *item in items ) {
@@ -244,7 +244,7 @@
   [_lock lock];
   
   NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_items];
-  NSString *path = TKPathForDocumentsResource(@"Caches/profile.dt");
+  NSString *path = TKPathForDocumentsResource(@"Caches/CacheProfile.dt");
   [data writeToFile:path atomically:YES];
   
   [_lock unlock];
