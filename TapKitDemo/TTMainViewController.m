@@ -14,38 +14,63 @@
 {
   if ( [sender tag] == 1 ) {
     
-    TKURLConnectionOperation *connection = nil;
+    //TKURLConnectionOperation *connection = nil;
     
-    for ( int i=0; i<[_urls count]; ++i ) {
-      connection = [[TKURLConnectionOperation alloc] initWithAddress:_urls[i]
-                                                                                   cachePolicy:0
-                                                                               timeoutInterval:0
-                                                                                        method:@"GET"];
-      //[_connections addObject:connection];
-      
-      connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did start: %@", conn.address);
-      };
-      
-      connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did fail: %@", conn.address);
-      };
-      
-      connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did update: %@", conn.address);
-      };
-      
-      connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did finish: %@", conn.address);
-      };
-      
-      [connection startAsynchronous];
-      
-    }
+//    for ( int i=0; i<[_urls count]; ++i ) {
+//      TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:_urls[i]
+//                                                         cachePolicy:0
+//                                                     timeoutInterval:0
+//                                                              method:@"GET"];
+//      //[_connections addObject:connection];
+//      
+//      connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
+//        TKPRINT(@"did start: %@", conn.address);
+//      };
+//      
+//      connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
+//        TKPRINT(@"did fail: %@", conn.address);
+//      };
+//      
+//      connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
+//        TKPRINT(@"did update: %@", conn.address);
+//      };
+//      
+//      connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
+//        TKPRINT(@"did finish: %@", conn.address);
+//      };
+//      
+//      [connection startAsynchronous];
+//      
+//    }
   } else if ( [sender tag] == 2 ) {
-    for ( TKURLConnectionOperation *connection in _connections ) {
-      [connection cancel];
-    }
+//    for ( TKURLConnectionOperation *connection in _connections ) {
+//      [connection cancel];
+//    }
+  } else if ( [sender tag] == 3 ) {
+    
+    TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:@"http://farm9.staticflickr.com/8394/8956206275_08c3694959_o_d.jpg"
+                                                                                 cachePolicy:0
+                                                                             timeoutInterval:0
+                                                                                      method:@"GET"];
+    
+    connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
+      TKPRINT(@"did start: %@", conn.address);
+    };
+    
+    connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
+      TKPRINT(@"did fail: %@", conn.address);
+    };
+    
+    connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
+      //TKPRINT(@"did update: %@", conn.address);
+    };
+    
+    connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
+      TKPRINT(@"did finish: %@", conn.address);
+    };
+    
+    [connection startAsynchronous];
+    
   }
 }
 

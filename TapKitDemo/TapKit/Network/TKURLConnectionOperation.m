@@ -116,12 +116,57 @@
 {
   self = [super init];
   if ( self ) {
+    
     _address = address;
     _cachePolicy = (cachePolicy == 0) ? NSURLRequestUseProtocolCachePolicy : cachePolicy;
     _timeoutInterval = (timeoutInterval > 0) ? timeoutInterval : 10.0;
     _method = ([method length] > 0) ? method : @"GET";
     _headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
+    
+    //_request = nil;
+    
+    //_response = nil;
+    //_responseData = nil;
+    //_responseFilePath = nil;
+    //_responseFileHandle = nil;
+    
+    _shouldUpdateNetworkActivityIndicator = YES;
+    
+    _runLoopMode = NSRunLoopCommonModes;
+    
+    //_connection = nil;
+    
+    //_bytesWritten = 0;
+    //_totalBytesWritten = 0;
+    //_totalBytesExpectedToWrite = 0;
+    
+    //_bytesRead = 0;
+    //_totalBytesRead = 0;
+    //_totalBytesExpectedToRead = 0;
+    
+    
+    _step = TKOperationStepReady;
+    [self willChangeValueForKey:@"isReady"];
+    _ready = YES;
+    [self didChangeValueForKey:@"isReady"];
+  }
+  return self;
+}
+
+- (id)initWithRequest:(NSURLRequest *)request
+{
+  self = [super init];
+  if ( self ) {
+    
+    //_address = nil;
+    //_cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    //_timeoutInterval = 10.0;
+    //_method = @"GET";
+    //_headers = [[NSMutableDictionary alloc] init];
+    //_body = nil;
+    
+    _request = request;
     
     //_response = nil;
     //_responseData = nil;
@@ -340,7 +385,7 @@ forRequestHeader:@"Content-Type"];
       [self didChangeValueForKey:@"isExecuting"];
       
       
-      NSURLRequest *request = [self buildRequest];
+      NSURLRequest *request = (_request) ? _request : [self buildRequest];
       
       _connection = [[NSURLConnection alloc] initWithRequest:request
                                                     delegate:self
@@ -371,7 +416,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = 0;
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
-  //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -388,7 +433,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = [data length];
   _totalBytesRead += _bytesRead;
   //_totalBytesExpectedToRead = 0;
-  //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -400,7 +445,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _bytesWritten = bytesWritten;
   _totalBytesWritten = totalBytesWritten;
   _totalBytesExpectedToWrite = totalBytesExpectedToWrite;
-  //TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
+  TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
   [self notifyObserversOperationDidUpdate];
 }
 

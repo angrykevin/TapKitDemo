@@ -20,6 +20,8 @@
   NSDictionary *_headers;
   NSData *_body;
   
+  NSURLRequest *_request;
+  
   NSURLResponse *_response;
   NSData *_responseData;
   NSString *_responseFilePath;
@@ -46,6 +48,8 @@
 @property (nonatomic, readonly, copy) NSString *method;
 @property (nonatomic, readonly, strong) NSDictionary *headers;
 @property (nonatomic, readonly, strong) NSData *body;
+
+@property (nonatomic, readonly, strong) NSURLRequest *request;
 
 @property (nonatomic, readonly, strong) NSURLResponse *response;
 @property (nonatomic, readonly, strong) NSData *responseData;
@@ -75,6 +79,8 @@
           cachePolicy:(NSURLRequestCachePolicy)cachePolicy
       timeoutInterval:(NSTimeInterval)timeoutInterval
                method:(NSString *)method;
+
+- (id)initWithRequest:(NSURLRequest *)request;
 
 
 ///-------------------------------
