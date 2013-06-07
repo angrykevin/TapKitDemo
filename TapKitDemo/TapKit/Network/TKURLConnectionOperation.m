@@ -226,6 +226,7 @@
 }
 
 
+
 #pragma mark - Request body
 
 - (void)setRequestBody:(NSData *)body
@@ -340,9 +341,7 @@ forRequestHeader:@"Content-Type"];
     [[NSFileManager defaultManager] removeItemAtPath:_responseFilePath error:NULL];
     
     [self notifyObserversOperationDidFail];
-    
     [self transferStatusFromExecutingToFinished];
-    
     [self stopUsingNetwork];
   }
   
@@ -393,6 +392,7 @@ forRequestHeader:@"Content-Type"];
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
   //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -410,6 +410,7 @@ forRequestHeader:@"Content-Type"];
   _totalBytesRead += _bytesRead;
   //_totalBytesExpectedToRead = 0;
   //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -422,6 +423,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _totalBytesWritten = totalBytesWritten;
   _totalBytesExpectedToWrite = totalBytesExpectedToWrite;
   //TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
+  
   [self notifyObserversOperationDidUpdate];
 }
 
