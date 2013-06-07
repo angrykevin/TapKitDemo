@@ -17,9 +17,10 @@
   NSString *_path;
   
   sqlite3 *_handle;
-	BOOL _opened;
   
-	NSLock *_lock;
+  BOOL _opened;
+  
+  NSLock *_lock;
 }
 
 @property (nonatomic, copy) NSString *path;

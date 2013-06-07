@@ -70,6 +70,7 @@
     _path = nil;
     
     _handle = NULL;
+    
     _opened = NO;
     
     _lock = [[NSLock alloc] init];
