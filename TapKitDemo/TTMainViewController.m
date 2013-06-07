@@ -16,42 +16,50 @@
     
     //TKURLConnectionOperation *connection = nil;
     
-//    for ( int i=0; i<[_urls count]; ++i ) {
-//      TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:_urls[i]
-//                                                         cachePolicy:0
-//                                                     timeoutInterval:0
-//                                                              method:@"GET"];
-//      //[_connections addObject:connection];
-//      
-//      connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
-//        TKPRINT(@"did start: %@", conn.address);
-//      };
-//      
-//      connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
-//        TKPRINT(@"did fail: %@", conn.address);
-//      };
-//      
-//      connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-//        TKPRINT(@"did update: %@", conn.address);
-//      };
-//      
-//      connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
-//        TKPRINT(@"did finish: %@", conn.address);
-//      };
-//      
-//      [connection startAsynchronous];
-//      
-//    }
+    for ( int i=0; i<[_urls count]; ++i ) {
+      
+      NSString *url = _urls[ i ];
+      TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:url
+                                                         cachePolicy:0
+                                                     timeoutInterval:0
+                                                              method:@"GET"];
+      [_connections addObject:connection];
+      
+      connection.responseFilePath = TKPathForDocumentsResource([url MD5HashString]);
+      
+      connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
+        TKPRINT(@"did start: %@", conn.address);
+      };
+      
+      connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
+        TKPRINT(@"did fail: %@", conn.address);
+      };
+      
+      connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
+        TKPRINT(@"did update: %@", conn.address);
+      };
+      
+      connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
+        TKPRINT(@"did finish: %@", conn.address);
+      };
+      
+      [connection startAsynchronous];
+      
+    }
   } else if ( [sender tag] == 2 ) {
 //    for ( TKURLConnectionOperation *connection in _connections ) {
 //      [connection cancel];
 //    }
   } else if ( [sender tag] == 3 ) {
     
-    TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:@"http://farm9.staticflickr.com/8394/8956206275_08c3694959_o_d.jpg"
+    NSString *url = @"http://farm9.staticflickr.com/8394/8956206275_08c3694959_o_d.jpg";
+    
+    TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:url
                                                                                  cachePolicy:0
                                                                              timeoutInterval:0
                                                                                       method:@"GET"];
+    
+    connection.responseFilePath = TKPathForDocumentsResource([url MD5HashString]);
     
     connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
       TKPRINT(@"did start: %@", conn.address);
@@ -79,17 +87,24 @@
   [super viewDidLoad];
   
   _urls = @[
-//            @"http://www.baidu.com/",
-//            @"http://www.facebook.com/",
+            @"http://farm9.staticflickr.com/8548/8960587666_53557066f9_b.jpg",
+            
+            @"http://www.baidu.com/",
+            @"http://www.facebook.com/",
             @"http://www.google.com.hk/",
-//            @"http://www.twitter.com/",
-//            @"http://www.yahoo.com/",
-//            
-//            @"",
-//            @"http://www.youtube.com/",
-//            @"http://www.blahblahblahblahblah.com/",
-//            @"http://www..com/",
+            @"http://www.twitter.com/",
+            @"http://www.yahoo.com/",
+            
+            @"http://farm9.staticflickr.com/8557/8961935971_3f53b3c5a6_k.jpg",
+            @"http://farm3.staticflickr.com/2812/8958944922_bc49237783_o.jpg", 
+            
+            @"",
+            @"http://www.youtube.com/",
+            @"http://www.blahblahblahblahblah.com/",
+            @"http://www..com/",
             @"http://www.qq.com/"
+            
+            @"http://farm4.staticflickr.com/3734/8961490761_2f9f0e3330_k.jpg"
             ];
   
   _connections = [[NSMutableArray alloc] init];

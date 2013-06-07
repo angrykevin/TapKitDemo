@@ -23,9 +23,7 @@
     return;
   }
   
-  [self willChangeValueForKey:@"isCancelled"];
-  _cancelled = YES;
-  [self didChangeValueForKey:@"isCancelled"];
+  [self transferStatusToCancelled];
   
   [super cancel];
 }
@@ -53,6 +51,51 @@
 - (BOOL)isConcurrent
 {
   return YES;
+}
+
+
+
+#pragma mark - Status transfer
+
+- (void)transferStatusToReady
+{
+  [self willChangeValueForKey:@"isReady"];
+  _ready = YES;
+  [self didChangeValueForKey:@"isReady"];
+}
+
+- (void)transferStatusToCancelled
+{
+  [self willChangeValueForKey:@"isCancelled"];
+  _cancelled = YES;
+  [self didChangeValueForKey:@"isCancelled"];
+}
+
+- (void)transferStatusToFinished
+{
+  [self willChangeValueForKey:@"isFinished"];
+  _finished = YES;
+  [self didChangeValueForKey:@"isFinished"];
+}
+
+- (void)transferStatusFromReadyToExecuting
+{
+  [self willChangeValueForKey:@"isExecuting"];
+  [self willChangeValueForKey:@"isReady"];
+  _ready = NO;
+  _executing = YES;
+  [self didChangeValueForKey:@"isReady"];
+  [self didChangeValueForKey:@"isExecuting"];
+}
+
+- (void)transferStatusFromExecutingToFinished
+{
+  [self willChangeValueForKey:@"isFinished"];
+  [self willChangeValueForKey:@"isExecuting"];
+  _executing = NO;
+  _finished = YES;
+  [self didChangeValueForKey:@"isExecuting"];
+  [self didChangeValueForKey:@"isFinished"];
 }
 
 

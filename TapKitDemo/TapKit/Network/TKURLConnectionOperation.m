@@ -146,10 +146,7 @@
     //_totalBytesExpectedToRead = 0;
     
     
-    _step = TKOperationStepReady;
-    [self willChangeValueForKey:@"isReady"];
-    _ready = YES;
-    [self didChangeValueForKey:@"isReady"];
+    [self transferStatusToReady];
   }
   return self;
 }
@@ -187,11 +184,7 @@
     //_totalBytesRead = 0;
     //_totalBytesExpectedToRead = 0;
     
-    
-    _step = TKOperationStepReady;
-    [self willChangeValueForKey:@"isReady"];
-    _ready = YES;
-    [self didChangeValueForKey:@"isReady"];
+    [self transferStatusToReady];
   }
   return self;
 }
@@ -300,9 +293,7 @@ forRequestHeader:@"Content-Type"];
 - (void)start
 {
   if ( [self isCancelled] ) {
-    [self willChangeValueForKey:@"isFinished"];
-    _finished = YES;
-    [self didChangeValueForKey:@"isFinished"];
+    [self transferStatusToFinished];
     return;
   }
   
@@ -350,13 +341,7 @@ forRequestHeader:@"Content-Type"];
     
     [self notifyObserversOperationDidFail];
     
-    
-    [self willChangeValueForKey:@"isFinished"];
-    [self willChangeValueForKey:@"isExecuting"];
-    _executing = NO;
-    _finished = YES;
-    [self didChangeValueForKey:@"isExecuting"];
-    [self didChangeValueForKey:@"isFinished"];
+    [self transferStatusFromExecutingToFinished];
     
     [self stopUsingNetwork];
   }
@@ -372,17 +357,8 @@ forRequestHeader:@"Content-Type"];
     if ( ![self isCancelled] ) {
       
       [self startUsingNetwork];
-      
       [self notifyObserversOperationDidStart];
-      
-      
-      _step = TKOperationStepExecuting;
-      [self willChangeValueForKey:@"isExecuting"];
-      [self willChangeValueForKey:@"isReady"];
-      _ready = NO;
-      _executing = YES;
-      [self didChangeValueForKey:@"isReady"];
-      [self didChangeValueForKey:@"isExecuting"];
+      [self transferStatusFromReadyToExecuting];
       
       
       NSURLRequest *request = (_request) ? _request : [self buildRequest];
@@ -416,7 +392,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = 0;
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
-  TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -433,7 +409,7 @@ forRequestHeader:@"Content-Type"];
   _bytesRead = [data length];
   _totalBytesRead += _bytesRead;
   //_totalBytesExpectedToRead = 0;
-  TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
+  //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -445,7 +421,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _bytesWritten = bytesWritten;
   _totalBytesWritten = totalBytesWritten;
   _totalBytesExpectedToWrite = totalBytesExpectedToWrite;
-  TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
+  //TKPRINT(@"WRITE: %d %d/%d", _bytesWritten, _totalBytesWritten, _totalBytesExpectedToWrite);
   [self notifyObserversOperationDidUpdate];
 }
 
@@ -457,16 +433,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _connection = nil;
   
   [self notifyObserversOperationDidFinish];
-  
-  
-  _step = TKOperationStepFinished;
-  [self willChangeValueForKey:@"isFinished"];
-  [self willChangeValueForKey:@"isExecuting"];
-  _executing = NO;
-  _finished = YES;
-  [self didChangeValueForKey:@"isExecuting"];
-  [self didChangeValueForKey:@"isFinished"];
-  
+  [self transferStatusFromExecutingToFinished];
   [self stopUsingNetwork];
 }
 
@@ -493,16 +460,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
   _connection = nil;
   
   [self notifyObserversOperationDidFail];
-  
-  
-  _step = TKOperationStepFinished;
-  [self willChangeValueForKey:@"isFinished"];
-  [self willChangeValueForKey:@"isExecuting"];
-  _executing = NO;
-  _finished = YES;
-  [self didChangeValueForKey:@"isExecuting"];
-  [self didChangeValueForKey:@"isFinished"];
-  
+  [self transferStatusFromExecutingToFinished];
   [self stopUsingNetwork];
 }
 

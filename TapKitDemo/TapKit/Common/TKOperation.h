@@ -11,19 +11,12 @@
 #import "Additions/Additions.h"
 #import "TKObserverProtocol.h"
 
-typedef enum {
-  TKOperationStepReady = 1,
-  TKOperationStepExecuting,
-  TKOperationStepFinished
-} TKOperationStep;
-
 
 typedef void(^TKOperationBlock)(id operation);
 
 
 @interface TKOperation : NSOperation<TKObserverProtocol> {
   NSError *_error;
-  TKOperationStep _step;
   
   BOOL _notifyOnMainThread;
   
@@ -41,7 +34,6 @@ typedef void(^TKOperationBlock)(id operation);
 }
 
 @property (nonatomic, strong) NSError *error;
-@property (nonatomic, assign) TKOperationStep step;
 
 @property (nonatomic, assign) BOOL notifyOnMainThread;
 
@@ -49,6 +41,17 @@ typedef void(^TKOperationBlock)(id operation);
 @property (nonatomic, copy) TKOperationBlock didUpdateBlock;
 @property (nonatomic, copy) TKOperationBlock didFailBlock;
 @property (nonatomic, copy) TKOperationBlock didFinishBlock;
+
+
+///-------------------------------
+/// Status transfer
+///-------------------------------
+
+- (void)transferStatusToReady;
+- (void)transferStatusToCancelled;
+- (void)transferStatusToFinished;
+- (void)transferStatusFromReadyToExecuting;
+- (void)transferStatusFromExecutingToFinished;
 
 
 ///-------------------------------
