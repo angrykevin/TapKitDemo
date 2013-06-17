@@ -73,22 +73,24 @@
 + (NSOperationQueue *)operationQueue
 {
   static NSOperationQueue *queue = nil;
-  if ( queue == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:4];
-  }
+  });
   return queue;
 }
 
 + (NSThread *)operationThread
 {
   static NSThread *thread = nil;
-  if ( thread == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     thread = [[NSThread alloc] initWithTarget:self
                                      selector:@selector(threadBody:)
                                        object:nil];
     [thread start];
-  }
+  });
   return thread;
 }
 
@@ -310,7 +312,7 @@ forRequestHeader:@"Content-Type"];
     [self performSelector:@selector(main)
                  onThread:[[self class] operationThread]
                withObject:nil
-            waitUntilDone:YES
+            waitUntilDone:NO
                     modes:@[ _runLoopMode ]];
   }
 }
@@ -367,6 +369,7 @@ forRequestHeader:@"Content-Type"];
                                             startImmediately:NO];
       [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:_runLoopMode];
       [_connection start];
+      
     }
     
   }

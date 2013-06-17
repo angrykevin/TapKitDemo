@@ -37,9 +37,10 @@
 + (TKSettings *)sharedObject
 {
   static TKSettings *settings = nil;
-  if ( settings == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     settings = [[self alloc] init];
-  }
+  });
   return settings;
 }
 

@@ -331,14 +331,15 @@
 {
 #ifdef DEBUG
   static NSArray *colors = nil;
-  if ( colors == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     colors = [[NSArray alloc] initWithObjects:
               [UIColor redColor],
               [UIColor greenColor],
               [UIColor blueColor],
               [UIColor brownColor],
               [UIColor purpleColor], nil];
-  }
+  });
   
   UIColor *color = [colors objectAtIndex:(level%5)];
   view.layer.borderColor = color.CGColor;

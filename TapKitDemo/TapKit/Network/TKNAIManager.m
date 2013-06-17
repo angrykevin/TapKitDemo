@@ -34,9 +34,10 @@
 + (TKNAIManager *)sharedObject
 {
   static TKNAIManager *NAIManager = nil;
-  if ( NAIManager == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     NAIManager = [[self alloc] init];
-  }
+  });
   return NAIManager;
 }
 

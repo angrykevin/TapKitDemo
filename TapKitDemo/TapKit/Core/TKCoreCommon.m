@@ -74,36 +74,39 @@ NSString *TKPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 NSString *TKPathForDocumentsResource(NSString *relativePath)
 {
   static NSString *documentsPath = nil;
-  if ( documentsPath == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask,
                                                          YES);
     documentsPath = [paths objectAtIndex:0];
-  }
+  });
   return [documentsPath stringByAppendingPathComponent:relativePath];
 }
 
 NSString *TKPathForLibraryResource(NSString *relativePath)
 {
   static NSString *libraryPath = nil;
-  if ( libraryPath == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
                                                          NSUserDomainMask,
                                                          YES);
     libraryPath = [paths objectAtIndex:0];
-  }
+  });
   return [libraryPath stringByAppendingPathComponent:relativePath];
 }
 
 NSString *TKPathForCachesResource(NSString *relativePath)
 {
   static NSString *cachesPath = nil;
-  if ( cachesPath == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,
                                                          NSUserDomainMask,
                                                          YES);
     cachesPath = [paths objectAtIndex:0];
-  }
+  });
   return [cachesPath stringByAppendingPathComponent:relativePath];
 }
 
@@ -185,7 +188,8 @@ BOOL TKIsSetWithItems(id object)
 NSDateFormatter *TKInternetDateFormatter()
 {
   static NSDateFormatter *internetDateFormatter = nil;
-  if ( internetDateFormatter == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     internetDateFormatter = [[NSDateFormatter alloc] init];
     
     NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
@@ -194,7 +198,7 @@ NSDateFormatter *TKInternetDateFormatter()
     [internetDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
     
     [internetDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-  }
+  });
   return internetDateFormatter;
 }
 

@@ -85,9 +85,10 @@
 + (TKDatabase *)sharedObject
 {
   static TKDatabase *database = nil;
-  if ( database == nil ) {
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
     database = [[self alloc] init];
-  }
+  });
   return database;
 }
 
