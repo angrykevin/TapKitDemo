@@ -1,6 +1,6 @@
 //
 //  TKURLConnectionOperation.m
-//  TapKitDemo
+//  TapKit
 //
 //  Created by Wu Kevin on 5/21/13.
 //  Copyright (c) 2013 Telligenty. All rights reserved.

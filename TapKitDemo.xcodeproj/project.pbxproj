@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC010CFF174F06CE00ADDFF5 /* aaa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC010CFE174F06CD00ADDFF5 /* aaa.jpg */; };
 		BC04C7EB172D66E900F9EB2A /* TKOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7EA172D66E900F9EB2A /* TKOperation.m */; };
 		BC04C7EE172D770600F9EB2A /* UIButtonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7ED172D770500F9EB2A /* UIButtonAdditions.m */; };
 		BC04C7F2172D82FB00F9EB2A /* TKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7F1172D82FB00F9EB2A /* TKSettings.m */; };
@@ -44,7 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BC010CFE174F06CD00ADDFF5 /* aaa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aaa.jpg; sourceTree = "<group>"; };
 		BC04C7E8172D64F200F9EB2A /* TKObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKObserverProtocol.h; sourceTree = "<group>"; };
 		BC04C7E9172D66E900F9EB2A /* TKOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOperation.h; sourceTree = "<group>"; };
 		BC04C7EA172D66E900F9EB2A /* TKOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOperation.m; sourceTree = "<group>"; };
@@ -236,14 +234,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		BC768DFC1745F5CE00F23945 /* dt */ = {
-			isa = PBXGroup;
-			children = (
-				BC010CFE174F06CD00ADDFF5 /* aaa.jpg */,
-			);
-			name = dt;
-			sourceTree = "<group>";
-		};
 		BCC6CEC817171466000A99CB = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +271,6 @@
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
 				BC768DE31745F48000F23945 /* TTMainViewController.h */,
 				BC768DE41745F48000F23945 /* TTMainViewController.m */,
-				BC768DFC1745F5CE00F23945 /* dt */,
 				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
 			);
@@ -376,7 +365,6 @@
 				BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */,
 				BCC6CEF6171714D5000A99CB /* Default.png in Resources */,
 				BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */,
-				BC010CFF174F06CE00ADDFF5 /* aaa.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
