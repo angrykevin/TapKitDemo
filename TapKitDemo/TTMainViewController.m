@@ -14,12 +14,12 @@
 {
   if ( [sender tag] == 1 ) {
     
-    //TKURLConnectionOperation *connection = nil;
+    TKURLConnectionOperation *connection = nil;
     
     for ( int i=0; i<[_urls count]; ++i ) {
       
       NSString *url = _urls[ i ];
-      TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:url
+      connection = [[TKURLConnectionOperation alloc] initWithAddress:url
                                                          cachePolicy:0
                                                      timeoutInterval:0
                                                               method:@"GET"];
@@ -35,9 +35,9 @@
         TKPRINT(@"did fail: %@", conn.address);
       };
       
-      connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did update: %@", conn.address);
-      };
+      //connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
+      //  TKPRINT(@"did update: %@", conn.address);
+      //};
       
       connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
         TKPRINT(@"did finish: %@", conn.address);
@@ -52,7 +52,7 @@
 //    }
   } else if ( [sender tag] == 3 ) {
     
-    NSString *url = @"http://farm9.staticflickr.com/8394/8956206275_08c3694959_o_d.jpg";
+    NSString *url = @"http://farm3.staticflickr.com/2877/9055426841_998caf11c5_b.jpg";
     
     TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:url
                                                                                  cachePolicy:0
