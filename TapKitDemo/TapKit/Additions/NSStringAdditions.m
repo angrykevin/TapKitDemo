@@ -179,12 +179,10 @@
 
 - (NSString *)MIMEType
 {
-  // Get the UTI from the file's extension:
   CFStringRef UTIType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
                                                            (__bridge CFStringRef)[self pathExtension],
                                                            NULL);
   
-  // The UTI can be converted to a mime type:
   NSString *MIMEType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(UTIType, kUTTagClassMIMEType);
   if ( UTIType ) {
     CFRelease(UTIType);
