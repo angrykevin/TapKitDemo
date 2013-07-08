@@ -418,9 +418,9 @@ forRequestHeader:@"Content-Type"];
 }
 
 - (void)connection:(NSURLConnection *)connection
-   didSendBodyData:(NSInteger)bytesWritten
- totalBytesWritten:(NSInteger)totalBytesWritten
-totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+    didSendBodyData:(NSInteger)bytesWritten
+    totalBytesWritten:(NSInteger)totalBytesWritten
+    totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
   _bytesWritten = bytesWritten;
   _totalBytesWritten = totalBytesWritten;
