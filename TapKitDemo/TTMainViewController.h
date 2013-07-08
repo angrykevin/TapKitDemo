@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TTMainViewController : UIViewController {
-  NSArray *_urls;
-  NSMutableArray *_connections;
+    BOOL _trigger;
 }
 
 @end

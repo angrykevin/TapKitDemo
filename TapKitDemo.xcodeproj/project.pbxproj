@@ -19,6 +19,7 @@
 		BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DFBBD174280AD0075E918 /* TKCache.m */; };
 		BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */; };
 		BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC768DE41745F48000F23945 /* TTMainViewController.m */; };
+		BC859F341781315E00136775 /* TTObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BC859F331781315E00136775 /* TTObject.m */; };
 		BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */; };
 		BCC6CEE117171466000A99CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE017171466000A99CB /* main.m */; };
 		BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE417171466000A99CB /* AppDelegate.m */; };
@@ -72,6 +73,8 @@
 		BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BC768DE31745F48000F23945 /* TTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMainViewController.h; sourceTree = "<group>"; };
 		BC768DE41745F48000F23945 /* TTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMainViewController.m; sourceTree = "<group>"; };
+		BC859F321781315E00136775 /* TTObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTObject.h; sourceTree = "<group>"; };
+		BC859F331781315E00136775 /* TTObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTObject.m; sourceTree = "<group>"; };
 		BC9C2E05174B5E05003829C9 /* TKURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLConnectionOperation.h; sourceTree = "<group>"; };
 		BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKURLConnectionOperation.m; sourceTree = "<group>"; };
 		BCC6CED117171466000A99CB /* TapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +274,8 @@
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
 				BC768DE31745F48000F23945 /* TTMainViewController.h */,
 				BC768DE41745F48000F23945 /* TTMainViewController.m */,
+				BC859F321781315E00136775 /* TTObject.h */,
+				BC859F331781315E00136775 /* TTObject.m */,
 				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
 			);
@@ -400,6 +405,7 @@
 				BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */,
 				BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */,
 				BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */,
+				BC859F341781315E00136775 /* TTObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

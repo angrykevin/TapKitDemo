@@ -7,115 +7,68 @@
 //
 
 #import "TTMainViewController.h"
+#import "TTObject.h"
 
 @implementation TTMainViewController
 
-- (void)doit:(id)sender
+- (void)threadBody:(id)object
 {
-  if ( [sender tag] == 1 ) {
     
-    TKURLConnectionOperation *connection = nil;
-    
-    for ( int i=0; i<[_urls count]; ++i ) {
-      
-      NSString *url = _urls[ i ];
-      connection = [[TKURLConnectionOperation alloc] initWithAddress:url
-                                                         cachePolicy:0
-                                                     timeoutInterval:0
-                                                              method:@"GET"];
-      [_connections addObject:connection];
-      
-      connection.responseFilePath = TKPathForDocumentsResource([url MD5HashString]);
-      
-      connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did start: %@", conn.address);
-      };
-      
-      connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did fail: %@", conn.address);
-      };
-      
-      //connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-      //  TKPRINT(@"did update: %@", conn.address);
-      //};
-      
-      connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
-        TKPRINT(@"did finish: %@", conn.address);
-      };
-      
-      [connection startAsynchronous];
-      
+    @autoreleasepool {
+        int value = [object intValue];
+        NSLog(@"start: %d", value);
+        while ( 1 ) {
+            if ( _trigger ) {
+                TTObject *object = [TTObject sharedObject];
+                break;
+            }
+        }
+        NSLog(@"stop: %d", value);
     }
-  } else if ( [sender tag] == 2 ) {
-//    for ( TKURLConnectionOperation *connection in _connections ) {
-//      [connection cancel];
-//    }
-  } else if ( [sender tag] == 3 ) {
     
-    NSString *url = @"http://farm3.staticflickr.com/2877/9055426841_998caf11c5_b.jpg";
-    
-    TKURLConnectionOperation *connection = [[TKURLConnectionOperation alloc] initWithAddress:url
-                                                                                 cachePolicy:0
-                                                                             timeoutInterval:0
-                                                                                      method:@"GET"];
-    
-    connection.responseFilePath = TKPathForDocumentsResource([url MD5HashString]);
-    
-    connection.didStartBlock = ^(TKURLConnectionOperation *conn) {
-      TKPRINT(@"did start: %@", conn.address);
-    };
-    
-    connection.didFailBlock = ^(TKURLConnectionOperation *conn) {
-      TKPRINT(@"did fail: %@", conn.address);
-    };
-    
-    connection.didUpdateBlock = ^(TKURLConnectionOperation *conn) {
-      //TKPRINT(@"did update: %@", conn.address);
-    };
-    
-    connection.didFinishBlock = ^(TKURLConnectionOperation *conn) {
-      TKPRINT(@"did finish: %@", conn.address);
-    };
-    
-    [connection startAsynchronous];
-    
-  }
+}
+
+- (void)creat:(id)sender
+{
+    static BOOL did = NO;
+    if ( !did ) {
+        did = YES;
+        
+        for ( int i=0; i<100; ++i ) {
+            NSThread *thread = [[NSThread alloc] initWithTarget:self
+                                                       selector:@selector(threadBody:)
+                                                         object:[NSNumber numberWithInt:i+1]];
+            [thread start];
+        }
+        
+    }
+}
+
+- (void)launch:(id)sender
+{
+    static BOOL did = NO;
+    if ( !did ) {
+        did = YES;
+        
+        _trigger = YES;
+        
+    }
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
-  _urls = @[
-            @"http://farm9.staticflickr.com/8548/8960587666_53557066f9_b.jpg",
-            
-            @"http://www.baidu.com/",
-            @"http://www.facebook.com/",
-            @"http://www.google.com.hk/",
-            @"http://www.twitter.com/",
-            @"http://www.yahoo.com/",
-            
-            @"http://farm9.staticflickr.com/8557/8961935971_3f53b3c5a6_k.jpg",
-            @"http://farm3.staticflickr.com/2812/8958944922_bc49237783_o.jpg", 
-            
-            @"",
-            @"http://www.youtube.com/",
-            @"http://www.blahblahblahblahblah.com/",
-            @"http://www..com/",
-            @"http://www.qq.com/"
-            
-            @"http://farm4.staticflickr.com/3734/8961490761_2f9f0e3330_k.jpg"
-            ];
-  
-  _connections = [[NSMutableArray alloc] init];
-  
-  for ( int i=0; i<4; ++i ) {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.tag = i+1;
-    button.frame = CGRectMake(10, 10+i*(40+10), 300, 40);
-    [button addTarget:self action:@selector(doit:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(10, 10, 300, 40);
+    [button addTarget:self action:@selector(creat:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-  }
+    
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = CGRectMake(10, 60, 300, 40);
+    [button addTarget:self action:@selector(launch:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
 }
 
 @end
