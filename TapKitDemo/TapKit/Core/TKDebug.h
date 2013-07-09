@@ -32,3 +32,10 @@
 #else
 #define TKPRINTMETHOD() ((void)0)
 #endif // #ifdef DEBUG
+
+
+#ifdef DEBUG
+#define TKTESTVALUE(__value, __info) { id __result = (__value) ? @"YES" : @"NO"; NSLog(@"%s: %@ is %@", __PRETTY_FUNCTION__, __info, __result); }
+#else
+#define TKTESTVALUE(__value, __info) ((void)0)
+#endif // #ifdef DEBUG
