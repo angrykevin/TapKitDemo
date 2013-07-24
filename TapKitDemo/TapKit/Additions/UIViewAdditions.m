@@ -113,7 +113,7 @@
 
 - (UIImage *)imageRep
 {
-  UIGraphicsBeginImageContext(self.bounds.size);
+  UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0);
 	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
 	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
