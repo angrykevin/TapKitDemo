@@ -106,7 +106,7 @@
 {
   if ( _notifyOnMainThread ) {
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
       if ( _didStartBlock ) {
         _didStartBlock(self);
       }
@@ -135,7 +135,7 @@
 {
   if ( _notifyOnMainThread ) {
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
       if ( _didUpdateBlock ) {
         _didUpdateBlock(self);
       }
@@ -164,7 +164,7 @@
 {
   if ( _notifyOnMainThread ) {
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
       if ( _didFailBlock ) {
         _didFailBlock(self);
       }
@@ -193,7 +193,7 @@
 {
   if ( _notifyOnMainThread ) {
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
       if ( _didFinishBlock ) {
         _didFinishBlock(self);
       }

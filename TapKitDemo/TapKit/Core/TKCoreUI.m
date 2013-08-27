@@ -12,7 +12,7 @@
 
 #pragma mark - Autoresizing mask
 
-const NSUInteger TTViewAutoresizingKeepSize =
+const NSUInteger TKViewAutoresizingKeepSize =
                       UIViewAutoresizingFlexibleLeftMargin
                     | UIViewAutoresizingFlexibleTopMargin
                     | UIViewAutoresizingFlexibleRightMargin
@@ -20,7 +20,7 @@ const NSUInteger TTViewAutoresizingKeepSize =
                     | !UIViewAutoresizingFlexibleWidth
                     | !UIViewAutoresizingFlexibleHeight;
 
-const NSUInteger TTViewAutoresizingKeepMargin =
+const NSUInteger TKViewAutoresizingKeepMargin =
                       !UIViewAutoresizingFlexibleLeftMargin
                     | !UIViewAutoresizingFlexibleTopMargin
                     | !UIViewAutoresizingFlexibleRightMargin
