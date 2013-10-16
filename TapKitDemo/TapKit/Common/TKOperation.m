@@ -222,7 +222,7 @@
 
 #pragma mark - TKObserverProtocol
 
-- (NSMutableArray *)observerArray
+- (NSMutableArray *)observersArray
 {
   if ( _observers == nil ) {
     _observers = TKCreateWeakMutableArray();
@@ -232,17 +232,17 @@
 
 - (id)addObserver:(id)observer
 {
-  return [[self observerArray] addUnidenticalObjectIfNotNil:observer];
+  return [[self observersArray] addUnidenticalObjectIfNotNil:observer];
 }
 
 - (void)removeObserver:(id)observer
 {
-  [[self observerArray] removeObjectIdenticalTo:observer];
+  [[self observersArray] removeObjectIdenticalTo:observer];
 }
 
-- (void)removeAllObserver
+- (void)removeAllObservers
 {
-  [[self observerArray] removeAllObjects];
+  [[self observersArray] removeAllObjects];
 }
 
 @end

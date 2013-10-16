@@ -8,6 +8,7 @@
 
 #import "TTMainViewController.h"
 
+
 @implementation TTMainViewController
 
 - (void)viewDidLoad
@@ -24,6 +25,11 @@
   [button addTarget:self action:@selector(doit2:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:button];
   
+  button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  button.frame = CGRectMake(10, 110, 300, 40);
+  [button addTarget:self action:@selector(doit3:) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:button];
+  
 }
 
 
@@ -32,6 +38,10 @@
 }
 
 - (void)doit2:(id)sender
+{
+}
+
+- (void)doit3:(id)sender
 {
 }
 

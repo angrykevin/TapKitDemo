@@ -20,7 +20,7 @@
   NSString *_method;
   NSMutableDictionary *_headers;
   NSData *_body;
-  NSMutableDictionary *_multipartForm;
+  NSMutableDictionary *_formFields;
   
   NSURLRequest *_request;
   
@@ -50,7 +50,7 @@
 @property (nonatomic, copy, readonly) NSString *method;
 @property (nonatomic, strong, readonly) NSMutableDictionary *headers;
 @property (nonatomic, strong, readonly) NSData *body;
-@property (nonatomic, strong, readonly) NSMutableDictionary *multipartForm;
+@property (nonatomic, strong, readonly) NSMutableDictionary *formFields;
 
 @property (nonatomic, strong, readonly) NSURLRequest *request;
 
@@ -87,10 +87,11 @@
 
 
 ///-------------------------------
-/// Launch request
+/// Lifecycle
 ///-------------------------------
 
 - (void)startAsynchronous;
+- (void)clearDelegatesAndCancel;
 
 
 ///-------------------------------

@@ -29,7 +29,7 @@
     _method = ([method length] > 0) ? method : @"GET";
     _headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
-    //_multipartForm = nil;
+    //_formFields = nil;
     
     //_request = nil;
     
@@ -69,7 +69,7 @@
     //_method = @"GET";
     //_headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
-    //_multipartForm = nil;
+    //_formFields = nil;
     
     _request = request;
     
@@ -99,11 +99,23 @@
 
 
 
-#pragma mark - Launch request
+#pragma mark - Lifecycle
 
 - (void)startAsynchronous
 {
   [[[self class] operationQueue] addOperation:self];
+}
+
+- (void)clearDelegatesAndCancel
+{
+  _didStartBlock = nil;
+  _didUpdateBlock = nil;
+  _didFailBlock = nil;
+  _didFinishBlock = nil;
+  
+  [_observers removeAllObjects];
+  
+  [self cancel];
 }
 
 
@@ -147,8 +159,8 @@
 {
   if ( [field length] > 0 ) {
     
-    if ( _multipartForm == nil ) {
-      _multipartForm = [[NSMutableDictionary alloc] init];
+    if ( _formFields == nil ) {
+      _formFields = [[NSMutableDictionary alloc] init];
     }
     
     if ( value ) {
@@ -156,14 +168,14 @@
       if ( [filename length] > 0 ) {
         
         NSDictionary *dict = @{ @"filename": filename, @"data": value };
-        [_multipartForm setObject:dict forKey:field];
+        [_formFields setObject:dict forKey:field];
         
       } else {
-        [_multipartForm setObject:value forKey:field];
+        [_formFields setObject:value forKey:field];
       }
       
     } else {
-      [_multipartForm removeObjectForKey:field];
+      [_formFields removeObjectForKey:field];
     }
     
   }
@@ -171,8 +183,8 @@
 
 - (void)clearFormFields
 {
-  [_multipartForm removeAllObjects];
-  _multipartForm = nil;
+  [_formFields removeAllObjects];
+  _formFields = nil;
 }
 
 - (void)setRequestBody:(NSData *)body
@@ -206,7 +218,7 @@
                                                           timeoutInterval:_timeoutInterval];
   
   // Request body
-  NSData *data = [self buildMultipartFormData];
+  NSData *data = [self buildRequestBody];
   if ( data ) {
     _body = data;
   }
@@ -234,58 +246,82 @@
   return request;
 }
 
-- (NSData *)buildMultipartFormData
+- (NSData *)buildRequestBody
 {
-  if ( [_multipartForm count] < 1 ) {
+  if ( [_formFields count] < 1 ) {
     return nil;
   }
-  
-  NSString *boundary = [NSString UUIDString];
-  
-  [self addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary]
-forRequestHeader:@"Content-Type"];
   
   
   NSMutableData *body = [[NSMutableData alloc] init];
   
-  NSData *prefixData = [[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
-  NSData *suffixData = [[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
-  
-  
-  for ( NSString *name in _multipartForm ) {
+  if ( [self isMultipartForm] ) {
     
-    [body appendData:prefixData];
     
-    id value = [_multipartForm objectForKey:name];
+    NSString *boundary = [NSString UUIDString];
     
-    if ( [value isKindOfClass:[NSDictionary class]] ) {
+    [self addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary]
+  forRequestHeader:@"Content-Type"];
+    
+    NSData *prefixData = [[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *suffixData = [[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    for ( NSString *name in _formFields ) {
       
-      NSString *filename = value[ @"filename" ];
-      NSData *data = value[ @"data" ];
+      [body appendData:prefixData];
       
-      NSMutableString *field = [[NSMutableString alloc] init];
-      [field appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename];
-      [field appendFormat:@"Content-Type: %@\r\n\r\n", [filename MIMEType]];
+      id value = [_formFields objectForKey:name];
       
-      [body appendData:[field dataUsingEncoding:NSUTF8StringEncoding]];
-      [body appendData:data];
-      [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+      if ( [value isKindOfClass:[NSDictionary class]] ) {
+        
+        NSString *filename = value[ @"filename" ];
+        NSData *data = value[ @"data" ];
+        
+        NSMutableString *field = [[NSMutableString alloc] init];
+        [field appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename];
+        [field appendFormat:@"Content-Type: %@\r\n\r\n", [filename MIMEType]];
+        
+        [body appendData:[field dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:data];
+        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        
+      } else {
+        NSMutableString *field = [[NSMutableString alloc] init];
+        [field appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", name];
+        [field appendFormat:@"%@\r\n", value];
+        
+        [body appendData:[field dataUsingEncoding:NSUTF8StringEncoding]];
+      }
       
-    } else {
-      NSMutableString *field = [[NSMutableString alloc] init];
-      [field appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", name];
-      [field appendFormat:@"%@\r\n", value];
-      
-      [body appendData:[field dataUsingEncoding:NSUTF8StringEncoding]];
     }
+    
+    [body appendData:suffixData];
+    
+  } else {
+    
+    NSData *queryData = [[_formFields queryString] dataUsingEncoding:NSUTF8StringEncoding];
+    [body appendData:queryData];
     
   }
   
-  [body appendData:suffixData];
   
-  TKPRINT(@"form-data: %d", [_body length]);
-  
+  TKPRINT(@"form-data: %d", [body length]);
   return body;
+}
+
+- (BOOL)isMultipartForm
+{
+  for ( NSString *name in _formFields ) {
+    
+    id value = [_formFields objectForKey:name];
+    
+    if ( [value isKindOfClass:[NSDictionary class]] ) {
+      return YES;
+    }
+  }
+  
+  return NO;
 }
 
 
