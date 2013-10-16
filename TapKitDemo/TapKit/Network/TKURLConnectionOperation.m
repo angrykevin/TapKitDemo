@@ -9,102 +9,6 @@
 #import "TKURLConnectionOperation.h"
 #import "TKNAIManager.h"
 
-@interface TKURLConnectionOperation (Private)
-
-- (void)startUsingNetwork;
-- (void)stopUsingNetwork;
-
-- (NSURLRequest *)buildRequest;
-
-+ (NSOperationQueue *)operationQueue;
-+ (NSThread *)operationThread;
-+ (void)threadBody:(id)object;
-
-@end
-
-@implementation TKURLConnectionOperation (Private)
-
-- (void)startUsingNetwork
-{
-  if ( _shouldUpdateNetworkActivityIndicator ) {
-    [[TKNAIManager sharedObject] addNetworkUser:self];
-  }
-}
-
-- (void)stopUsingNetwork
-{
-  if ( _shouldUpdateNetworkActivityIndicator ) {
-    [[TKNAIManager sharedObject] removeNetworkUser:self];
-  }
-}
-
-
-- (NSURLRequest *)buildRequest
-{
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_address]
-                                                              cachePolicy:_cachePolicy
-                                                          timeoutInterval:_timeoutInterval];
-  
-  
-  if ( [_body length] > 0 ) {
-    [request setHTTPBody:_body];
-    [(NSMutableDictionary *)_headers setObject:[NSString stringWithFormat:@"%u", [_body length]]
-                                        forKey:@"Content-Length"];
-  }
-  
-  if ( ![_headers hasKeyEqualTo:@"Accept-Encoding"] ) {
-    [(NSMutableDictionary *)_headers setObject:@"gzip" forKey:@"Accept-Encoding"];
-  }
-  if ( ![_headers hasKeyEqualTo:@"User-Agent"] ) {
-    [(NSMutableDictionary *)_headers setObject:@"tapkit/0.1" forKey:@"User-Agent"];
-  }
-  for ( NSString *header in _headers ) {
-    NSString *value = [_headers objectForKey:header];
-    [request addValue:value forHTTPHeaderField:header];
-  }
-  
-  
-  [request setHTTPMethod:_method];
-  
-  return request;
-}
-
-
-+ (NSOperationQueue *)operationQueue
-{
-  static NSOperationQueue *queue = nil;
-  static dispatch_once_t token;
-  dispatch_once(&token, ^{
-    queue = [[NSOperationQueue alloc] init];
-    [queue setMaxConcurrentOperationCount:4];
-  });
-  return queue;
-}
-
-+ (NSThread *)operationThread
-{
-  static NSThread *thread = nil;
-  static dispatch_once_t token;
-  dispatch_once(&token, ^{
-    thread = [[NSThread alloc] initWithTarget:self
-                                     selector:@selector(threadBody:)
-                                       object:nil];
-    [thread start];
-  });
-  return thread;
-}
-
-+ (void)threadBody:(id)object
-{
-  while ( YES ) {
-    @autoreleasepool {
-      [[NSRunLoop currentRunLoop] run];
-    }
-  }
-}
-
-@end
-
 
 @implementation TKURLConnectionOperation
 
@@ -125,6 +29,7 @@
     _method = ([method length] > 0) ? method : @"GET";
     _headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
+    //_multipartForm = nil;
     
     //_request = nil;
     
@@ -164,6 +69,7 @@
     //_method = @"GET";
     //_headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
+    //_multipartForm = nil;
     
     _request = request;
     
@@ -209,21 +115,27 @@
   if ( [header length] > 0 ) {
     
     if ( value ) {
-      [(NSMutableDictionary *)_headers setObject:value forKey:header];
+      [_headers setObject:value forKey:header];
     } else {
-      [(NSMutableDictionary *)_headers removeObjectForKey:header];
+      [_headers removeObjectForKey:header];
     }
     
   }
 }
 
+- (void)clearRequestHeaders
+{
+  [_headers removeAllObjects];
+  _headers = nil;
+}
+
 - (void)setRequestHeaders:(NSDictionary *)headers
 {
-  [(NSMutableDictionary *)_headers removeAllObjects];
+  [_headers removeAllObjects];
   
   for ( NSString *header in [headers keyEnumerator] ) {
     NSString *value = [headers objectForKey:header];
-    [(NSMutableDictionary *)_headers setObject:value forKey:header];
+    [_headers setObject:value forKey:header];
   }
 }
 
@@ -231,15 +143,101 @@
 
 #pragma mark - Request body
 
+- (void)addValue:(id)value filename:(NSString *)filename forFormField:(NSString *)field
+{
+  if ( [field length] > 0 ) {
+    
+    if ( _multipartForm == nil ) {
+      _multipartForm = [[NSMutableDictionary alloc] init];
+    }
+    
+    if ( value ) {
+      
+      if ( [filename length] > 0 ) {
+        
+        NSDictionary *dict = @{ @"filename": filename, @"data": value };
+        [_multipartForm setObject:dict forKey:field];
+        
+      } else {
+        [_multipartForm setObject:value forKey:field];
+      }
+      
+    } else {
+      [_multipartForm removeObjectForKey:field];
+    }
+    
+  }
+}
+
+- (void)clearFormFields
+{
+  [_multipartForm removeAllObjects];
+  _multipartForm = nil;
+}
+
 - (void)setRequestBody:(NSData *)body
 {
   _body = body;
 }
 
-- (void)setFormFields:(NSDictionary *)fields
+
+
+#pragma mark - Private
+
+- (void)startUsingNetwork
 {
-  if ( [fields count] < 1 ) {
-    return;
+  if ( _shouldUpdateNetworkActivityIndicator ) {
+    [[TKNAIManager sharedObject] addNetworkUser:self];
+  }
+}
+
+- (void)stopUsingNetwork
+{
+  if ( _shouldUpdateNetworkActivityIndicator ) {
+    [[TKNAIManager sharedObject] removeNetworkUser:self];
+  }
+}
+
+
+- (NSURLRequest *)buildRequest
+{
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_address]
+                                                              cachePolicy:_cachePolicy
+                                                          timeoutInterval:_timeoutInterval];
+  
+  // Request body
+  NSData *data = [self buildMultipartFormData];
+  if ( data ) {
+    _body = data;
+  }
+  if ( [_body length] > 0 ) {
+    [request setHTTPBody:_body];
+    [_headers setObject:[NSString stringWithFormat:@"%u", [_body length]]
+                 forKey:@"Content-Length"];
+  }
+  
+  // Request header
+  if ( ![_headers hasKeyEqualTo:@"Accept-Encoding"] ) {
+    [_headers setObject:@"gzip" forKey:@"Accept-Encoding"];
+  }
+  if ( ![_headers hasKeyEqualTo:@"User-Agent"] ) {
+    [_headers setObject:@"tapkit/0.1" forKey:@"User-Agent"];
+  }
+  for ( NSString *header in _headers ) {
+    NSString *value = [_headers objectForKey:header];
+    [request addValue:value forHTTPHeaderField:header];
+  }
+  
+  
+  [request setHTTPMethod:_method];
+  
+  return request;
+}
+
+- (NSData *)buildMultipartFormData
+{
+  if ( [_multipartForm count] < 1 ) {
+    return nil;
   }
   
   NSString *boundary = [NSString UUIDString];
@@ -254,11 +252,11 @@ forRequestHeader:@"Content-Type"];
   NSData *suffixData = [[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
   
   
-  for ( NSString *name in fields ) {
+  for ( NSString *name in _multipartForm ) {
     
     [body appendData:prefixData];
     
-    id value = [fields objectForKey:name];
+    id value = [_multipartForm objectForKey:name];
     
     if ( [value isKindOfClass:[NSDictionary class]] ) {
       
@@ -285,8 +283,43 @@ forRequestHeader:@"Content-Type"];
   
   [body appendData:suffixData];
   
-  _body = body;
-  TKPRINT(@"BODY: %d", [_body length]);
+  TKPRINT(@"form-data: %d", [_body length]);
+  
+  return body;
+}
+
+
++ (NSOperationQueue *)operationQueue
+{
+  static NSOperationQueue *queue = nil;
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
+    queue = [[NSOperationQueue alloc] init];
+    [queue setMaxConcurrentOperationCount:4];
+  });
+  return queue;
+}
+
++ (NSThread *)operationThread
+{
+  static NSThread *thread = nil;
+  static dispatch_once_t token;
+  dispatch_once(&token, ^{
+    thread = [[NSThread alloc] initWithTarget:self
+                                     selector:@selector(threadBody:)
+                                       object:nil];
+    [thread start];
+  });
+  return thread;
+}
+
++ (void)threadBody:(id)object
+{
+  while ( YES ) {
+    @autoreleasepool {
+      [[NSRunLoop currentRunLoop] run];
+    }
+  }
 }
 
 

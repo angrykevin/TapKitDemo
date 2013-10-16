@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TTMainViewController : UIViewController {
-    BOOL _trigger;
 }
 
 @end

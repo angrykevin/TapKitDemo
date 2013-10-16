@@ -18,8 +18,9 @@
   NSURLRequestCachePolicy _cachePolicy;
   NSTimeInterval _timeoutInterval;
   NSString *_method;
-  NSDictionary *_headers;
+  NSMutableDictionary *_headers;
   NSData *_body;
+  NSMutableDictionary *_multipartForm;
   
   NSURLRequest *_request;
   
@@ -43,25 +44,26 @@
   int _totalBytesExpectedToRead;
 }
 
-@property (nonatomic, readonly, copy) NSString *address;
+@property (nonatomic, copy, readonly) NSString *address;
 @property (nonatomic, readonly) NSURLRequestCachePolicy cachePolicy;
 @property (nonatomic, readonly) NSTimeInterval timeoutInterval;
-@property (nonatomic, readonly, copy) NSString *method;
-@property (nonatomic, readonly, strong) NSDictionary *headers;
-@property (nonatomic, readonly, strong) NSData *body;
+@property (nonatomic, copy, readonly) NSString *method;
+@property (nonatomic, strong, readonly) NSMutableDictionary *headers;
+@property (nonatomic, strong, readonly) NSData *body;
+@property (nonatomic, strong, readonly) NSMutableDictionary *multipartForm;
 
-@property (nonatomic, readonly, strong) NSURLRequest *request;
+@property (nonatomic, strong, readonly) NSURLRequest *request;
 
-@property (nonatomic, readonly, strong) NSURLResponse *response;
-@property (nonatomic, readonly, strong) NSData *responseData;
+@property (nonatomic, strong, readonly) NSURLResponse *response;
+@property (nonatomic, strong, readonly) NSData *responseData;
 @property (nonatomic, copy) NSString *responseFilePath;
-@property (nonatomic, readonly, strong) NSFileHandle *responseFileHandle;
+@property (nonatomic, strong, readonly) NSFileHandle *responseFileHandle;
 
 @property (nonatomic, assign) BOOL shouldUpdateNetworkActivityIndicator;
 
 @property (nonatomic, copy) NSString *runLoopMode;
 
-@property (nonatomic, readonly, strong) NSURLConnection *connection;
+@property (nonatomic, strong, readonly) NSURLConnection *connection;
 
 @property (nonatomic, readonly) int bytesWritten;
 @property (nonatomic, readonly) int totalBytesWritten;
@@ -96,6 +98,7 @@
 ///-------------------------------
 
 - (void)addValue:(NSString *)value forRequestHeader:(NSString *)header;
+- (void)clearRequestHeaders;
 - (void)setRequestHeaders:(NSDictionary *)headers;
 
 
@@ -103,7 +106,8 @@
 /// Request body
 ///-------------------------------
 
+- (void)addValue:(id)value filename:(NSString *)filename forFormField:(NSString *)field;
+- (void)clearFormFields;
 - (void)setRequestBody:(NSData *)body;
-- (void)setFormFields:(NSDictionary *)fields;
 
 @end
