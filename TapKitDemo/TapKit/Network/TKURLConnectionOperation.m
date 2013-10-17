@@ -106,6 +106,49 @@
   [[[self class] operationQueue] addOperation:self];
 }
 
+- (NSData *)startSynchronous
+{
+  
+  if ( [self isCancelled] ) {
+    [self transferStatusToFinished];
+    return nil;
+  }
+  
+  if ( [self isExecuting] ) {
+    // Should not be here.
+    return nil;
+  }
+  
+  if ( [self isFinished] ) {
+    return _responseData;
+  }
+  
+  if ( [self isReady] ) {
+    
+    [self startUsingNetwork];
+    [self transferStatusFromReadyToExecuting];
+    
+    NSURLRequest *request = (_request) ? _request : [self buildRequest];
+    
+    __autoreleasing NSURLResponse *response = nil;
+    __autoreleasing NSError *error = nil;
+    
+    _responseData = [NSURLConnection sendSynchronousRequest:request
+                                          returningResponse:&response
+                                                      error:&error];
+    
+    _response = response;
+    _error = error;
+    
+    [self transferStatusFromExecutingToFinished];
+    [self stopUsingNetwork];
+    
+    return _responseData;
+  }
+  
+  return nil;
+}
+
 - (void)clearDelegatesAndCancel
 {
   _didStartBlock = nil;

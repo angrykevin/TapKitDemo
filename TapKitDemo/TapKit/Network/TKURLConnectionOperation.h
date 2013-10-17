@@ -91,6 +91,7 @@
 ///-------------------------------
 
 - (void)startAsynchronous;
+- (NSData *)startSynchronous;
 - (void)clearDelegatesAndCancel;
 
 
