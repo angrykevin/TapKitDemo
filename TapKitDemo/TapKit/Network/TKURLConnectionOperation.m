@@ -128,7 +128,7 @@
     [self startUsingNetwork];
     [self transferStatusFromReadyToExecuting];
     
-    NSURLRequest *request = (_request) ? _request : [self buildRequest];
+    NSURLRequest *request = (_request != nil) ? _request : [self buildRequest];
     
     __autoreleasing NSURLResponse *response = nil;
     __autoreleasing NSError *error = nil;
@@ -181,7 +181,6 @@
 - (void)clearRequestHeaders
 {
   [_headers removeAllObjects];
-  _headers = nil;
 }
 
 - (void)setRequestHeaders:(NSDictionary *)headers
