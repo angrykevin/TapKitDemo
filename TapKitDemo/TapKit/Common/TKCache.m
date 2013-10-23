@@ -128,8 +128,7 @@
     item.path = TKPathForDocumentsResource(path);
     
     NSTimeInterval interval = (timeoutInterval > 0) ? timeoutInterval : TKTimeIntervalWeek();
-    NSDate *expiryDate = [[NSDate alloc] initWithTimeIntervalSinceNow:interval];
-    item.expiryDate = expiryDate;
+    item.expiryDate = [[NSDate alloc] initWithTimeIntervalSinceNow:interval];
     
     item.size = [data length];
     
