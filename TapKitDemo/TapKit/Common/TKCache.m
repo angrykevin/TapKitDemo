@@ -29,7 +29,7 @@
     
     _items = [[NSMutableArray alloc] init];
     
-    NSString *path = TKPathForDocumentsResource(@"Caches/CacheProfile.dt");
+    NSString *path = TKPathForDocumentsResource(@"Caches/profile.dt");
     NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
     for ( TKCacheItem *item in items ) {
@@ -74,6 +74,10 @@
     
     NSString *path = [[NSString alloc] initWithFormat:@"Caches/%@", item.key];
     if ( ![TKPathForDocumentsResource(path) isEqualToString:item.path] ) {
+      return;
+    }
+    
+    if ( item.expiryDate == nil ) {
       return;
     }
     
@@ -245,7 +249,7 @@
   [_lock lock];
   
   NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_items];
-  NSString *path = TKPathForDocumentsResource(@"Caches/CacheProfile.dt");
+  NSString *path = TKPathForDocumentsResource(@"Caches/profile.dt");
   [data writeToFile:path atomically:YES];
   
   [_lock unlock];
