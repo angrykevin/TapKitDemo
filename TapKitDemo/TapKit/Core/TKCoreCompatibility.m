@@ -38,6 +38,10 @@ NSString *TKDeviceModel()
   if ( [platform isEqualToString:@"iPhone4,1"] ) return @"iPhone 4S";
   if ( [platform isEqualToString:@"iPhone5,1"] ) return @"iPhone 5";
   if ( [platform isEqualToString:@"iPhone5,2"] ) return @"iPhone 5";
+  if ( [platform isEqualToString:@"iPhone5,3"] ) return @"iPhone 5C";
+  if ( [platform isEqualToString:@"iPhone5,4"] ) return @"iPhone 5C";
+  if ( [platform isEqualToString:@"iPhone6,1"] ) return @"iPhone 5S";
+  if ( [platform isEqualToString:@"iPhone6,2"] ) return @"iPhone 5S";
   
   if ( [platform isEqualToString:@"iPod1,1"] ) return @"iPod touch 1G";
   if ( [platform isEqualToString:@"iPod2,1"] ) return @"iPod touch 2G";

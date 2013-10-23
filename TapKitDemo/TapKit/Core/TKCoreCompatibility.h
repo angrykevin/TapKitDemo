@@ -19,6 +19,10 @@
  iPhone4,1  iPhone 4S       GSM+CDMA    Retina
  iPhone5,1  iPhone 5        GSM         Retina and 4 Inch
  iPhone5,2  iPhone 5        GSM+CDMA    Retina and 4 Inch
+ iPhone5,3  iPhone 5C       GSM         Retina and 4 Inch
+ iPhone5,4  iPhone 5C       Global      Retina and 4 Inch
+ iPhone6,1  iPhone 5S       GSM         Retina and 4 Inch
+ iPhone6,2  iPhone 5S       Global      Retina and 4 Inch
  
  iPod1,1    iPod touch 1G
  iPod2,1    iPod touch 2G
