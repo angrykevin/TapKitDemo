@@ -16,17 +16,16 @@
 #pragma mark - Initializing
 
 - (id)initWithAddress:(NSString *)address
-          cachePolicy:(NSURLRequestCachePolicy)cachePolicy
       timeoutInterval:(NSTimeInterval)timeoutInterval
-               method:(NSString *)method
+          cachePolicy:(NSURLRequestCachePolicy)cachePolicy
 {
   self = [super init];
   if ( self ) {
     
     _address = address;
-    _cachePolicy = (cachePolicy == 0) ? NSURLRequestUseProtocolCachePolicy : cachePolicy;
     _timeoutInterval = (timeoutInterval > 0) ? timeoutInterval : 10.0;
-    _method = ([method length] > 0) ? method : @"GET";
+    _cachePolicy = (cachePolicy == 0) ? NSURLRequestUseProtocolCachePolicy : cachePolicy;
+    _method = @"GET";
     _headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
     //_formFields = nil;
@@ -268,6 +267,7 @@
     [request setHTTPBody:_body];
     [_headers setObject:[NSString stringWithFormat:@"%u", [_body length]]
                  forKey:@"Content-Length"];
+    _method = @"POST";
   }
   
   // Request header
@@ -282,7 +282,7 @@
     [request addValue:value forHTTPHeaderField:header];
   }
   
-  
+  // Request method
   [request setHTTPMethod:_method];
   
   return request;

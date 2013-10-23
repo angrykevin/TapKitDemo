@@ -15,8 +15,8 @@
 > {
   
   NSString *_address;
-  NSURLRequestCachePolicy _cachePolicy;
   NSTimeInterval _timeoutInterval;
+  NSURLRequestCachePolicy _cachePolicy;
   NSString *_method;
   NSMutableDictionary *_headers;
   NSData *_body;
@@ -45,8 +45,8 @@
 }
 
 @property (nonatomic, copy, readonly) NSString *address;
-@property (nonatomic, readonly) NSURLRequestCachePolicy cachePolicy;
 @property (nonatomic, readonly) NSTimeInterval timeoutInterval;
+@property (nonatomic, readonly) NSURLRequestCachePolicy cachePolicy;
 @property (nonatomic, copy, readonly) NSString *method;
 @property (nonatomic, strong, readonly) NSMutableDictionary *headers;
 @property (nonatomic, strong, readonly) NSData *body;
@@ -79,9 +79,8 @@
 ///-------------------------------
 
 - (id)initWithAddress:(NSString *)address
-          cachePolicy:(NSURLRequestCachePolicy)cachePolicy
       timeoutInterval:(NSTimeInterval)timeoutInterval
-               method:(NSString *)method;
+          cachePolicy:(NSURLRequestCachePolicy)cachePolicy;
 
 - (id)initWithRequest:(NSURLRequest *)request;
 
