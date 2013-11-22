@@ -50,7 +50,7 @@
 {
   CGPoint offset = CGPointZero;
   offset.y = (self.contentSize.height - self.bounds.size.height) /2.0;
-  if ( offset.y > 0 ) {
+  if ( offset.y > 0.0 ) {
     [self setContentOffset:offset animated:animated];
   }
 }
@@ -59,7 +59,7 @@
 {
   CGPoint offset = CGPointZero;
   offset.y = self.contentSize.height - self.bounds.size.height;
-  if ( offset.y > 0 ) {
+  if ( offset.y > 0.0 ) {
     [self setContentOffset:offset animated:animated];
   }
 }
