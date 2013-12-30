@@ -35,12 +35,12 @@
 
 + (TKDatabase *)sharedObject
 {
-  static TKDatabase *database = nil;
+  static TKDatabase *Database = nil;
   static dispatch_once_t token;
   dispatch_once(&token, ^{
-    database = [[self alloc] init];
+    Database = [[self alloc] init];
   });
-  return database;
+  return Database;
 }
 
 

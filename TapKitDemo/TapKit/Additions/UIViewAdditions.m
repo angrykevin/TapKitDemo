@@ -330,10 +330,10 @@
 + (void)showBorder:(UIView *)view level:(NSInteger)level
 {
 #ifdef DEBUG
-  static NSArray *colors = nil;
+  static NSArray *Colors = nil;
   static dispatch_once_t token;
   dispatch_once(&token, ^{
-    colors = [[NSArray alloc] initWithObjects:
+    Colors = [[NSArray alloc] initWithObjects:
               [UIColor redColor],
               [UIColor greenColor],
               [UIColor blueColor],
@@ -341,7 +341,7 @@
               [UIColor purpleColor], nil];
   });
   
-  UIColor *color = [colors objectAtIndex:(level%5)];
+  UIColor *color = [Colors objectAtIndex:(level%5)];
   view.layer.borderColor = color.CGColor;
   view.layer.borderWidth = 1.0;
   
