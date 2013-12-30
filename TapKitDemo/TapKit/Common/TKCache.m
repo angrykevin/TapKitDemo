@@ -53,12 +53,12 @@
 
 + (TKCache *)sharedObject
 {
-  static TKCache *Cache = nil;
+  static TKCache *cache = nil;
   static dispatch_once_t token;
   dispatch_once(&token, ^{
-    Cache = [[self alloc] init];
+    cache = [[self alloc] init];
   });
-  return Cache;
+  return cache;
 }
 
 
