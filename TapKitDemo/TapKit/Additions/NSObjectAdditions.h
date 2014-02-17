@@ -31,7 +31,7 @@
 
 
 ///-------------------------------
-/// Key-Value coding
+/// Key-Value Coding
 ///-------------------------------
 
 - (BOOL)isValueForKeyPath:(NSString *)keyPath equalToValue:(id)value;
