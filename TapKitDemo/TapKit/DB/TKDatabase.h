@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-#import "Core/Core.h"
-#import "Additions/Additions.h"
+#import "../Core/Core.h"
+#import "../Additions/Additions.h"
 
 #import "TKDatabaseRow.h"
 

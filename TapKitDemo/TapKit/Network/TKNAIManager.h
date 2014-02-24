@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Core/Core.h"
-#import "Additions/Additions.h"
+#import "../Core/Core.h"
+#import "../Additions/Additions.h"
 
 
 @interface TKNAIManager : NSObject {

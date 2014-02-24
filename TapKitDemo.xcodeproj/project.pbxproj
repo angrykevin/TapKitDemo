@@ -471,7 +471,7 @@
 				INFOPLIST_FILE = TapKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $SRCROOT/TapKitDemo/TapKit;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -485,7 +485,7 @@
 				INFOPLIST_FILE = TapKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = $SRCROOT/TapKitDemo/TapKit;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,7 +7,6 @@
 //
 
 #import "UIImageViewAdditions.h"
-#import "Core/Core.h"
 
 @implementation UIImageView (TapKit)
 
@@ -25,7 +24,8 @@
   if ( shouldCache ) {
     newImage = [UIImage imageNamed:name];
   } else {
-    NSString *path = TKPathForBundleResource(nil, name);
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString *path = [resourcePath stringByAppendingPathComponent:name];
     newImage = [[UIImage alloc] initWithContentsOfFile:path];
   }
   self.image = newImage;

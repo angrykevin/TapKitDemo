@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Common/Common.h"
+#import "../Common/Common.h"
 
 @interface TKURLConnectionOperation : TKOperation<
     NSURLConnectionDelegate,

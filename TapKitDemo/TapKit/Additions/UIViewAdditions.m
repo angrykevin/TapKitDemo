@@ -7,7 +7,7 @@
 //
 
 #import "UIViewAdditions.h"
-#import "Core/Core.h"
+#import "../Core/Core.h"
 
 @implementation UIView (TapKit)
 
