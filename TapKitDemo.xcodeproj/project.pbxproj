@@ -255,10 +255,10 @@
 		0A190ACC18DEDD2C00675252 /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
-				0A190ACD18DEDD2C00675252 /* TBGIFLayer.h */,
-				0A190ACE18DEDD2C00675252 /* TBGIFLayer.m */,
 				0A190ACF18DEDD2C00675252 /* TTTAttributedLabel.h */,
 				0A190AD018DEDD2C00675252 /* TTTAttributedLabel.m */,
+				0A190ACD18DEDD2C00675252 /* TBGIFLayer.h */,
+				0A190ACE18DEDD2C00675252 /* TBGIFLayer.m */,
 			);
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
