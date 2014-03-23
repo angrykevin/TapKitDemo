@@ -309,6 +309,14 @@
   }
 }
 
+
+
+- (void)layoutSubviews
+{
+  [super layoutSubviews];
+  _GIFLayer.frame = self.bounds;
+}
+
 - (CGSize)sizeThatFits:(CGSize)size
 {
   return [_GIFLayer sizeOfImage];

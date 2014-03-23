@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TapKit/TapKit.h"
+#import "Toolbox/Toolbox.h"
 
 
 @interface TTMainViewController : UIViewController {
