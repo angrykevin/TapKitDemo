@@ -106,7 +106,6 @@
 		0A190AD918DEDD2C00675252 /* UIViewControllerExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllerExtentions.h; sourceTree = "<group>"; };
 		0A190ADA18DEDD2C00675252 /* UIViewControllerExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewControllerExtentions.m; sourceTree = "<group>"; };
 		0A190AEE18DEDE1D00675252 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0A190AF018DEDE6C00675252 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		0A190AF218DEDE8600675252 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0A190AF418DEDE9D00675252 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0A190AF718DEDEFF00675252 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -270,7 +269,6 @@
 				0A190AF718DEDEFF00675252 /* QuartzCore.framework */,
 				0A190AF418DEDE9D00675252 /* CoreText.framework */,
 				0A190AF218DEDE8600675252 /* ImageIO.framework */,
-				0A190AF018DEDE6C00675252 /* CoreImage.framework */,
 				0A190AEE18DEDE1D00675252 /* CoreLocation.framework */,
 			);
 			name = ToolboxDependencies;
