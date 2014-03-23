@@ -37,3 +37,17 @@
 - (CGSize)sizeOfImage;
 
 @end
+
+
+
+@interface TBGIFView : UIView {
+  TBGIFLayer *_GIFLayer;
+}
+
+@property (nonatomic, strong, readonly) TBGIFLayer *GIFLayer;
+
+- (void)loadWithImageName:(NSString *)imageName;
+- (void)loadWithImagePath:(NSString *)imagePath;
+- (void)loadWithImageData:(NSData *)imageData;
+
+@end

@@ -274,3 +274,44 @@
 }
 
 @end
+
+
+
+@implementation TBGIFView
+
+- (void)loadWithImageName:(NSString *)imageName
+{
+  if ( [imageName length]>0 ) {
+    NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:nil];
+    [self loadWithImagePath:path];
+  }
+}
+
+- (void)loadWithImagePath:(NSString *)imagePath
+{
+  if ( [imagePath length]>0 ) {
+    NSData *data = [[NSData alloc] initWithContentsOfFile:imagePath];
+    [self loadWithImageData:data];
+  }
+}
+
+- (void)loadWithImageData:(NSData *)imageData
+{
+  if ( [imageData length]>0 ) {
+    if ( _GIFLayer ) {
+      [_GIFLayer removeAllAnimations];
+      [_GIFLayer removeFromSuperlayer];
+    }
+    _GIFLayer = [[TBGIFLayer alloc] init];
+    [_GIFLayer reloadWithData:imageData];
+    _GIFLayer.contentsScale = [UIScreen mainScreen].scale;
+    [self.layer addSublayer:_GIFLayer];
+  }
+}
+
+- (CGSize)sizeThatFits:(CGSize)size
+{
+  return [_GIFLayer sizeOfImage];
+}
+
+@end
