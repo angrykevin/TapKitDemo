@@ -34,14 +34,14 @@
     NSString *path = TKPathForBundleResource(nil, @"emotion.plist");
     NSArray *array = [[NSArray alloc] initWithContentsOfFile:path];
     
-    NSString *text = @"I[a][a]f you are bit co [b]bout C[asd]TFramesetter and the CTFrame – that’s OK.";
+    NSString *text = @"[a] 评论";
   
     _label = [[TTTAttributedLabel alloc] init];
     _label.imageBricks = array;
     _label.numberOfLines = 0;
-    _label.font = [UIFont systemFontOfSize:14.0];
+    _label.imageVerticalAlignment = TTTAttributedLabelVerticalAlignmentCenter;
+    _label.font = [UIFont systemFontOfSize:8.0];
     [self.view addSubview:_label];
-    //_label.frame = CGRectMake(10.0, 30.0, 300.0, 440.0);
     [_label showBorderWithBlueColor];
     _label.text = text;
     
@@ -51,10 +51,10 @@
 {
     [super viewWillAppear:animated];
     
-//    CGSize size = [TTTAttributedLabel sizeThatFitsAttributedString:_label.attributedText
-//                                                   withConstraints:CGSizeMake(300.0, 10000.0)
-//                                            limitedToNumberOfLines:0];
-    _label.frame = CGRectMake(10.0, 30.0, 300.0, 200.0);
+    CGSize size = [TTTAttributedLabel sizeThatFitsAttributedString:_label.attributedText
+                                                   withConstraints:CGSizeMake(300.0, 10000.0)
+                                            limitedToNumberOfLines:0];
+    _label.frame = CGRectMake(10.0, 30.0, size.width, size.height);
     
     //_label.frame = CGRectMake(10.0, 30.0, 300.0, 100.0);
     
