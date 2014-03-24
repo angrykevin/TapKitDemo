@@ -372,6 +372,15 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
 
 @property (nonatomic, assign) TTTAttributedLabelVerticalAlignment imageVerticalAlignment;
 
+/**
+ @{
+   @"name", @"",
+   @"width", @"",
+   @"ascent", @"", // ascent + descent = image height
+   @"descent", @"", // set negtive value to move image up
+   @"image", @""
+ };
+ */
 @property (nonatomic, weak) NSArray *imageBricks;
 
 @property (nonatomic, strong) CALayer *imageLayer;

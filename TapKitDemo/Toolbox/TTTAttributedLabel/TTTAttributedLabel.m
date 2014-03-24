@@ -359,6 +359,8 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     self.userInteractionEnabled = YES;
     self.multipleTouchEnabled = NO;
     
+    self.imageVerticalAlignment = TTTAttributedLabelVerticalAlignmentBottom;
+    
     self.textInsets = UIEdgeInsetsZero;
 
     self.links = [NSArray array];
@@ -811,6 +813,44 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
             CTLineDraw(line, c);
         }
         
+//        UIColor *color = nil;
+//        CGFloat y = 0.0;
+//        CGFloat bottom = ceilf(lineOrigin.y);
+//        CGFloat y = bottom;
+//        UIColor *color = [UIColor brownColor];
+//        CGContextSetStrokeColorWithColor(c, color.CGColor);
+//        CGContextSetLineWidth(c, 1.0);
+//        CGContextMoveToPoint(c, 0.0, y);
+//        CGContextAddLineToPoint(c, self.width, y);
+//        CGContextStrokePath(c);
+//        
+//        CGFloat top = ceilf(lineOrigin.y+self.font.lineHeight);
+//        y = top;
+//        color = [UIColor yellowColor];
+//        CGContextSetStrokeColorWithColor(c, color.CGColor);
+//        CGContextSetLineWidth(c, 1.0);
+//        CGContextMoveToPoint(c, 0.0, y);
+//        CGContextAddLineToPoint(c, self.width, y);
+//        CGContextStrokePath(c);
+//        
+//        CGFloat baseLine = ceilf(lineOrigin.y);
+//        y = baseLine;
+//        color = [UIColor lightGrayColor];
+//        CGContextSetStrokeColorWithColor(c, color.CGColor);
+//        CGContextSetLineWidth(c, 1.0);
+//        CGContextMoveToPoint(c, 0.0, y);
+//        CGContextAddLineToPoint(c, self.width, y);
+//        CGContextStrokePath(c);
+//        
+//        CGFloat capHeight = ceilf(lineOrigin.y+self.font.capHeight);
+//        y = capHeight;
+//        color = [UIColor lightGrayColor];
+//        CGContextSetStrokeColorWithColor(c, color.CGColor);
+//        CGContextSetLineWidth(c, 1.0);
+//        CGContextMoveToPoint(c, 0.0, y);
+//        CGContextAddLineToPoint(c, self.width, y);
+//        CGContextStrokePath(c);
+        
         // Draw image for this line
         
         NSArray *runList = (__bridge NSArray *)(CTLineGetGlyphRuns(line));
@@ -822,25 +862,6 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
             
             CTRunDelegateRef delegateRef = (__bridge CTRunDelegateRef)([attributes valueForKey:(id)kCTRunDelegateAttributeName]);
             id refCon = (__bridge id)(CTRunDelegateGetRefCon( delegateRef ));
-            
-#ifdef DEBUG
-            CGFloat tmpAscent = 0.0;
-            CGFloat tmpDescent = 0.0;
-            CTRunGetTypographicBounds(runRef, CFRangeMake(0, 0), &tmpAscent, &tmpDescent, NULL);
-            if ( refCon==nil ) { // Text
-              NSLog(@"Text (%.1f, %.1f)\t run: %.2f %.2f\t font: %.2f %.2f\t pointSize: %.2f",
-                    lineOrigin.x, lineOrigin.y,
-                    tmpAscent, tmpDescent,
-                    self.font.ascender, self.font.descender,
-                    self.font.pointSize);
-            } else { // Image
-              NSLog(@"Image(%.1f, %.1f)\t run: %.2f %.2f\t font: %.2f %.2f\t pointSize: %.2f",
-                    lineOrigin.x, lineOrigin.y,
-                    tmpAscent, tmpDescent,
-                    self.font.ascender, self.font.descender,
-                    self.font.pointSize);
-            }
-#endif
             
             if ( refCon ) {
                 
@@ -856,24 +877,21 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 runBounds.origin.y = lineOrigin.y;
                 runBounds.origin.y -= runDescent;
                 
-                //runBounds.origin.y += (self.height - rect.origin.y - rect.size.height);
+                // add vertical offset
+                runBounds.origin.y += (self.height - rect.origin.y - rect.size.height);
                 
-                //runBounds.origin.y = self.height - runBounds.origin.y;
+                // flip, this operation will make image run beneath this line
+                runBounds.origin.y = self.height - runBounds.origin.y;
                 
-                
-                
-                
-//                runBounds.origin.y += (self.height - rect.origin.y - rect.size.height);
-//                
-//                // flip
-//                runBounds.origin.y = self.height - runBounds.origin.y;
-//                
-//                runBounds.origin.y -= (runAscent - runDescent);
-              
-                
-//                runBounds.origin.y -= (self.font.ascender+self.font.descender - runBounds.size.height);
-                
-                
+                // move it up
+                if ( self.imageVerticalAlignment == TTTAttributedLabelVerticalAlignmentBottom ) {
+                    runBounds.origin.y -= (runAscent + runDescent);
+                } else if ( self.imageVerticalAlignment == TTTAttributedLabelVerticalAlignmentCenter ) {
+                    runBounds.origin.y -= self.font.capHeight;
+                    runBounds.origin.y += ((self.font.capHeight - (runAscent + runDescent))/2.0);
+                } else if ( self.imageVerticalAlignment == TTTAttributedLabelVerticalAlignmentTop ) {
+                    runBounds.origin.y -= self.font.capHeight;
+                }
                 
                 [self addImageLayer];
                 [self drawImage:(NSDictionary *)refCon inRect:runBounds];
@@ -1390,7 +1408,7 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
         } else {
             [self drawFramesetter:[self framesetter] attributedString:self.renderedAttributedText textRange:textRange inRect:textRect context:c];
         }
-
+        
         // If we adjusted the font size, set it back to its original size
         if (originalAttributedText) {
             // Use ivar directly to avoid clearing out framesetter and renderedAttributedText

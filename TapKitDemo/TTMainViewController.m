@@ -34,13 +34,12 @@
     NSString *path = TKPathForBundleResource(nil, @"emotion.plist");
     NSArray *array = [[NSArray alloc] initWithContentsOfFile:path];
     
-    //NSString *text = @"T[a]o get the most out of this Core Text t[c]utorial.";
-    NSString *text = @"T[a]og";
+    NSString *text = @"I[a][a]f you are bit co [b]bout C[asd]TFramesetter and the CTFrame – that’s OK.";
   
     _label = [[TTTAttributedLabel alloc] init];
     _label.imageBricks = array;
     _label.numberOfLines = 0;
-    _label.font = [UIFont fontWithName:@"ArialMT" size:32.0];
+    _label.font = [UIFont systemFontOfSize:14.0];
     [self.view addSubview:_label];
     //_label.frame = CGRectMake(10.0, 30.0, 300.0, 440.0);
     [_label showBorderWithBlueColor];
@@ -55,9 +54,9 @@
 //    CGSize size = [TTTAttributedLabel sizeThatFitsAttributedString:_label.attributedText
 //                                                   withConstraints:CGSizeMake(300.0, 10000.0)
 //                                            limitedToNumberOfLines:0];
-//    _label.frame = CGRectMake(10.0, 30.0, 300.0, size.height);
+    _label.frame = CGRectMake(10.0, 30.0, 300.0, 200.0);
     
-    _label.frame = CGRectMake(10.0, 30.0, 300.0, 100.0);
+    //_label.frame = CGRectMake(10.0, 30.0, 300.0, 100.0);
     
 }
 
