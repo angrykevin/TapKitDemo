@@ -827,16 +827,18 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
             CGFloat tmpAscent = 0.0;
             CGFloat tmpDescent = 0.0;
             CTRunGetTypographicBounds(runRef, CFRangeMake(0, 0), &tmpAscent, &tmpDescent, NULL);
-            NSLog(@"line: %@", NSStringFromCGPoint(lineOrigin));
             if ( refCon==nil ) { // Text
-                NSLog(@"font run: %d %d\t font: %d %d %d",
-                      (int)(tmpAscent), (int)(tmpDescent),
-                      (int)(self.font.pointSize), (int)(self.font.ascender), (int)(self.font.descender));
+              NSLog(@"Text (%.1f, %.1f)\t run: %.2f %.2f\t font: %.2f %.2f\t pointSize: %.2f",
+                    lineOrigin.x, lineOrigin.y,
+                    tmpAscent, tmpDescent,
+                    self.font.ascender, self.font.descender,
+                    self.font.pointSize);
             } else { // Image
-                NSLog(@"image run: %d %d\t font: %d %d %d\t offset: %d",
-                      (int)(tmpAscent), (int)(tmpDescent),
-                      (int)(self.font.pointSize), (int)(self.font.ascender), (int)(self.font.descender),
-                      (int)((self.font.ascender+self.font.descender) - (tmpAscent+tmpDescent)));
+              NSLog(@"Image(%.1f, %.1f)\t run: %.2f %.2f\t font: %.2f %.2f\t pointSize: %.2f",
+                    lineOrigin.x, lineOrigin.y,
+                    tmpAscent, tmpDescent,
+                    self.font.ascender, self.font.descender,
+                    self.font.pointSize);
             }
 #endif
             
@@ -852,16 +854,23 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(runRef).location, NULL);
                 runBounds.origin.x = (lineOrigin.x + xOffset);
                 runBounds.origin.y = lineOrigin.y;
+                runBounds.origin.y -= runDescent;
                 
-                runBounds.origin.y += (self.height - rect.origin.y - rect.size.height);
+                //runBounds.origin.y += (self.height - rect.origin.y - rect.size.height);
                 
-                // flip
-                runBounds.origin.y = self.height - runBounds.origin.y;
+                //runBounds.origin.y = self.height - runBounds.origin.y;
                 
-                runBounds.origin.y -= (runAscent - runDescent);
                 
-//
+                
+                
+//                runBounds.origin.y += (self.height - rect.origin.y - rect.size.height);
 //                
+//                // flip
+//                runBounds.origin.y = self.height - runBounds.origin.y;
+//                
+//                runBounds.origin.y -= (runAscent - runDescent);
+              
+                
 //                runBounds.origin.y -= (self.font.ascender+self.font.descender - runBounds.size.height);
                 
                 

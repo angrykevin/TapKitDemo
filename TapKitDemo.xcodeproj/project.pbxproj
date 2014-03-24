@@ -42,6 +42,11 @@
 		BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DFBBD174280AD0075E918 /* TKCache.m */; };
 		BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */; };
 		BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC768DE41745F48000F23945 /* TTMainViewController.m */; };
+		BC9B2EDD18DFC94A00AEA9B7 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9B2ED818DFC94900AEA9B7 /* a.png */; };
+		BC9B2EDE18DFC94A00AEA9B7 /* asd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9B2ED918DFC94900AEA9B7 /* asd.png */; };
+		BC9B2EDF18DFC94A00AEA9B7 /* b.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9B2EDA18DFC94900AEA9B7 /* b.png */; };
+		BC9B2EE018DFC94A00AEA9B7 /* c.gif in Resources */ = {isa = PBXBuildFile; fileRef = BC9B2EDB18DFC94900AEA9B7 /* c.gif */; };
+		BC9B2EE118DFC94A00AEA9B7 /* emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC9B2EDC18DFC94900AEA9B7 /* emotion.plist */; };
 		BC9C2E07174B5E05003829C9 /* TKURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */; };
 		BCC6CEE117171466000A99CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE017171466000A99CB /* main.m */; };
 		BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC6CEE417171466000A99CB /* AppDelegate.m */; };
@@ -138,6 +143,11 @@
 		BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BC768DE31745F48000F23945 /* TTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMainViewController.h; sourceTree = "<group>"; };
 		BC768DE41745F48000F23945 /* TTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMainViewController.m; sourceTree = "<group>"; };
+		BC9B2ED818DFC94900AEA9B7 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
+		BC9B2ED918DFC94900AEA9B7 /* asd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asd.png; sourceTree = "<group>"; };
+		BC9B2EDA18DFC94900AEA9B7 /* b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b.png; sourceTree = "<group>"; };
+		BC9B2EDB18DFC94900AEA9B7 /* c.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = c.gif; sourceTree = "<group>"; };
+		BC9B2EDC18DFC94900AEA9B7 /* emotion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotion.plist; sourceTree = "<group>"; };
 		BC9C2E05174B5E05003829C9 /* TKURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKURLConnectionOperation.h; sourceTree = "<group>"; };
 		BC9C2E06174B5E05003829C9 /* TKURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKURLConnectionOperation.m; sourceTree = "<group>"; };
 		BCC6CED117171466000A99CB /* TapKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -415,6 +425,11 @@
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
 				BC768DE31745F48000F23945 /* TTMainViewController.h */,
 				BC768DE41745F48000F23945 /* TTMainViewController.m */,
+				BC9B2ED818DFC94900AEA9B7 /* a.png */,
+				BC9B2ED918DFC94900AEA9B7 /* asd.png */,
+				BC9B2EDA18DFC94900AEA9B7 /* b.png */,
+				BC9B2EDB18DFC94900AEA9B7 /* c.gif */,
+				BC9B2EDC18DFC94900AEA9B7 /* emotion.plist */,
 				0A190AB118DEDD2B00675252 /* Toolbox */,
 				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
@@ -507,8 +522,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC9B2EE018DFC94A00AEA9B7 /* c.gif in Resources */,
+				BC9B2EDF18DFC94A00AEA9B7 /* b.png in Resources */,
+				BC9B2EE118DFC94A00AEA9B7 /* emotion.plist in Resources */,
 				BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */,
+				BC9B2EDD18DFC94A00AEA9B7 /* a.png in Resources */,
 				BCC6CEF6171714D5000A99CB /* Default.png in Resources */,
+				BC9B2EDE18DFC94A00AEA9B7 /* asd.png in Resources */,
 				BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

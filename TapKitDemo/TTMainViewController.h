@@ -12,6 +12,7 @@
 
 
 @interface TTMainViewController : UIViewController {
+    TTTAttributedLabel *_label;
 }
 
 @end

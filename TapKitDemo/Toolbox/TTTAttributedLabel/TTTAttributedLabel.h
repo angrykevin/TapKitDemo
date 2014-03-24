@@ -370,9 +370,11 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
 
 @property (nonatomic, assign) BOOL ignoreImage;
 
-@property (nonatomic, strong) CALayer *imageLayer;
+@property (nonatomic, assign) TTTAttributedLabelVerticalAlignment imageVerticalAlignment;
 
 @property (nonatomic, weak) NSArray *imageBricks;
+
+@property (nonatomic, strong) CALayer *imageLayer;
 
 @end
 
