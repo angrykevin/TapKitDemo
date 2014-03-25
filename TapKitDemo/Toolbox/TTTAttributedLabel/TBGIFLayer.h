@@ -50,4 +50,9 @@
 - (void)loadWithImagePath:(NSString *)imagePath;
 - (void)loadWithImageData:(NSData *)imageData;
 
+- (void)startAnimating;
+- (void)stopAnimating;
+- (void)pauseAnimating;
+- (void)resumeAnimating;
+
 @end

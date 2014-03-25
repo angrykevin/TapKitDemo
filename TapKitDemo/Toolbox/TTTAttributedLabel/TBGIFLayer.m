@@ -310,6 +310,27 @@
 }
 
 
+- (void)startAnimating
+{
+    [_GIFLayer startAnimating];
+}
+
+- (void)stopAnimating
+{
+    [_GIFLayer stopAnimating];
+}
+
+- (void)pauseAnimating
+{
+    [_GIFLayer pauseAnimating];
+}
+
+- (void)resumeAnimating
+{
+    [_GIFLayer resumeAnimating];
+}
+
+
 
 - (void)layoutSubviews
 {
