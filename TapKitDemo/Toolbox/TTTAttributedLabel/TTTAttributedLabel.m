@@ -813,46 +813,8 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
             CTLineDraw(line, c);
         }
         
-//        UIColor *color = nil;
-//        CGFloat y = 0.0;
-//        CGFloat bottom = ceilf(lineOrigin.y);
-//        CGFloat y = bottom;
-//        UIColor *color = [UIColor brownColor];
-//        CGContextSetStrokeColorWithColor(c, color.CGColor);
-//        CGContextSetLineWidth(c, 1.0);
-//        CGContextMoveToPoint(c, 0.0, y);
-//        CGContextAddLineToPoint(c, self.width, y);
-//        CGContextStrokePath(c);
-//        
-//        CGFloat top = ceilf(lineOrigin.y+self.font.lineHeight);
-//        y = top;
-//        color = [UIColor yellowColor];
-//        CGContextSetStrokeColorWithColor(c, color.CGColor);
-//        CGContextSetLineWidth(c, 1.0);
-//        CGContextMoveToPoint(c, 0.0, y);
-//        CGContextAddLineToPoint(c, self.width, y);
-//        CGContextStrokePath(c);
-//        
-//        CGFloat baseLine = ceilf(lineOrigin.y);
-//        y = baseLine;
-//        color = [UIColor lightGrayColor];
-//        CGContextSetStrokeColorWithColor(c, color.CGColor);
-//        CGContextSetLineWidth(c, 1.0);
-//        CGContextMoveToPoint(c, 0.0, y);
-//        CGContextAddLineToPoint(c, self.width, y);
-//        CGContextStrokePath(c);
-//        
-//        CGFloat capHeight = ceilf(lineOrigin.y+self.font.capHeight);
-//        y = capHeight;
-//        color = [UIColor lightGrayColor];
-//        CGContextSetStrokeColorWithColor(c, color.CGColor);
-//        CGContextSetLineWidth(c, 1.0);
-//        CGContextMoveToPoint(c, 0.0, y);
-//        CGContextAddLineToPoint(c, self.width, y);
-//        CGContextStrokePath(c);
         
         // Draw image for this line
-        
         NSArray *runList = (__bridge NSArray *)(CTLineGetGlyphRuns(line));
         for ( int i=0; i<[runList count]; ++i ) {
             
