@@ -32,6 +32,9 @@ NSString *TBFormatDate(NSDate *date);
 
 NSString *TBMergeString(NSString *first, NSString *second);
 
+void TBSaveRefreshDateForKey(NSString *key, NSDate *date);
+NSDate *TBRefreshDateForKey(NSString *key);
+
 
 #ifdef __cplusplus
 }

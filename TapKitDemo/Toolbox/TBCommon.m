@@ -87,3 +87,31 @@ NSString *TBMergeString(NSString *first, NSString *second)
   }
   return nil;
 }
+
+
+void TBSaveRefreshDateForKey(NSString *key, NSDate *date)
+{
+  if ( [key length]<=0 ) {
+    return;
+  }
+  
+  if ( date==nil ) {
+    return;
+  }
+  
+  NSString *string = TKInternetDateStringFromDate(date);
+  [[TKSettings sharedObject] setObject:string forKey:key];
+  [[TKSettings sharedObject] synchronize];
+  
+}
+
+NSDate *TBRefreshDateForKey(NSString *key)
+{
+  if ( [key length]<=0 ) {
+    return nil;
+  }
+  
+  NSString *string = [[TKSettings sharedObject] objectForKey:key];
+  return TKDateFromInternetDateString(string);
+  
+}
