@@ -11,8 +11,16 @@
 #import "Toolbox/Toolbox.h"
 
 
-@interface TTMainViewController : UIViewController {
-    TTTAttributedLabel *_label;
+@interface TTMainViewController : UIViewController<
+    UITableViewDataSource,
+    UITableViewDelegate
+> {
+  UIView *_headerView;
+  TBButton *_tab1;
+  TBButton *_tab2;
+  UITableView *_tableView;
+  
+  TBButton *_tab;
 }
 
 @end
