@@ -11,16 +11,7 @@
 #import "Toolbox/Toolbox.h"
 
 
-@interface TTMainViewController : UIViewController<
-    UITableViewDataSource,
-    UITableViewDelegate
-> {
-  UIView *_headerView;
-  TBButton *_tab1;
-  TBButton *_tab2;
-  UITableView *_tableView;
-  
-  TBButton *_tab;
+@interface TTMainViewController : UIViewController {
 }
 
 @end
