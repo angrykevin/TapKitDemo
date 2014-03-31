@@ -11,7 +11,7 @@
 @implementation UITableView (Extentions)
 
 
-- (void)updateTableWithNewRowCount:(int)rowCount
+- (void)updateTableWithNewRowCount:(NSUInteger)rowCount
 {
   CGPoint offset = [self contentOffset];
   
@@ -22,7 +22,7 @@
   NSMutableArray *array = [[NSMutableArray alloc] init];
   CGFloat height = 0.0;
   
-  for ( int i=0; i<rowCount; ++i ) {
+  for ( NSUInteger i=0; i<rowCount; ++i ) {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
     
     [array addObject:indexPath];

@@ -10,6 +10,6 @@
 
 @interface UITableView (Extentions)
 
-- (void)updateTableWithNewRowCount:(int)rowCount;
+- (void)updateTableWithNewRowCount:(NSUInteger)rowCount;
 
 @end
