@@ -1119,8 +1119,8 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
             && ([result length]>2))
         {
             NSString *name = [result substringWithRange:NSMakeRange(1, [result length]-2)];
-            NSDictionary *brick = [self imageBrickForName:name];
-            if ( brick ) {
+            NSDictionary *block = [self imageBlockForName:name];
+            if ( block ) {
                 CTRunDelegateCallbacks callbacks;
                 callbacks.version = kCTRunDelegateVersion1;
                 callbacks.dealloc = deallocCallback;
@@ -1128,7 +1128,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 callbacks.getDescent = descentCallback;
                 callbacks.getWidth = widthCallback;
                 
-                NSDictionary *attr = [brick copy];
+                NSDictionary *attr = [block copy];
                 
                 CTRunDelegateRef delegateRef = CTRunDelegateCreate(&callbacks, ((__bridge_retained void *)attr));
                 NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:(__bridge id)delegateRef, (NSString *)kCTRunDelegateAttributeName, nil];
@@ -1143,11 +1143,11 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     
 }
 
-- (NSDictionary *)imageBrickForName:(NSString *)name
+- (NSDictionary *)imageBlockForName:(NSString *)name
 {
-    for ( NSDictionary *brick in self.imageBricks ) {
-        if ( [[brick objectForKey:@"name"] isEqualToString:name] ) {
-            return brick;
+    for ( NSDictionary *block in self.imageBlocks ) {
+        if ( [[block objectForKey:@"name"] isEqualToString:name] ) {
+            return block;
         }
     }
     return nil;
@@ -1163,7 +1163,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
         return;
     }
     
-    if ( (self.ignoreImage) || ([self.imageBricks count]<=0) ) {
+    if ( (self.ignoreImage) || ([self.imageBlocks count]<=0) ) {
         self.attributedText = text;
     } else {
         self.attributedText = [self parseMarkup:text];
