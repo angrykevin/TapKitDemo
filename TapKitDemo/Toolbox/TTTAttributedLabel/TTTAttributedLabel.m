@@ -1035,9 +1035,9 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     }
 }
 
-- (void)drawImage:(NSDictionary *)brick inRect:(CGRect)rect
+- (void)drawImage:(NSDictionary *)block inRect:(CGRect)rect
 {
-    NSString *imageName = [brick objectForKey:@"image"];
+    NSString *imageName = [block objectForKey:@"image"];
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:nil];
     NSData *imageData = [[NSData alloc] initWithContentsOfFile:imagePath];
     
