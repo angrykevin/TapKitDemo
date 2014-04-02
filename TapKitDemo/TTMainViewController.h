@@ -12,6 +12,12 @@
 
 
 @interface TTMainViewController : UIViewController {
+  UIView *_boxView;
+  UIView *_fromView;
+  UIButton *_button;
+  
+  int _time;
+  
 }
 
 @end
