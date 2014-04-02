@@ -84,7 +84,7 @@
 
 - (void)tap:(UIGestureRecognizer *)gestureRecognizer
 {
-  [UIView animateWithDuration:0.2
+  [UIView animateWithDuration:0.25
                    animations:^{
                      self.alpha = 0.0;
                    }
@@ -150,23 +150,48 @@
   [inView addSubview:self];
   self.frame = from;
   
-//  [UIView animateWithDuration:5.0
-//                   animations:^{
-//                     self.frame = inView.bounds;
-//                   }];
+  [UIView animateWithDuration:0.25
+                   animations:^{
+                     self.frame = inView.bounds;
+                   }
+                   completion:^(BOOL finished) {
+                     if ( _startLoadingAfterPresented ) {
+                       [self startLoading];
+                     }
+                   }];
   
-  NSValue *fromValue = [NSValue valueWithCGRect:from];
-  NSValue *toValue = [NSValue valueWithCGRect:inView.bounds];
+//  CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+//  positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointZero];
+//  positionAnimation.duration = 5.0;
+//  positionAnimation.autoreverses = NO;
+//  
+//  CABasicAnimation *boundsAnimation = [CABasicAnimation animationWithKeyPath:@"bounds"];
+//  boundsAnimation.toValue = [NSValue valueWithCGRect:inView.bounds];
+//  boundsAnimation.duration = 5.0;
+//  boundsAnimation.autoreverses = NO;
+//  
+//  CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+//  animationGroup.animations = @[ positionAnimation, boundsAnimation ];
+//  animationGroup.autoreverses = NO;
+//  [self.layer addAnimation:animationGroup forKey:@"frame"];
   
-  CABasicAnimation *animation = [CABasicAnimation animation];
-  animation.fromValue = fromValue;
-  animation.toValue = toValue;
-//  CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"frame"];
-//  animation.calculationMode = kCAAnimationDiscrete;
-  animation.autoreverses = NO;
-  animation.fillMode = kCAFillModeForwards;
-  animation.duration = 5.0;
-  [self.layer addAnimation:animation forKey:@"frame"];
+//  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frame"];
+//  //animation.fromValue = fromValue;
+//  animation.toValue = toValue;
+//  animation.autoreverses = NO;
+//  animation.fillMode = kCAFillModeForwards;
+//  animation.duration = 5.0;
+//  animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//  [self.layer addAnimation:animation forKey:nil];
+  
+//  CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+//  pulseAnimation.duration = .5;
+//  pulseAnimation.toValue = [NSNumber numberWithFloat:1.1];
+//  pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//  pulseAnimation.autoreverses = YES;
+//  pulseAnimation.repeatCount = FLT_MAX;
+//  
+//  [self.layer addAnimation:pulseAnimation forKey:nil];
   
 }
 

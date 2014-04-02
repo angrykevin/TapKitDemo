@@ -64,7 +64,6 @@
   
   TBImageExpandView *expandView = [[TBImageExpandView alloc] initWithItem:item];
   [expandView presentInView:self.view fromView:_fromView];
-  [expandView startLoading];
   
 //  _time++;
 //  
