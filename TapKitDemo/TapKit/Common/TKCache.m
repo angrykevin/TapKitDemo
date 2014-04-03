@@ -77,7 +77,7 @@
       return;
     }
     
-    if ( item.expiryDate == nil ) {
+    if ( !(item.expiryDate) ) {
       return;
     }
     
@@ -95,11 +95,12 @@
 {
   NSData *data = nil;
   
-  if ( [key length] > 0 ) {
+  if ( [key length]>0 ) {
     [_lock lock];
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
     if ( item ) {
       if ( ![item.expiryDate earlierThan:[NSDate date]] ) {
+        // TODO: Check file existence
         data = [[NSData alloc] initWithContentsOfFile:item.path];
       }
     }
@@ -113,11 +114,11 @@
 {
   BOOL result = NO;
   
-  if ( [key length] > 0 ) {
+  if ( [key length]>0 ) {
     [_lock lock];
     
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
-    if ( item == nil ) {
+    if ( !item ) {
       item = [[TKCacheItem alloc] init];
       [_items addObject:item];
     }
@@ -127,7 +128,7 @@
     NSString *path = [[NSString alloc] initWithFormat:@"Caches/%@", key];
     item.path = TKPathForDocumentsResource(path);
     
-    NSTimeInterval interval = (timeoutInterval > 0) ? timeoutInterval : TKTimeIntervalWeek();
+    NSTimeInterval interval = ( (timeoutInterval>0) ? timeoutInterval : TKTimeIntervalWeek() );
     item.expiryDate = [[NSDate alloc] initWithTimeIntervalSinceNow:interval];
     
     item.size = [data length];
@@ -151,7 +152,7 @@
 {
   BOOL result = NO;
   
-  if ( [key length] > 0 ) {
+  if ( [key length]>0 ) {
     [_lock lock];
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
     if ( item ) {
@@ -165,7 +166,7 @@
 
 - (void)removeCacheForKey:(NSString *)key
 {
-  if ( [key length] > 0 ) {
+  if ( [key length]>0 ) {
     [_lock lock];
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
     if ( item ) {
@@ -265,7 +266,7 @@
 
 - (NSString *)cachePathForKey:(NSString *)key
 {
-  if ( [key length] > 0 ) {
+  if ( [key length]>0 ) {
     NSString *path = [[NSString alloc] initWithFormat:@"Caches/%@", key];
     return TKPathForDocumentsResource(path);
   }

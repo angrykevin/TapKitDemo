@@ -20,7 +20,7 @@
     
     NSString *path = TKPathForDocumentsResource(@"AppSettings.xml");
     _settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    if ( _settings==nil ) {
+    if ( !_settings ) {
       _settings = [[NSMutableDictionary alloc] init];
     }
     
