@@ -23,8 +23,8 @@
   if ( self ) {
     
     _address = address;
-    _timeoutInterval = (timeoutInterval > 0.0) ? timeoutInterval : 10.0;
-    _cachePolicy = (cachePolicy == 0) ? NSURLRequestUseProtocolCachePolicy : cachePolicy;
+    _timeoutInterval = ( (timeoutInterval>0.0) ? timeoutInterval : 10.0 );
+    _cachePolicy = ( (cachePolicy==0) ? NSURLRequestUseProtocolCachePolicy : cachePolicy );
     _method = @"GET";
     _headers = [[NSMutableDictionary alloc] init];
     //_body = nil;
@@ -127,7 +127,7 @@
     [self startUsingNetwork];
     [self transferStatusFromReadyToExecuting];
     
-    NSURLRequest *request = (_request != nil) ? _request : [self buildRequest];
+    NSURLRequest *request = ( (_request) ? _request : [self buildRequest] );
     
     __autoreleasing NSURLResponse *response = nil;
     __autoreleasing NSError *error = nil;
@@ -166,7 +166,7 @@
 
 - (void)addValue:(NSString *)value forRequestHeader:(NSString *)header
 {
-  if ( [header length] > 0 ) {
+  if ( [header length]>0 ) {
     
     if ( value ) {
       [_headers setObject:value forKey:header];
@@ -198,15 +198,15 @@
 
 - (void)addValue:(id)value filename:(NSString *)filename forFormField:(NSString *)field
 {
-  if ( [field length] > 0 ) {
+  if ( [field length]>0 ) {
     
-    if ( _formFields == nil ) {
+    if ( _formFields==nil ) {
       _formFields = [[NSMutableDictionary alloc] init];
     }
     
     if ( value ) {
       
-      if ( [filename length] > 0 ) {
+      if ( [filename length]>0 ) {
         
         NSDictionary *dict = @{ @"filename": filename, @"data": value };
         [_formFields setObject:dict forKey:field];
@@ -263,7 +263,7 @@
   if ( data ) {
     _body = data;
   }
-  if ( [_body length] > 0 ) {
+  if ( [_body length]>0 ) {
     [request setHTTPBody:_body];
     [_headers setObject:[NSString stringWithFormat:@"%u", [_body length]]
                  forKey:@"Content-Length"];
@@ -290,7 +290,7 @@
 
 - (NSData *)buildRequestBody
 {
-  if ( [_formFields count] < 1 ) {
+  if ( [_formFields count]<1 ) {
     return nil;
   }
   
@@ -468,7 +468,7 @@
       [self transferStatusFromReadyToExecuting];
       
       
-      NSURLRequest *request = (_request) ? _request : [self buildRequest];
+      NSURLRequest *request = ( (_request) ? _request : [self buildRequest] );
       
       _connection = [[NSURLConnection alloc] initWithRequest:request
                                                     delegate:self
@@ -496,10 +496,10 @@
     _responseData = [[NSMutableData alloc] init];
   }
   
-  NSDictionary *headers = [(NSHTTPURLResponse *)_response allHeaderFields];
+  NSDictionary *headers = [(NSHTTPURLResponse *)(_response) allHeaderFields];
   _bytesRead = 0;
   _totalBytesRead = 0;
-  _totalBytesExpectedToRead = [headers[ @"Content-Length" ] intValue];
+  _totalBytesExpectedToRead = [[headers objectForKey:@"Content-Length"] intValue];
   //TKPRINT(@"READ: %d %d/%d", _bytesRead, _totalBytesRead, _totalBytesExpectedToRead);
   
   [self notifyObserversOperationDidUpdate];
@@ -512,7 +512,7 @@
     [_responseFileHandle writeData:data];
     [_responseFileHandle synchronizeFile];
   } else {
-    [(NSMutableData *)_responseData appendData:data];
+    [(NSMutableData *)(_responseData) appendData:data];
   }
   
   _bytesRead = [data length];
