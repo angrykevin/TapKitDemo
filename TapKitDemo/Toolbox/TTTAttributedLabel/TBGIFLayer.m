@@ -36,7 +36,7 @@
   self.opaque = YES;
   [CATransaction commit];
   
-  _sourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+  _sourceRef = CGImageSourceCreateWithData(((__bridge CFDataRef)data), NULL);
   
   if ( _sourceRef ) {
     _frameCount = CGImageSourceGetCount(_sourceRef);
@@ -44,7 +44,7 @@
     _frameList = [[NSMutableArray alloc] init];
     for ( int i=0; i<_frameCount; ++i ) {
       CGImageRef imageRef = CGImageSourceCreateImageAtIndex(_sourceRef, i, NULL);
-      [_frameList addObject:(__bridge id)(imageRef)];
+      [_frameList addObject:((__bridge id)imageRef)];
       CFRelease(imageRef);
     }
     
@@ -149,9 +149,9 @@
   if ( _sourceRef ) {
     CFDictionaryRef dictionaryRef = CGImageSourceCopyPropertiesAtIndex(_sourceRef, 0, NULL);
     if ( dictionaryRef ) {
-      NSNumber *width = (__bridge NSNumber *)CFDictionaryGetValue(dictionaryRef, kCGImagePropertyPixelWidth);
+      NSNumber *width = ((__bridge NSNumber *)CFDictionaryGetValue(dictionaryRef, kCGImagePropertyPixelWidth));
       size.width = [width floatValue];
-      NSNumber *height = (__bridge NSNumber *)CFDictionaryGetValue(dictionaryRef, kCGImagePropertyPixelHeight);
+      NSNumber *height = ((__bridge NSNumber *)CFDictionaryGetValue(dictionaryRef, kCGImagePropertyPixelHeight));
       size.height = [height floatValue];
       CFRelease(dictionaryRef);
     }
@@ -241,7 +241,7 @@
   if ( sourceRef ) {
     CFDictionaryRef dictionaryRef = CGImageSourceCopyPropertiesAtIndex(sourceRef, 0, NULL);
     if ( dictionaryRef ) {
-      NSNumber *value = (__bridge NSNumber *)CFDictionaryGetValue(dictionaryRef, kCGImagePropertyGIFLoopCount);
+      NSNumber *value = ((__bridge NSNumber *)CFDictionaryGetValue(dictionaryRef, kCGImagePropertyGIFLoopCount));
       loopCount = [value unsignedIntegerValue];
       CFRelease(dictionaryRef);
     }
@@ -256,7 +256,7 @@
     CFDictionaryRef dictionaryRef = CGImageSourceCopyPropertiesAtIndex(sourceRef, idx, NULL);
     if ( dictionaryRef ) {
       CFDictionaryRef gifDictionaryRef = NULL;
-      if ( CFDictionaryGetValueIfPresent(dictionaryRef, kCGImagePropertyGIFDictionary, (const void **)(&gifDictionaryRef)) ) {
+      if ( CFDictionaryGetValueIfPresent(dictionaryRef, kCGImagePropertyGIFDictionary, ((const void **)(&gifDictionaryRef))) ) {
         const void *delayTimeValue = NULL;
         if ( CFDictionaryGetValueIfPresent(gifDictionaryRef, kCGImagePropertyGIFUnclampedDelayTime, &delayTimeValue) ) {
           delayTime = [((__bridge NSNumber *)delayTimeValue) floatValue];

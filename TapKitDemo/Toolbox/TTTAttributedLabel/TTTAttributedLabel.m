@@ -1048,7 +1048,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     
     CALayer *layer = nil;
     
-    const char *buff = (const char *)[imageData bytes];
+    const char *buff = ((const char *)[imageData bytes]);
     if ( (buff[0]==0x47) && (buff[1]==0x49) && (buff[2]==0x46) && (buff[3]==0x38) ) {
         TBGIFLayer *gifLayer = [[TBGIFLayer alloc] init];
         [gifLayer reloadWithData:imageData];
@@ -1131,7 +1131,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 NSDictionary *attr = [block copy];
                 
                 CTRunDelegateRef delegateRef = CTRunDelegateCreate(&callbacks, ((__bridge_retained void *)attr));
-                NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:(__bridge id)delegateRef, (NSString *)kCTRunDelegateAttributeName, nil];
+                NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:((__bridge id)delegateRef), ((NSString *)kCTRunDelegateAttributeName), nil];
                 NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@" " attributes:attributeDictionary];
                 [string replaceCharactersInRange:[chunk range] withAttributedString:attributedString];
                 CFRelease(delegateRef);
