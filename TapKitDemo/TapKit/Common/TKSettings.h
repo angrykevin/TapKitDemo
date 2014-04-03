@@ -10,6 +10,7 @@
 #import "../Core/Core.h"
 #import "../Additions/Additions.h"
 
+
 @interface TKSettings : NSObject {
   NSMutableDictionary *_settings;
   NSLock *_lock;

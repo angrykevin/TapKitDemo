@@ -224,7 +224,7 @@
 
 - (NSArray *)observers
 {
-  if ( _observers == nil ) {
+  if ( _observers==nil ) {
     _observers = TKCreateWeakMutableArray();
   }
   return _observers;
@@ -232,10 +232,8 @@
 
 - (id)addObserver:(id)observer
 {
-  if ( _observers == nil ) {
-    _observers = TKCreateWeakMutableArray();
-  }
-  return [_observers addUnidenticalObjectIfNotNil:observer];
+  NSMutableArray *observers = (NSMutableArray *)[self observers];
+  return [observers addUnidenticalObjectIfNotNil:observer];
 }
 
 - (void)removeObserver:(id)observer

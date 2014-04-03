@@ -68,7 +68,7 @@
 - (void)addCacheItem:(TKCacheItem *)item
 {
   if ( item ) {
-    if ( [item.key length] <= 0 ) {
+    if ( [item.key length]<=0 ) {
       return;
     }
     

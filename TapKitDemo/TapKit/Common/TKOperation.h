@@ -15,7 +15,9 @@
 typedef void(^TKOperationBlock)(id operation);
 
 
-@interface TKOperation : NSOperation<TKObserverProtocol> {
+@interface TKOperation : NSOperation<
+    TKObserverProtocol
+> {
   NSError *_error;
   
   BOOL _notifyOnMainThread;
