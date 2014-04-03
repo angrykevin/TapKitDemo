@@ -10,6 +10,7 @@
 #import "../Core/Core.h"
 #import "../Additions/Additions.h"
 
+
 @interface TKDatabaseRow : NSObject {
   NSArray *_names;
   NSArray *_types;

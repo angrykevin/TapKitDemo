@@ -8,7 +8,6 @@
 
 #import "TKDatabase.h"
 
-
 @implementation TKDatabase
 
 
@@ -54,7 +53,7 @@
   }
   
   int code = sqlite3_open([_path fileSystemRepresentation], &_handle);
-  if ( code != SQLITE_OK ) {
+  if ( code!=SQLITE_OK ) {
     return NO;
   }
   
@@ -88,8 +87,8 @@
 - (BOOL)hasRowForSQLStatement:(NSString *)sql
 {
   if ( [self open] ) {
-    if ( [sql length] > 0 ) {
-      return ( [[self executeQuery:sql] count] > 0 );
+    if ( [sql length]>0 ) {
+      return ( [[self executeQuery:sql] count]>0 );
     }
   }
   return NO;
@@ -100,13 +99,9 @@
   int count = 0;
   for ( int i=0; i<[sql length]; ++i ) {
     unichar c = [sql characterAtIndex:i];
-    if ( c == '?' ) {
+    if ( c=='?' ) {
       count++;
     }
-  }
-  
-  if ( count == 0 ) {
-    count = -1;
   }
   
   NSMutableArray *parameters = [[NSMutableArray alloc] init];
@@ -127,7 +122,7 @@
   sqlite3_stmt *statement = NULL;
   
   code = sqlite3_prepare(_handle, [sql UTF8String], -1, &statement, 0);
-  if ( code != SQLITE_OK ) {
+  if ( code!=SQLITE_OK ) {
     sqlite3_finalize(statement);
     [_lock unlock];
     return NO;
@@ -145,7 +140,7 @@
   
   [_lock unlock];
   
-  return ( code == SQLITE_OK );
+  return ( code==SQLITE_OK );
 }
 
 - (NSArray *)executeQuery:(NSString *)sql, ...
@@ -153,13 +148,9 @@
   int count = 0;
   for ( int i=0; i<[sql length]; ++i ) {
     unichar c = [sql characterAtIndex:i];
-    if ( c == '?' ) {
+    if ( c=='?' ) {
       count++;
     }
-  }
-  
-  if ( count == 0 ) {
-    count = -1;
   }
   
   NSMutableArray *parameters = [[NSMutableArray alloc] init];
@@ -180,7 +171,7 @@
   sqlite3_stmt *statement = NULL;
   
   code = sqlite3_prepare(_handle, [sql UTF8String], -1, &statement, 0);
-  if ( code != SQLITE_OK ) {
+  if ( code!=SQLITE_OK ) {
     sqlite3_finalize(statement);
     [_lock unlock];
     return nil;
@@ -218,7 +209,7 @@
   
   NSMutableArray *rows = [[NSMutableArray alloc] init];
   
-  while ( sqlite3_step(statement) == SQLITE_ROW ) {
+  while ( sqlite3_step(statement)==SQLITE_ROW ) {
     
     TKDatabaseRow *row = [[TKDatabaseRow alloc] init];
     [rows addObject:row];
@@ -276,7 +267,7 @@
   
   [_lock unlock];
   
-  if ( [rows count] > 0 ) {
+  if ( [rows count]>0 ) {
     return rows;
   }
   
@@ -330,21 +321,21 @@
     id object = [parameters objectAtIndex:i];
     [self bindObject:object toColumn:(i+1) inStatement:statement];
   }
-  return ( [parameters count] == count );
+  return ( [parameters count]==count );
 }
 
 - (void)bindObject:(id)object toColumn:(int)index inStatement:(sqlite3_stmt *)statement
 {
-  if ( (object == nil) || ((NSNull *)object == [NSNull null]) ) {
+  if ( (object==nil) || ((NSNull *)(object)==[NSNull null]) ) {
     sqlite3_bind_null(statement, index);
   } else if ( [object isKindOfClass:[NSNumber class]] ) {
-    if ( strcmp([object objCType], @encode(BOOL)) == 0 ) {
+    if ( strcmp([object objCType], @encode(BOOL))==0 ) {
       sqlite3_bind_int64(statement, index, ([object boolValue] ? 1 : 0));
-    } else if ( strcmp([object objCType], @encode(int)) == 0 ) {
+    } else if ( strcmp([object objCType], @encode(int))==0 ) {
       sqlite3_bind_int64(statement, index, [object intValue]);
-    } else if ( strcmp([object objCType], @encode(long long)) == 0 ) {
+    } else if ( strcmp([object objCType], @encode(long long))==0 ) {
       sqlite3_bind_int64(statement, index, [object longLongValue]);
-    } else if ( strcmp([object objCType], @encode(double)) == 0 ) {
+    } else if ( strcmp([object objCType], @encode(double))==0 ) {
       sqlite3_bind_double(statement, index, [object doubleValue]);
     } else {
       sqlite3_bind_text(statement, index, [[object description] UTF8String], -1, SQLITE_STATIC);
@@ -377,7 +368,7 @@
 - (BOOL)hadError
 {
   int lastErrorCode = [self lastErrorCode];
-  return ( (lastErrorCode > SQLITE_OK) && (lastErrorCode < SQLITE_ROW) );
+  return ( (lastErrorCode>SQLITE_OK) && (lastErrorCode<SQLITE_ROW) );
 }
 
 @end

@@ -18,7 +18,7 @@
   NSUInteger idx = [_names indexOfObject:name];
   id object = [_columns objectOrNilAtIndex:idx];
   if ( TKIsInstance(object, [NSNumber class]) ) {
-    return ( [object intValue] != 0 );
+    return ( [object intValue]!=0 );
   }
   return NO;
 }
@@ -94,12 +94,12 @@
   for ( int i=0; i<[_names count]; ++i ) {
     NSString *name = [_names objectOrNilAtIndex:i];
     id column = [_columns objectOrNilAtIndex:i];
-    if ( column != [NSNull null] ) {
+    if ( column!=[NSNull null] ) {
       [dictionary setObject:column forKeyIfNotNil:name];
     }
   }
   
-  if ( [dictionary count] > 0 ) {
+  if ( [dictionary count]>0 ) {
     return dictionary;
   }
   

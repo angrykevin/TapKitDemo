@@ -8,7 +8,6 @@
 
 #import "TKNAIManager.h"
 
-
 @implementation TKNAIManager
 
 
