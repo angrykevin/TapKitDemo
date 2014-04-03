@@ -79,7 +79,7 @@
     NSString *sql = @"SELECT COUNT(*) AS count FROM sqlite_master WHERE type='table' AND name=?;";
     NSArray *result = [self executeQuery:sql, name];
     TKDatabaseRow *row = [result firstObject];
-    return ( [[row stringForName:@"count"] intValue] > 0 );
+    return ( [[row stringForName:@"count"] intValue]>0 );
   }
   return NO;
 }
@@ -98,8 +98,7 @@
 {
   int count = 0;
   for ( int i=0; i<[sql length]; ++i ) {
-    unichar c = [sql characterAtIndex:i];
-    if ( c=='?' ) {
+    if ( [sql characterAtIndex:i]=='?' ) {
       count++;
     }
   }
@@ -147,8 +146,7 @@
 {
   int count = 0;
   for ( int i=0; i<[sql length]; ++i ) {
-    unichar c = [sql characterAtIndex:i];
-    if ( c=='?' ) {
+    if ( [sql characterAtIndex:i]=='?' ) {
       count++;
     }
   }
@@ -326,7 +324,7 @@
 
 - (void)bindObject:(id)object toColumn:(int)index inStatement:(sqlite3_stmt *)statement
 {
-  if ( (object==nil) || ((NSNull *)(object)==[NSNull null]) ) {
+  if ( (!object) || (object==[NSNull null]) ) {
     sqlite3_bind_null(statement, index);
   } else if ( [object isKindOfClass:[NSNumber class]] ) {
     if ( strcmp([object objCType], @encode(BOOL))==0 ) {

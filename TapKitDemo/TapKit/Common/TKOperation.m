@@ -224,7 +224,7 @@
 
 - (NSArray *)observers
 {
-  if ( _observers==nil ) {
+  if ( !_observers ) {
     _observers = TKCreateWeakMutableArray();
   }
   return _observers;

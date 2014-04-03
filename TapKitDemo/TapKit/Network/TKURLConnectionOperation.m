@@ -199,7 +199,7 @@
 {
   if ( [field length]>0 ) {
     
-    if ( _formFields==nil ) {
+    if ( !_formFields ) {
       _formFields = [[NSMutableDictionary alloc] init];
     }
     
@@ -289,7 +289,7 @@
 
 - (NSData *)buildRequestBody
 {
-  if ( [_formFields count]<1 ) {
+  if ( [_formFields count]<=0 ) {
     return nil;
   }
   
@@ -495,7 +495,7 @@
     _responseData = [[NSMutableData alloc] init];
   }
   
-  NSDictionary *headers = [(NSHTTPURLResponse *)(_response) allHeaderFields];
+  NSDictionary *headers = [((NSHTTPURLResponse *)_response) allHeaderFields];
   _bytesRead = 0;
   _totalBytesRead = 0;
   _totalBytesExpectedToRead = [[headers objectForKey:@"Content-Length"] intValue];
@@ -511,7 +511,7 @@
     [_responseFileHandle writeData:data];
     [_responseFileHandle synchronizeFile];
   } else {
-    [(NSMutableData *)(_responseData) appendData:data];
+    [((NSMutableData *)_responseData) appendData:data];
   }
   
   _bytesRead = [data length];
