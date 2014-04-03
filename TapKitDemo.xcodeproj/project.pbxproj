@@ -83,7 +83,6 @@
 		BCE720BE172BFE6600602BED /* NSDictionaryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720BD172BFE6600602BED /* NSDictionaryAdditions.m */; };
 		BCE720C4172C0B5800602BED /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720C3172C0B5800602BED /* NSStringAdditions.m */; };
 		BCE720C7172C0BB400602BED /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720C6172C0BB300602BED /* NSDataAdditions.m */; };
-		BCE720CF172C0DB500602BED /* TKCoreBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE720CE172C0DB500602BED /* TKCoreBase64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,8 +234,6 @@
 		BCE720C3172C0B5800602BED /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		BCE720C5172C0BB300602BED /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		BCE720C6172C0BB300602BED /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
-		BCE720CD172C0DB500602BED /* TKCoreBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoreBase64.h; sourceTree = "<group>"; };
-		BCE720CE172C0DB500602BED /* TKCoreBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoreBase64.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,8 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				BC1B9485172968DF005C10D3 /* Core.h */,
-				BCE720CD172C0DB500602BED /* TKCoreBase64.h */,
-				BCE720CE172C0DB500602BED /* TKCoreBase64.m */,
 				BC1B948A17296B5E005C10D3 /* TKCoreCommon.h */,
 				BC1B948B17296B5E005C10D3 /* TKCoreCommon.m */,
 				BC1B949017296DB9005C10D3 /* TKCoreCompatibility.h */,
@@ -657,7 +652,6 @@
 				0A190AE018DEDD2C00675252 /* TBButton.m in Sources */,
 				BC6BD82218EBF241002FDA5B /* UIImageView+WebCache.m in Sources */,
 				BCE720C7172C0BB400602BED /* NSDataAdditions.m in Sources */,
-				BCE720CF172C0DB500602BED /* TKCoreBase64.m in Sources */,
 				BC6BD81F18EBF241002FDA5B /* UIImage+GIF.m in Sources */,
 				0A190ADC18DEDD2C00675252 /* MBProgressHUD.m in Sources */,
 				0A190AEB18DEDD2C00675252 /* UILabelExtentions.m in Sources */,
