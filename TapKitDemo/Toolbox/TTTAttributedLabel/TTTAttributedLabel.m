@@ -815,15 +815,15 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
         
         
         // Draw image for this line
-        NSArray *runList = (__bridge NSArray *)(CTLineGetGlyphRuns(line));
+        NSArray *runList = ((__bridge NSArray *)CTLineGetGlyphRuns(line));
         for ( int i=0; i<[runList count]; ++i ) {
             
-            CTRunRef runRef = (__bridge CTRunRef)([runList objectAtIndex:i]);
+            CTRunRef runRef = ((__bridge CTRunRef)[runList objectAtIndex:i]);
             
-            NSDictionary *attributes = (__bridge NSDictionary *)(CTRunGetAttributes(runRef));
+            NSDictionary *attributes = ((__bridge NSDictionary *)CTRunGetAttributes(runRef));
             
-            CTRunDelegateRef delegateRef = (__bridge CTRunDelegateRef)([attributes valueForKey:(id)kCTRunDelegateAttributeName]);
-            id refCon = (__bridge id)(CTRunDelegateGetRefCon( delegateRef ));
+            CTRunDelegateRef delegateRef = ((__bridge CTRunDelegateRef)[attributes valueForKey:((id)kCTRunDelegateAttributeName)]);
+            id refCon = ((__bridge id)CTRunDelegateGetRefCon(delegateRef));
             
             if ( refCon ) {
                 
@@ -846,17 +846,17 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 runBounds.origin.y = self.height - runBounds.origin.y;
                 
                 // move it up
-                if ( self.imageVerticalAlignment == TTTAttributedLabelVerticalAlignmentBottom ) {
+                if ( self.imageVerticalAlignment==TTTAttributedLabelVerticalAlignmentBottom ) {
                     runBounds.origin.y -= (runAscent + runDescent);
-                } else if ( self.imageVerticalAlignment == TTTAttributedLabelVerticalAlignmentCenter ) {
+                } else if ( self.imageVerticalAlignment==TTTAttributedLabelVerticalAlignmentCenter ) {
                     runBounds.origin.y -= self.font.capHeight;
-                    runBounds.origin.y += ((self.font.capHeight - (runAscent + runDescent))/2.0);
-                } else if ( self.imageVerticalAlignment == TTTAttributedLabelVerticalAlignmentTop ) {
+                    runBounds.origin.y += ((self.font.capHeight - (runAscent + runDescent)) / 2.0);
+                } else if ( self.imageVerticalAlignment==TTTAttributedLabelVerticalAlignmentTop ) {
                     runBounds.origin.y -= self.font.capHeight;
                 }
                 
                 [self addImageLayer];
-                [self drawImage:(NSDictionary *)refCon inRect:runBounds];
+                [self drawImage:((NSDictionary *)refCon) inRect:runBounds];
             }
         }
     }
@@ -1062,7 +1062,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
         layer.frame = rect;
         layer.contentsScale = [UIScreen mainScreen].scale;
         layer.backgroundColor = [[UIColor clearColor] CGColor];
-        layer.contents = (id)[image CGImage];
+        layer.contents = ((id)[image CGImage]);
     }
     [self.imageLayer addSublayer:layer];
 }
@@ -1078,7 +1078,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
 
 - (void)addImageLayer
 {
-    if ( self.imageLayer==nil ) {
+    if ( !(self.imageLayer) ) {
         self.imageLayer = [CALayer layer];
         self.imageLayer.contentsScale = [UIScreen mainScreen].scale;
         self.imageLayer.frame = self.bounds;
