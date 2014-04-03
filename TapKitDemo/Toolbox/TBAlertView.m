@@ -17,7 +17,7 @@
                      delegate:nil
             cancelButtonTitle:nil
             otherButtonTitles:nil];
-  if (self) {
+  if ( self ) {
     
     self.delegate = self;
     
@@ -29,7 +29,7 @@
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(TBAlertViewBlock)block
 {
-  if ( [title length] > 0 ) {
+  if ( [title length]>0 ) {
     
     if ( ![_blockDictionary hasKeyEqualTo:title] ) {
       NSInteger index = [self addButtonWithTitle:title];
@@ -51,7 +51,7 @@
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(TBAlertViewBlock)block
 {
   NSInteger index = [self addButtonWithTitle:title block:block];
-  if ( index >= 0 ) {
+  if ( index>=0 ) {
     [self setCancelButtonIndex:index];
   }
   return index;
@@ -61,7 +61,7 @@
 {
   NSString *title = [self buttonTitleAtIndex:buttonIndex];
   id block = [_blockDictionary objectForKey:title];
-  if ( block != [NSNull null] ) {
+  if ( block!=[NSNull null] ) {
     ((TBAlertViewBlock)block)();
   }
 }

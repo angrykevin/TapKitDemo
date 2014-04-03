@@ -111,10 +111,10 @@
   
   CGRect rect = CGRectZero;
   
-  if ( width > height ) {
-    rect = CGRectMake((width - height)/2.0, 0.0, height, height);
-  } else if ( width < height ) {
-    rect = CGRectMake(0.0, (height - width)/2.0, width, width);
+  if ( width>height ) {
+    rect = CGRectMake((width-height)/2.0, 0.0, height, height);
+  } else if ( width<height ) {
+    rect = CGRectMake(0.0, (height-width)/2.0, width, width);
   } else {
     return self;
   }
@@ -205,7 +205,7 @@
   
   CGImageRef retvalImageRef = NULL;
   
-  if ( CGImageGetAlphaInfo(self.CGImage) == kCGImageAlphaNone ) {
+  if ( CGImageGetAlphaInfo(self.CGImage)==kCGImageAlphaNone ) {
     CGFloat width = self.size.width;
     CGFloat height = self.size.height;
     

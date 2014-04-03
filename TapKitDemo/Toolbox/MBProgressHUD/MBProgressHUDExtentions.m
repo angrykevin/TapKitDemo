@@ -8,7 +8,6 @@
 
 #import "MBProgressHUDExtentions.h"
 
-
 @implementation MBProgressHUD (Extentions)
 
 + (MBProgressHUD *)showHUD:(UIView *)boxView
@@ -16,7 +15,7 @@
 {
   MBProgressHUD *hud = [MBProgressHUD HUDForView:boxView];
   
-  if ( hud==nil ) {
+  if ( !hud ) {
     hud = [[MBProgressHUD alloc] initWithView:boxView];
     [boxView addSubview:hud];
   }
@@ -48,7 +47,7 @@
 {
   MBProgressHUD *hud = [MBProgressHUD HUDForView:boxView];
   
-  if ( hud==nil ) {
+  if ( !hud ) {
     if ( createIfNonexist ) {
       hud = [[MBProgressHUD alloc] initWithView:boxView];
       [boxView addSubview:hud];
@@ -56,7 +55,7 @@
       return nil;
     }
   } else {
-    if ( hud.mode != MBProgressHUDModeIndeterminate ) {
+    if ( hud.mode!=MBProgressHUDModeIndeterminate ) {
       [hud removeFromSuperview];
       hud = [[MBProgressHUD alloc] initWithView:boxView];
       [boxView addSubview:hud];
@@ -92,11 +91,11 @@
 {
   MBProgressHUD *hud = [MBProgressHUD HUDForView:boxView];
   
-  if ( hud==nil ) {
+  if ( !hud ) {
     hud = [[MBProgressHUD alloc] initWithView:boxView];
     [boxView addSubview:hud];
   } else {
-    if ( hud.mode != MBProgressHUDModeText ) {
+    if ( hud.mode!=MBProgressHUDModeText ) {
       [hud removeFromSuperview];
       hud = [[MBProgressHUD alloc] initWithView:boxView];
       [boxView addSubview:hud];

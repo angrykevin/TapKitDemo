@@ -13,7 +13,7 @@
 - (void)presentChildViewController:(UIViewController *)childViewController inView:(UIView *)containerView
 {
   UIView *boxView = containerView;
-  if ( boxView == nil ) {
+  if ( !boxView  ) {
     boxView = self.view;
   }
   

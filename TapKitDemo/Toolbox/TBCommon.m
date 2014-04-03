@@ -26,7 +26,7 @@ void TBPresentMessage(NSString *message)
   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:message
                                                       message:nil
                                                      delegate:nil
-                                            cancelButtonTitle:NSLocalizedString(@"OK", @"")
+                                            cancelButtonTitle:NSLocalizedString(@"确定", @"")
                                             otherButtonTitles:nil];
   [alertView show];
 }
@@ -39,17 +39,17 @@ NSString *TBFormatDate(NSDate *date)
     NSDate *now = [NSDate date];
     NSTimeInterval timeInterval = [now timeIntervalSinceDate:date];
     
-    if ( timeInterval <= 5.0 ) {
+    if ( timeInterval<=(5.0) ) {
       return NSLocalizedString(@"刚刚", @"");
-    } else if ( timeInterval < 30.0 ) {
+    } else if ( timeInterval<(30.0) ) {
       NSString *fmt = NSLocalizedString(@"%d秒前", @"");
       return [NSString stringWithFormat:fmt, (int)(timeInterval)];
-    } else if ( timeInterval < 60.0 ) {
+    } else if ( timeInterval<(60.0) ) {
       return NSLocalizedString(@"半分钟前", @"");
-    } else if ( timeInterval < 30 * 60.0 ) {
+    } else if ( timeInterval<(30*60.0) ) {
       NSString *fmt = NSLocalizedString(@"%d分钟前", @"");
       return [NSString stringWithFormat:fmt, (int)(timeInterval/60.0)];
-    } else if ( timeInterval < 60 * 60.0 ) {
+    } else if ( timeInterval<(60*60.0) ) {
       return NSLocalizedString(@"半小时前", @"");
     } else {
       if ( [now isSameDayAsDate:date] ) {
@@ -71,7 +71,7 @@ NSString *TBFormatDate(NSDate *date)
 NSString *TBMergeString(NSString *first, NSString *second)
 {
   NSMutableString *string = [[NSMutableString alloc] init];
-  if ( [first length] > 0 ) {
+  if ( [first length]>0 ) {
     [string appendString:first];
     if ( [second length]>0 ) {
       [string appendString:@" "];
@@ -82,7 +82,7 @@ NSString *TBMergeString(NSString *first, NSString *second)
       [string appendString:second];
     }
   }
-  if ( [string length] > 0 ) {
+  if ( [string length]>0 ) {
     return string;
   }
   return nil;

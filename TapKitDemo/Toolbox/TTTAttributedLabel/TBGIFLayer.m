@@ -95,7 +95,7 @@
     NSTimeInterval delayTime = [[_delayTimeList objectAtIndex:i] floatValue];
     NSTimeInterval currentDurationFraction = 0.0;
     if ( i>0 ) {
-      currentDurationFraction = lastDurationFraction + delayTime/_animationDuration;
+      currentDurationFraction = lastDurationFraction + delayTime / _animationDuration;
     }
     lastDurationFraction = currentDurationFraction;
     [keyTimes addObject:[NSNumber numberWithDouble:currentDurationFraction]];
@@ -177,7 +177,7 @@
 - (id)init
 {
   self = [super init];
-  if (self) {
+  if ( self ) {
     _currentFrameIndex = NSNotFound;
   }
   return self;
@@ -205,8 +205,8 @@
 - (void)display
 {
   if ( _sourceRef ) {
-    NSUInteger index = [(TBGIFLayer *)([self presentationLayer]) currentFrameIndex];
-    if ( index < _frameCount ) {
+    NSUInteger index = [((TBGIFLayer *)[self presentationLayer]) currentFrameIndex];
+    if ( index<_frameCount ) {
       [CATransaction begin];
       [CATransaction setDisableActions:YES];
       self.contents = [_frameList objectAtIndex:index];
@@ -228,7 +228,7 @@
     CFDictionaryRef dictionaryRef = CGImageSourceCopyPropertiesAtIndex(sourceRef, 0, NULL);
     if ( dictionaryRef ) {
       const void *value = CFDictionaryGetValue(dictionaryRef, kCGImagePropertyHasAlpha);
-      hasAlpha = (value == kCFBooleanTrue);
+      hasAlpha = (value==kCFBooleanTrue);
       CFRelease(dictionaryRef);
     }
   }

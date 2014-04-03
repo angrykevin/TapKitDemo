@@ -22,8 +22,8 @@
   label.textColor = textColor;
   label.textAlignment = textAlignment;
   label.lineBreakMode = lineBreakMode;
-  label.numberOfLines = (numberOfLines<=0) ? 0 : numberOfLines;
-  label.backgroundColor = (backgroundColor==nil) ? [UIColor clearColor] : backgroundColor;
+  label.numberOfLines = ((numberOfLines>=0) ? numberOfLines : 0);
+  label.backgroundColor = ((backgroundColor) ? backgroundColor : [UIColor clearColor]);
   label.adjustsFontSizeToFitWidth = NO;
   return label;
 }

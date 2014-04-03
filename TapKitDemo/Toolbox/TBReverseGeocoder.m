@@ -8,7 +8,6 @@
 
 #import "TBReverseGeocoder.h"
 
-
 @implementation TBReverseGeocoder
 
 
@@ -202,7 +201,7 @@
   [parameters setObject:@"true" forKey:@"sensor"];
   [parameters setObject:@"zh-CN" forKey:@"language"];
   
-  if ( [_parameters count] > 0 ) {
+  if ( [_parameters count]>0 ) {
     for ( NSString *key in [_parameters keyEnumerator] ) {
       NSString *value = [_parameters objectForKey:key];
       [parameters setObject:value forKey:key];
