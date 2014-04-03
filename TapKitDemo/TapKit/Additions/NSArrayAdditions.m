@@ -16,7 +16,7 @@
 
 - (id)objectOrNilAtIndex:(NSUInteger)idx
 {
-  if ( idx < [self count] ) {
+  if ( idx<[self count] ) {
     return [self objectAtIndex:idx];
   }
   return nil;
@@ -29,7 +29,7 @@
 
 - (id)randomObject
 {
-  if ( [self count] > 0 ) {
+  if ( [self count]>0 ) {
     NSUInteger idx = arc4random() % [self count];
     return [self objectAtIndex:idx];
   }
@@ -39,12 +39,12 @@
 
 - (BOOL)hasObjectEqualTo:(id)object
 {
-  return ( [self indexOfObject:object] != NSNotFound );
+  return ( [self indexOfObject:object]!=NSNotFound );
 }
 
 - (BOOL)hasObjectIdenticalTo:(id)object
 {
-  return ( [self indexOfObjectIdenticalTo:object] != NSNotFound );
+  return ( [self indexOfObjectIdenticalTo:object]!=NSNotFound );
 }
 
 
@@ -62,7 +62,7 @@
     }
   }
   
-  if ( [array count] > 0 ) {
+  if ( [array count]>0 ) {
     return array;
   }
   
@@ -80,7 +80,7 @@
     }
   }
   
-  if ( [array count] > 0 ) {
+  if ( [array count]>0 ) {
     return array;
   }
   
@@ -148,7 +148,7 @@
 - (id)insertObject:(id)object atIndexIfNotNil:(NSUInteger)idx
 {
   if ( object ) {
-    if ( idx <= [self count] ) {
+    if ( idx<=[self count] ) {
       [self insertObject:object atIndex:idx];
       return object;
     }
@@ -159,9 +159,9 @@
 
 - (id)moveObjectAtIndex:(NSUInteger)idx toIndex:(NSUInteger)toIdx
 {
-  if ((idx != toIdx)
-      && (idx < [self count])
-      && (toIdx < [self count]))
+  if ((idx!=toIdx)
+      && (idx<[self count])
+      && (toIdx<[self count]))
   {
     id object = [self objectAtIndex:idx];
     [self removeObjectAtIndex:idx];
@@ -174,7 +174,7 @@
 
 - (void)removeFirstObject
 {
-  if ( [self count] > 0 ) {
+  if ( [self count]>0 ) {
     [self removeObjectAtIndex:0];
   }
 }
@@ -191,12 +191,12 @@
     NSUInteger m = 1;
     do {
       m <<= 1;
-    } while ( m < i );
+    } while ( m<i );
     
     NSUInteger j = 0;
     do {
       j = arc4random() % m;
-    } while ( j >= i );
+    } while ( j>=i );
     
     [self exchangeObjectAtIndex:(i-1) withObjectAtIndex:j];
   }

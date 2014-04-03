@@ -134,8 +134,8 @@
 - (void)moveToCenterOfSuperview
 {
   if ( self.superview ) {
-    CGRect frm = CGRectMake((self.superview.bounds.size.width - self.bounds.size.width) / 2.0,
-                            (self.superview.bounds.size.height - self.bounds.size.height) / 2.0,
+    CGRect frm = CGRectMake((self.superview.bounds.size.width-self.bounds.size.width)/2.0,
+                            (self.superview.bounds.size.height-self.bounds.size.height)/2.0,
                             self.bounds.size.width,
                             self.bounds.size.height);
     self.frame = frm;
@@ -146,7 +146,7 @@
 {
   if ( self.superview ) {
     CGRect frm = CGRectMake(self.frame.origin.x,
-                            (self.superview.bounds.size.height - self.bounds.size.height) / 2.0,
+                            (self.superview.bounds.size.height-self.bounds.size.height)/2.0,
                             self.bounds.size.width,
                             self.bounds.size.height);
     self.frame = frm;
@@ -156,7 +156,7 @@
 - (void)moveToHorizontalCenterOfSuperview
 {
   if ( self.superview ) {
-    CGRect frm = CGRectMake((self.superview.bounds.size.width - self.bounds.size.width) / 2.0,
+    CGRect frm = CGRectMake((self.superview.bounds.size.width-self.bounds.size.width)/2.0,
                             self.frame.origin.y,
                             self.bounds.size.width,
                             self.bounds.size.height);
@@ -183,7 +183,7 @@
     view = view.superview;
   }
   
-  if ( [superviews count] > 0 ) {
+  if ( [superviews count]>0 ) {
     return superviews;
   }
   
@@ -201,7 +201,7 @@
     }
   }
   
-  if ( [subviews count] > 0 ) {
+  if ( [subviews count]>0 ) {
     return subviews;
   }
   
@@ -243,7 +243,7 @@
   for ( UIView *next=self; next; next=next.superview ) {
     UIResponder *nextResponder = [next nextResponder];
     if ( TKIsInstance(nextResponder, [UIViewController class]) ) {
-      return (UIViewController *)nextResponder;
+      return ((UIViewController *)nextResponder);
     }
   }
   return nil;
@@ -270,14 +270,14 @@
 
 - (BOOL)isInFront
 {
-  return ( [self.superview.subviews lastObject] == self );
+  return ( [self.superview.subviews lastObject]==self );
 }
 
 - (BOOL)isAtBack
 {
   NSArray *array = self.superview.subviews;
-  if ( [array count] > 0 ) {
-    return ( [array objectAtIndex:0] == self );
+  if ( [array count]>0 ) {
+    return ( [array objectAtIndex:0]==self );
   }
   return NO;
 }

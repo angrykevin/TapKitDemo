@@ -48,8 +48,7 @@
 - (BOOL)isInCharacterSet:(NSCharacterSet *)characterSet
 {
   for ( int i=0; i<[self length]; ++i ) {
-    unichar c = [self characterAtIndex:i];
-    if ( ![characterSet characterIsMember:c] ) {
+    if ( ![characterSet characterIsMember:[self characterAtIndex:i]] ) {
       return NO;
     }
   }
@@ -99,7 +98,7 @@
   NSString *string = self;
   
   NSRange range = [self rangeOfString:@"?"];
-  if ( range.location != NSNotFound ) {
+  if ( range.location!=NSNotFound ) {
     NSUInteger idx = range.location + range.length;
     string = [self substringFromIndex:idx];
   }
@@ -110,14 +109,14 @@
   
   for ( NSString *pair in pairs ) {
     NSArray *kv = [pair componentsSeparatedByString:@"="];
-    if ( [kv count] == 2 ) {
+    if ( [kv count]==2 ) {
       NSString *key = [kv objectAtIndex:0];
       NSString *value = [[kv objectAtIndex:1] URLDecodedString];
       [dictionary setObject:value forKey:key];
     }
   }
   
-  if ( [dictionary count] > 0 ) {
+  if ( [dictionary count]>0 ) {
     return dictionary;
   }
   
@@ -128,11 +127,11 @@
 {
   NSString *query = [dictionary queryString];
   
-  if ( [query length] > 0 ) {
+  if ( [query length]>0 ) {
     
     NSMutableString *string = [[NSMutableString alloc] initWithString:self];
     
-    if ( [string rangeOfString:@"?"].location == NSNotFound ) {
+    if ( [string rangeOfString:@"?"].location==NSNotFound ) {
       [string appendString:@"?"];
     }
     
@@ -151,12 +150,12 @@
 
 - (NSString *)stringByAppendingValue:(NSString *)value forKey:(NSString *)key
 {
-  if ( [key length] > 0 ) {
+  if ( [key length]>0 ) {
     
-    NSString *newValue = (value) ? value : @"";
+    NSString *newValue = ( (value) ? value : @"" );
     NSMutableString *string = [[NSMutableString alloc] initWithString:self];
     
-    if ( [string rangeOfString:@"?"].location == NSNotFound ) {
+    if ( [string rangeOfString:@"?"].location==NSNotFound ) {
       [string appendString:@"?"];
     }
     
@@ -188,7 +187,7 @@
     CFRelease(UTIType);
   }
   
-  if ( [MIMEType length] <= 0 ) {
+  if ( [MIMEType length]<=0 ) {
     return @"application/octet-stream";
   }
   

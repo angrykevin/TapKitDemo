@@ -16,28 +16,28 @@
 
 - (BOOL)hasObjectEqualTo:(id)object
 {
-  return ( [[self allValues] indexOfObject:object] != NSNotFound );
+  return ( [[self allValues] indexOfObject:object]!=NSNotFound );
 }
 
 - (BOOL)hasObjectIdenticalTo:(id)object
 {
-  return ( [[self allValues] indexOfObjectIdenticalTo:object] != NSNotFound );
+  return ( [[self allValues] indexOfObjectIdenticalTo:object]!=NSNotFound );
 }
 
 - (BOOL)hasKeyEqualTo:(id)key
 {
-  return ( [[self allKeys] indexOfObject:key] != NSNotFound );
+  return ( [[self allKeys] indexOfObject:key]!=NSNotFound );
 }
 
 - (BOOL)hasKeyIdenticalTo:(id)key
 {
-  return ( [[self allKeys] indexOfObjectIdenticalTo:key] != NSNotFound );
+  return ( [[self allKeys] indexOfObjectIdenticalTo:key]!=NSNotFound );
 }
 
 - (id)objectOrNilForKey:(id)key
 {
   id object = [self objectForKey:key];
-  if ( object != [NSNull null] ) {
+  if ( object!=[NSNull null] ) {
     return object;
   }
   return nil;
@@ -57,7 +57,7 @@
     [pairs addObject:pair];
   }
   
-  if ( [pairs count] > 0 ) {
+  if ( [pairs count]>0 ) {
     return [pairs componentsJoinedByString:@"&"];
   }
   

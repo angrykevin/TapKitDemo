@@ -23,7 +23,7 @@
 
 - (void)makeHorizontalScrollable
 {
-  if ( self.contentSize.width <= self.bounds.size.width ) {
+  if ( self.contentSize.width<=self.bounds.size.width ) {
     self.contentSize = CGSizeMake(self.bounds.size.width+1.0,
                                   MAX(self.contentSize.height, self.bounds.size.height));
   }
@@ -31,7 +31,7 @@
 
 - (void)makeVerticalScrollable
 {
-  if ( self.contentSize.height <= self.bounds.size.height ) {
+  if ( self.contentSize.height<=self.bounds.size.height ) {
     self.contentSize = CGSizeMake(MAX(self.contentSize.width, self.bounds.size.width),
                                   self.bounds.size.height+1.0);
   }
@@ -49,8 +49,8 @@
 - (void)scrollToCenterAnimated:(BOOL)animated
 {
   CGPoint offset = CGPointZero;
-  offset.y = (self.contentSize.height - self.bounds.size.height) /2.0;
-  if ( offset.y > 0.0 ) {
+  offset.y = (self.contentSize.height - self.bounds.size.height) / 2.0;
+  if ( offset.y>0.0 ) {
     [self setContentOffset:offset animated:animated];
   }
 }
@@ -59,7 +59,7 @@
 {
   CGPoint offset = CGPointZero;
   offset.y = self.contentSize.height - self.bounds.size.height;
-  if ( offset.y > 0.0 ) {
+  if ( offset.y>0.0 ) {
     [self setContentOffset:offset animated:animated];
   }
 }

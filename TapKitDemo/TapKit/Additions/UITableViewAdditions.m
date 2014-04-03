@@ -21,7 +21,7 @@
     
     UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:identifier];
     
-    if ( cell == nil ) {
+    if ( !cell ) {
       cell = [[cls alloc] init];
     }
     

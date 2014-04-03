@@ -49,10 +49,10 @@
 
 - (BOOL)isValueForKeyPath:(NSString *)keyPath equalToValue:(id)value
 {
-  if ( [keyPath length] > 0 ) {
+  if ( [keyPath length]>0 ) {
     id objectValue = [self valueForKeyPath:keyPath];
     return ([objectValue isEqual:value]
-            || ((objectValue==nil) && (value==nil))
+            || ((!objectValue) && (!value))
             );
   }
   return NO;
@@ -60,8 +60,8 @@
 
 - (BOOL)isValueForKeyPath:(NSString *)keyPath identicalToValue:(id)value
 {
-  if ( [keyPath length] > 0 ) {
-    return ( [self valueForKeyPath:keyPath] == value );
+  if ( [keyPath length]>0 ) {
+    return ( [self valueForKeyPath:keyPath]==value );
   }
   return NO;
 }
@@ -81,7 +81,7 @@
   }
   free(properties);
   
-  if ( [dictionary count] > 0 ) {
+  if ( [dictionary count]>0 ) {
     return dictionary;
   }
   

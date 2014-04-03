@@ -46,13 +46,13 @@
 
 - (NSDate *)dateByAddingHours:(int)hours
 {
-  NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + hours * (60.0*60.0);
+  NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + hours * (60*60.0);
   return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
 }
 
 - (NSDate *)dateByAddingDays:(int)days
 {
-  NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + days * (60.0*60.0*24);
+  NSTimeInterval timeInterval = [self timeIntervalSinceReferenceDate] + days * (24*60*60.0);
   return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:timeInterval];
 }
 
@@ -62,7 +62,7 @@
 
 - (BOOL)earlierThan:(NSDate *)date
 {
-  return ( [self earlierDate:date] == self );
+  return ( [self earlierDate:date]==self );
 }
 
 
@@ -70,15 +70,15 @@
 {
   NSDateComponents *components1 = [self dateComponents];
   NSDateComponents *components2 = [date dateComponents];
-  return ( [components1 year] == [components2 year] );
+  return ( [components1 year]==[components2 year] );
 }
 
 - (BOOL)isSameMonthAsDate:(NSDate *)date
 {
   NSDateComponents *components1 = [self dateComponents];
   NSDateComponents *components2 = [date dateComponents];
-  return (([components1 year] == [components2 year])
-          && ([components1 month] == [components2 month])
+  return (([components1 year]==[components2 year])
+          && ([components1 month]==[components2 month])
           );
 }
 
@@ -86,9 +86,9 @@
 {
   NSDateComponents *components1 = [self dateComponents];
   NSDateComponents *components2 = [date dateComponents];
-  return (([components1 year] == [components2 year])
-          && ([components1 month] == [components2 month])
-          && ([components1 day] == [components2 day])
+  return (([components1 year]==[components2 year])
+          && ([components1 month]==[components2 month])
+          && ([components1 day]==[components2 day])
           );
 }
 
@@ -98,12 +98,12 @@
   NSDateComponents *components2 = [date dateComponents];
   
   // Must be same week. 12/31 and 1/1 will both be week "1" if they are in the same week
-  if ( [components1 week] != [components2 week] ) {
+  if ( [components1 week]!=[components2 week] ) {
     return NO;
   }
   
   // Must have a time interval under 1 week.
-  return ( abs([self timeIntervalSinceDate:date]) < (60.0*60.0*24*7) );
+  return ( abs([self timeIntervalSinceDate:date])<(60.0*60*24*7) );
 }
 
 
