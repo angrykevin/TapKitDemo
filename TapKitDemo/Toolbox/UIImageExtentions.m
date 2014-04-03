@@ -22,7 +22,7 @@
                                                   8,
                                                   4*size.width,
                                                   colorSpaceRef,
-                                                  (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
+                                                  ((CGBitmapInfo)kCGImageAlphaPremultipliedFirst));
   CGColorSpaceRelease(colorSpaceRef);
   return contextRef;
 }
@@ -243,7 +243,7 @@
                                                   8,
                                                   3*width,
                                                   colorSpaceRef,
-                                                  (CGBitmapInfo)kCGImageAlphaNone);
+                                                  ((CGBitmapInfo)kCGImageAlphaNone));
   CGColorSpaceRelease(colorSpaceRef);
   
   CGContextSetShouldAntialias(contextRef, false);

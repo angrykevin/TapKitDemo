@@ -95,7 +95,7 @@ void TBSaveRefreshDateForKey(NSString *key, NSDate *date)
     return;
   }
   
-  if ( date==nil ) {
+  if ( !date ) {
     return;
   }
   

@@ -259,10 +259,10 @@
       if ( CFDictionaryGetValueIfPresent(dictionaryRef, kCGImagePropertyGIFDictionary, (const void **)(&gifDictionaryRef)) ) {
         const void *delayTimeValue = NULL;
         if ( CFDictionaryGetValueIfPresent(gifDictionaryRef, kCGImagePropertyGIFUnclampedDelayTime, &delayTimeValue) ) {
-          delayTime = [(__bridge NSNumber *)(delayTimeValue) floatValue];
+          delayTime = [((__bridge NSNumber *)delayTimeValue) floatValue];
           if ( delayTime<=0.0 ) {
             if ( CFDictionaryGetValueIfPresent(gifDictionaryRef, kCGImagePropertyGIFDelayTime, &delayTimeValue) ) {
-              delayTime = [(__bridge NSNumber *)(delayTimeValue) floatValue];
+              delayTime = [((__bridge NSNumber *)delayTimeValue) floatValue];
             }
           }
         }
