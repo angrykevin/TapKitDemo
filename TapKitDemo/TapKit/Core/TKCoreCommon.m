@@ -8,8 +8,6 @@
 
 #import "TKCoreCommon.h"
 
-
-
 #pragma mark - Version
 
 NSComparisonResult TKCompareVersion(NSString *version1, NSString *version2)
@@ -17,15 +15,15 @@ NSComparisonResult TKCompareVersion(NSString *version1, NSString *version2)
   NSArray *components1 = [version1 componentsSeparatedByString:@"."];
   NSArray *components2 = [version2 componentsSeparatedByString:@"."];
   
-  int count = MIN( [components1 count], [components2 count] );
+  int count = MIN([components1 count], [components2 count]);
   
   for ( int i=0; i<count; ++i ) {
     int component1 = [[components1 objectAtIndex:i] intValue];
     int component2 = [[components2 objectAtIndex:i] intValue];
     
-    if ( component1 > component2 ) {
+    if ( component1>component2 ) {
       return NSOrderedDescending;
-    } else if ( component1 < component2 ) {
+    } else if ( component1<component2 ) {
       return NSOrderedAscending;
     }
     
@@ -37,7 +35,7 @@ NSComparisonResult TKCompareVersion(NSString *version1, NSString *version2)
 int TKMajorVersion(NSString *version)
 {
   NSArray *components = [version componentsSeparatedByString:@"."];
-  if ( [components count] >= 1 ) {
+  if ( [components count]>=1 ) {
     return [[components objectAtIndex:0] intValue];
   }
   return 0;
@@ -46,7 +44,7 @@ int TKMajorVersion(NSString *version)
 int TKMinorVersion(NSString *version)
 {
   NSArray *components = [version componentsSeparatedByString:@"."];
-  if ( [components count] >= 2 ) {
+  if ( [components count]>=2 ) {
     return [[components objectAtIndex:1] intValue];
   }
   return 0;
@@ -55,7 +53,7 @@ int TKMinorVersion(NSString *version)
 int TKBugfixVersion(NSString *version)
 {
   NSArray *components = [version componentsSeparatedByString:@"."];
-  if ( [components count] >= 3 ) {
+  if ( [components count]>=3 ) {
     return [[components objectAtIndex:2] intValue];
   }
   return 0;
@@ -67,8 +65,8 @@ int TKBugfixVersion(NSString *version)
 
 NSString *TKPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 {
-  NSString *resourcePath = [( (bundle) ? bundle : [NSBundle mainBundle] ) resourcePath];
-  return [resourcePath stringByAppendingPathComponent:relativePath];
+  NSBundle *searchBundle = ( (bundle) ? bundle : [NSBundle mainBundle] );
+  return [[searchBundle resourcePath] stringByAppendingPathComponent:relativePath];
 }
 
 NSString *TKPathForDocumentsResource(NSString *relativePath)
@@ -145,7 +143,7 @@ BOOL TKIsStringWithText(id object)
 {
   return ((object)
           && [object isKindOfClass:[NSString class]]
-          && ([(NSString *)object length] > 0)
+          && ([((NSString *)object) length]>0)
           );
 }
 
@@ -153,7 +151,7 @@ BOOL TKIsDataWithBytes(id object)
 {
   return ((object)
           && [object isKindOfClass:[NSData class]]
-          && ([(NSData *)object length] > 0)
+          && ([((NSData *)object) length]>0)
           );
 }
 
@@ -161,7 +159,7 @@ BOOL TKIsArrayWithItems(id object)
 {
   return ((object)
           && [object isKindOfClass:[NSArray class]]
-          && ([(NSArray *)object count] > 0)
+          && ([((NSArray *)object) count]>0)
           );
 }
 
@@ -169,7 +167,7 @@ BOOL TKIsDictionaryWithItems(id object)
 {
   return ((object)
           && [object isKindOfClass:[NSDictionary class]]
-          && ([(NSDictionary *)object count] > 0)
+          && ([((NSDictionary *)object) count]>0)
           );
 }
 
@@ -177,7 +175,7 @@ BOOL TKIsSetWithItems(id object)
 {
   return ((object)
           && [object isKindOfClass:[NSSet class]]
-          && ([(NSSet *)object count] > 0)
+          && ([((NSSet *)object) count]>0)
           );
 }
 

@@ -8,8 +8,6 @@
 
 #import "TKCoreUI.h"
 
-
-
 #pragma mark - Autoresizing mask
 
 const NSUInteger TKViewAutoresizingKeepSize =
@@ -34,7 +32,7 @@ const NSUInteger TKViewAutoresizingKeepMargin =
 
 NSString *TKDeviceSpecificImageName(NSString *name)
 {
-  if ( [UIScreen mainScreen].scale == 2.0 ) {
+  if ( [UIScreen mainScreen].scale==2.0 ) {
     
     NSString *extension = [name pathExtension];
     
@@ -43,8 +41,8 @@ NSString *TKDeviceSpecificImageName(NSString *name)
     
     NSMutableString *final = [[NSMutableString alloc] initWithString:body];
     
-    if (([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
-        && ([UIScreen mainScreen].bounds.size.height > 480.0))
+    if (([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPhone)
+        && ([UIScreen mainScreen].bounds.size.height>480.0))
     {
       [final appendString:@"-568h"];
     }
@@ -65,7 +63,7 @@ BOOL TKIsKeyboardVisible()
 {
   UIWindow *window = [UIApplication sharedApplication].keyWindow;
   UIView *firstResponder = TKFindFirstResponderInView(window);
-  return ( firstResponder != nil );
+  return ( firstResponder!=nil );
 }
 
 UIView *TKFindFirstResponderInView(UIView *topView)
@@ -105,45 +103,45 @@ UIInterfaceOrientation TKInterfaceOrientation()
 BOOL TKIsDevicePortrait()
 {
   UIDeviceOrientation orientation = TKDeviceOrientation();
-  return ((orientation == UIDeviceOrientationPortrait)
-          || (orientation == UIDeviceOrientationPortraitUpsideDown)
+  return ((orientation==UIDeviceOrientationPortrait)
+          || (orientation==UIDeviceOrientationPortraitUpsideDown)
           );
 }
 
 BOOL TKIsDeviceLandscape()
 {
   UIDeviceOrientation orientation = TKDeviceOrientation();
-  return ((orientation == UIDeviceOrientationLandscapeLeft)
-          || (orientation == UIDeviceOrientationLandscapeRight)
+  return ((orientation==UIDeviceOrientationLandscapeLeft)
+          || (orientation==UIDeviceOrientationLandscapeRight)
           );
 }
 
 BOOL TKIsInterfacePortrait()
 {
   UIInterfaceOrientation orientation = TKInterfaceOrientation();
-  return ((orientation == UIInterfaceOrientationPortrait)
-          || (orientation == UIInterfaceOrientationPortraitUpsideDown)
+  return ((orientation==UIInterfaceOrientationPortrait)
+          || (orientation==UIInterfaceOrientationPortraitUpsideDown)
           );
 }
 
 BOOL TKIsInterfaceLandscape()
 {
   UIInterfaceOrientation orientation = TKInterfaceOrientation();
-  return ((orientation == UIInterfaceOrientationLandscapeLeft)
-          || (orientation == UIInterfaceOrientationLandscapeRight)
+  return ((orientation==UIInterfaceOrientationLandscapeLeft)
+          || (orientation==UIInterfaceOrientationLandscapeRight)
           );
 }
 
 
 BOOL TKIsSupportedOrientation(UIInterfaceOrientation orientation)
 {
-  if ( [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ) {
+  if ( [UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad ) {
     return YES;
   }
   
-  if ((orientation == UIInterfaceOrientationPortrait)
-      || (orientation == UIInterfaceOrientationLandscapeLeft)
-      || (orientation == UIInterfaceOrientationLandscapeRight))
+  if ((orientation==UIInterfaceOrientationPortrait)
+      || (orientation==UIInterfaceOrientationLandscapeLeft)
+      || (orientation==UIInterfaceOrientationLandscapeRight))
   {
     return YES;
   }
@@ -153,17 +151,17 @@ BOOL TKIsSupportedOrientation(UIInterfaceOrientation orientation)
 
 CGAffineTransform TKRotateTransformForOrientation(UIInterfaceOrientation orientation)
 {
-  if ( orientation == UIInterfaceOrientationLandscapeLeft ) {
+  if ( orientation==UIInterfaceOrientationLandscapeLeft ) {
     
-    return CGAffineTransformMakeRotation(M_PI * 1.5);
+    return CGAffineTransformMakeRotation(M_PI*1.5);
     
-  } else if ( orientation == UIInterfaceOrientationLandscapeRight ) {
+  } else if ( orientation==UIInterfaceOrientationLandscapeRight ) {
     
-    return CGAffineTransformMakeRotation(M_PI / 2.0);
+    return CGAffineTransformMakeRotation(M_PI/2.0);
     
-  } else if ( orientation == UIInterfaceOrientationPortraitUpsideDown ) {
+  } else if ( orientation==UIInterfaceOrientationPortraitUpsideDown ) {
     
-    return CGAffineTransformMakeRotation(0.0 - M_PI);
+    return CGAffineTransformMakeRotation(0.0-M_PI);
     
   }
   return CGAffineTransformIdentity;
@@ -171,13 +169,13 @@ CGAffineTransform TKRotateTransformForOrientation(UIInterfaceOrientation orienta
 
 CGAffineTransform TKSupportedRotateTransformForOrientation(UIInterfaceOrientation orientation)
 {
-  if ( orientation == UIInterfaceOrientationLandscapeLeft ) {
+  if ( orientation==UIInterfaceOrientationLandscapeLeft ) {
     
-    return CGAffineTransformMakeRotation(M_PI * 1.5);
+    return CGAffineTransformMakeRotation(M_PI*1.5);
     
-  } else if ( orientation == UIInterfaceOrientationLandscapeRight ) {
+  } else if ( orientation==UIInterfaceOrientationLandscapeRight ) {
     
-    return CGAffineTransformMakeRotation(M_PI / 2.0);
+    return CGAffineTransformMakeRotation(M_PI/2.0);
     
   }
   return CGAffineTransformIdentity;

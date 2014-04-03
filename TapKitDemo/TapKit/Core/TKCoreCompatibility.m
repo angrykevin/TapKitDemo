@@ -9,8 +9,6 @@
 #import "TKCoreCompatibility.h"
 #include <sys/sysctl.h>
 
-
-
 #pragma mark - Device compatibility
 
 NSString *TKDevicePlatform()
@@ -89,19 +87,19 @@ NSString *TKDeviceFamily()
 BOOL TKIsRetina()
 {
   UIScreen *screen = [UIScreen mainScreen];
-  return ( screen.scale == 2.0 );
+  return ( screen.scale==2.0 );
 }
 
 BOOL TKIsPad()
 {
   UIDevice *device = [UIDevice currentDevice];
-  return ( device.userInterfaceIdiom == UIUserInterfaceIdiomPad );
+  return ( device.userInterfaceIdiom==UIUserInterfaceIdiomPad );
 }
 
 BOOL TKIsPhone()
 {
   UIDevice *device = [UIDevice currentDevice];
-  return ( device.userInterfaceIdiom == UIUserInterfaceIdiomPhone );
+  return ( device.userInterfaceIdiom==UIUserInterfaceIdiomPhone );
 }
 
 CGFloat TKSystemVersion()
