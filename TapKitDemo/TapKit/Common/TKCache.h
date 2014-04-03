@@ -60,7 +60,9 @@
 
 
 
-@interface TKCacheItem : NSObject<NSCoding> {
+@interface TKCacheItem : NSObject<
+    NSCoding
+> {
   NSString *_key;
   NSString *_path;
   NSDate *_expiryDate;
