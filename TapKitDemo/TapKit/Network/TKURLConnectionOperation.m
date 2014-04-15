@@ -62,8 +62,8 @@
   if ( self ) {
     
     //_address = nil;
-    //_cachePolicy = NSURLRequestUseProtocolCachePolicy;
     //_timeoutInterval = 10.0;
+    //_cachePolicy = NSURLRequestUseProtocolCachePolicy;
     //_method = @"GET";
     //_headers = [[NSMutableDictionary alloc] init];
     //_body = nil;

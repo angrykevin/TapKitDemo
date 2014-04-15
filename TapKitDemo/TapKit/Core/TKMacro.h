@@ -15,8 +15,8 @@ extern "C" {
 /// Degree and radian
 ///-------------------------------
 
-#define TKDegreesToRadians(__degrees) ( M_PI*__degrees/180.0 )
-#define TKRadiansToDegrees(__radians) ( __radians*180.0/M_PI )
+#define TKDegreesToRadians(__degrees) ( M_PI * __degrees / 180.0 )
+#define TKRadiansToDegrees(__radians) ( __radians * 180.0 / M_PI )
 
 
 ///-------------------------------
@@ -24,9 +24,9 @@ extern "C" {
 ///-------------------------------
 
 #define TKTimeIntervalMinute()  (60.0)
-#define TKTimeIntervalHour()    (60*60.0)
-#define TKTimeIntervalDay()     (24*60*60.0)
-#define TKTimeIntervalWeek()    (7*24*60*60.0)
+#define TKTimeIntervalHour()    (60.0*60)
+#define TKTimeIntervalDay()     (60.0*60*24)
+#define TKTimeIntervalWeek()    (60.0*60*24*7)
 
 
 ///-------------------------------
@@ -39,7 +39,7 @@ va_start(__list, __start); \
 if ( __count>0 ) { \
   for ( int i=0; i<__count; ++i ) { \
     id __object = va_arg(__list, id); \
-    [__container addObject:((__object) ? __object : [NSNull null])]; \
+    [__container addObject:( (__object) ? __object : [NSNull null] )]; \
   } \
 } else if ( __count<0 ) { \
   id __object = nil; \
