@@ -100,7 +100,6 @@
     TKCacheItem *item = [_items firstObjectForKeyPath:@"key" equalToValue:key];
     if ( item ) {
       if ( ![item.expiryDate earlierThan:[NSDate date]] ) {
-        // TODO: Check file existence
         data = [[NSData alloc] initWithContentsOfFile:item.path];
       }
     }
