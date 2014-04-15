@@ -34,20 +34,23 @@ extern "C" {
 ///-------------------------------
 
 #define TKValistToArray(__container, __start, __count) \
-va_list __list; \
-va_start(__list, __start); \
 if ( __count>0 ) { \
+  va_list __list; \
+  va_start(__list, __start); \
   for ( int i=0; i<__count; ++i ) { \
     id __object = va_arg(__list, id); \
     [__container addObject:( (__object) ? __object : [NSNull null] )]; \
   } \
+  va_end(__list); \
 } else if ( __count<0 ) { \
+  va_list __list; \
+  va_start(__list, __start); \
   id __object = nil; \
   while ( (__object=va_arg(__list, id)) ) { \
     [__container addObject:__object]; \
   } \
-} \
-va_end(__list);
+  va_end(__list); \
+}
 
 
 #ifdef __cplusplus
