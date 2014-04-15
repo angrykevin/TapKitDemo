@@ -7,17 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TapKit/TapKit.h"
-#import "Toolbox/Toolbox.h"
+
 
 
 @interface TTMainViewController : UIViewController {
-  UIView *_boxView;
-  UIView *_fromView;
-  UIButton *_button;
-  
-  int _time;
-  
 }
 
 @end

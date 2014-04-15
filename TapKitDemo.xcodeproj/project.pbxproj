@@ -39,7 +39,6 @@
 		BC1B949517296F3C005C10D3 /* TKNAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1B949417296F3C005C10D3 /* TKNAIManager.m */; };
 		BC1EB6AA174CAF62009B5D76 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */; };
 		BC4DFBBE174280AD0075E918 /* TKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4DFBBD174280AD0075E918 /* TKCache.m */; };
-		BC6BD82418EBF2D4002FDA5B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6BD82318EBF2D4002FDA5B /* MapKit.framework */; };
 		BC6BD82618EBF4F7002FDA5B /* abc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC6BD82518EBF4F7002FDA5B /* abc.jpg */; };
 		BC71DACD1741E86D00FDA163 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */; };
 		BC768DE51745F48000F23945 /* TTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC768DE41745F48000F23945 /* TTMainViewController.m */; };
@@ -137,7 +136,6 @@
 		BC1EB6A9174CAF62009B5D76 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BC4DFBBC174280AD0075E918 /* TKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCache.h; sourceTree = "<group>"; };
 		BC4DFBBD174280AD0075E918 /* TKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCache.m; sourceTree = "<group>"; };
-		BC6BD82318EBF2D4002FDA5B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC6BD82518EBF4F7002FDA5B /* abc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abc.jpg; sourceTree = "<group>"; };
 		BC71DACC1741E86D00FDA163 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BC768DE31745F48000F23945 /* TTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMainViewController.h; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6BD82418EBF2D4002FDA5B /* MapKit.framework in Frameworks */,
 				0A190AF818DEDEFF00675252 /* QuartzCore.framework in Frameworks */,
 				0A190AF518DEDE9D00675252 /* CoreText.framework in Frameworks */,
 				0A190AF318DEDE8600675252 /* ImageIO.framework in Frameworks */,
@@ -271,7 +268,6 @@
 		0A190AF618DEDECA00675252 /* ToolboxDependencies */ = {
 			isa = PBXGroup;
 			children = (
-				BC6BD82318EBF2D4002FDA5B /* MapKit.framework */,
 				0A190AF718DEDEFF00675252 /* QuartzCore.framework */,
 				0A190AF418DEDE9D00675252 /* CoreText.framework */,
 				0A190AF218DEDE8600675252 /* ImageIO.framework */,
