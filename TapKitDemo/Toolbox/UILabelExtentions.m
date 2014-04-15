@@ -19,9 +19,9 @@
 {
   UILabel *label = [[UILabel alloc] init];
   label.font = font;
-  label.textColor = textColor;
-  label.textAlignment = textAlignment;
-  label.lineBreakMode = lineBreakMode;
+  label.textColor = ((textColor) ? textColor : [UIColor blackColor]);
+  label.textAlignment = ((textAlignment==0) ? NSTextAlignmentLeft : textAlignment);
+  label.lineBreakMode = ((lineBreakMode==0) ? NSLineBreakByWordWrapping : lineBreakMode);
   label.numberOfLines = ((numberOfLines>=0) ? numberOfLines : 0);
   label.backgroundColor = ((backgroundColor) ? backgroundColor : [UIColor clearColor]);
   label.adjustsFontSizeToFitWidth = NO;

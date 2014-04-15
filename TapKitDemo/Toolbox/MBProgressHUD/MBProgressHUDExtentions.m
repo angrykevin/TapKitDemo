@@ -18,6 +18,12 @@
   if ( !hud ) {
     hud = [[MBProgressHUD alloc] initWithView:boxView];
     [boxView addSubview:hud];
+  } else {
+    if ( hud.mode!=MBProgressHUDModeIndeterminate ) {
+      [hud removeFromSuperview];
+      hud = [[MBProgressHUD alloc] initWithView:boxView];
+      [boxView addSubview:hud];
+    }
   }
   
   hud.labelText = info;

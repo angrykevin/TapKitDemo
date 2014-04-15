@@ -14,6 +14,7 @@
 #import "TBActionSheet.h"
 #import "TBButton.h"
 #import "TBTableView.h"
+#import "TBViewController.h"
 #import "TBLocationManager.h"
 #import "TBReverseGeocoder.h"
 
@@ -23,9 +24,6 @@
 #import "UILabelExtentions.h"
 #import "UITableViewExtentions.h"
 #import "UIViewControllerExtentions.h"
-
-#import "TBTabViewController.h"
-#import "TBViewController.h"
 
 #import "MBProgressHUD/MBProgressHUD.h"
 #import "MBProgressHUD/MBProgressHUDExtentions.h"
