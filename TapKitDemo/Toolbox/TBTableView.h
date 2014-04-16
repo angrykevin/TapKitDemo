@@ -13,7 +13,6 @@
 
 
 @interface TBTableView : UITableView {
-  BOOL _launchRefreshProgrammatically;
   UIRefreshControl *_refreshControl;
   BOOL _showsRefreshControl;
   
@@ -26,6 +25,8 @@
 
 @property (nonatomic, strong, readonly) TBRefreshControl *infiniteRefreshControl;
 @property (nonatomic, assign) BOOL showsInfiniteRefreshControl;
+
+@property (nonatomic, copy) NSString *refreshTitle;
 
 - (void)startRefreshing:(BOOL)animated;
 - (void)stopRefreshing:(BOOL)animated;

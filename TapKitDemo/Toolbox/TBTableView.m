@@ -95,10 +95,24 @@
 }
 
 
+- (NSString *)refreshTitle
+{
+  return [_refreshControl.attributedTitle string];
+}
+
+- (void)setRefreshTitle:(NSString *)refreshTitle
+{
+  if ( refreshTitle ) {
+    _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:refreshTitle];
+  } else {
+    _refreshControl.attributedTitle = nil;
+  }
+}
+
+
 - (void)startRefreshing:(BOOL)animated
 {
   if ( _refreshControl ) {
-    _launchRefreshProgrammatically = YES;
     [_refreshControl beginRefreshing];
     [self setContentOffset:CGPointMake(0.0, 0.0-_refreshControl.height) animated:animated];
   }
@@ -107,9 +121,10 @@
 - (void)stopRefreshing:(BOOL)animated
 {
   if ( _refreshControl ) {
-    _launchRefreshProgrammatically = NO;
     [_refreshControl endRefreshing];
-    [self setContentOffset:CGPointZero animated:animated];
+    if ( self.contentOffset.y<0.0) {
+      [self setContentOffset:CGPointZero animated:animated];
+    }
   }
 }
 
