@@ -381,9 +381,17 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
    @"image", @""
  };
  */
-@property (nonatomic, weak) NSArray *imageBlocks;
+@property (nonatomic, weak) NSArray *imageAttrs;
 
 @property (nonatomic, strong) CALayer *imageLayer;
+
+///----------------------
+/// @name Content refresh
+///----------------------
+
+@property (nonatomic, copy) NSString *originalText;
+
+- (void)reloadAttributes;
 
 @end
 

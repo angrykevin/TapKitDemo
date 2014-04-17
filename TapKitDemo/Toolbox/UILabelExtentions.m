@@ -17,7 +17,7 @@
       numberOfLines:(NSInteger)numberOfLines
     backgroundColor:(UIColor *)backgroundColor
 {
-  UILabel *label = [[UILabel alloc] init];
+  UILabel *label = [[self alloc] init];
   label.font = font;
   label.textColor = ((textColor) ? textColor : [UIColor blackColor]);
   label.textAlignment = ((textAlignment==0) ? NSTextAlignmentLeft : textAlignment);

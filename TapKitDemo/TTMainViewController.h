@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TBExpandView.h"
+
 
 
 @interface TTMainViewController : UIViewController {
+  TBExpandView *_expandView;
 }
 
 @end

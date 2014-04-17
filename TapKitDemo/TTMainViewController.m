@@ -30,10 +30,13 @@
   [button addTarget:self action:@selector(doit3:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:button];
   
+  _expandView = [[TBExpandView alloc] init];
+  
 }
 
 - (void)doit1:(id)sender
 {
+  [_expandView present:self.view];
 }
 
 - (void)doit2:(id)sender

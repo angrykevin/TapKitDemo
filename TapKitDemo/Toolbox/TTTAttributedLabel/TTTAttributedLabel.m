@@ -1035,9 +1035,9 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     }
 }
 
-- (void)drawImage:(NSDictionary *)block inRect:(CGRect)rect
+- (void)drawImage:(NSDictionary *)attr inRect:(CGRect)rect
 {
-    NSString *imageName = [block objectForKey:@"image"];
+    NSString *imageName = [attr objectForKey:@"image"];
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:nil];
     NSData *imageData = [[NSData alloc] initWithContentsOfFile:imagePath];
     
@@ -1119,8 +1119,8 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
             && ([result length]>2))
         {
             NSString *name = [result substringWithRange:NSMakeRange(1, [result length]-2)];
-            NSDictionary *block = [self imageBlockForName:name];
-            if ( block ) {
+            NSDictionary *attr = [self imageAttrForName:name];
+            if ( attr ) {
                 CTRunDelegateCallbacks callbacks;
                 callbacks.version = kCTRunDelegateVersion1;
                 callbacks.dealloc = deallocCallback;
@@ -1128,9 +1128,9 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 callbacks.getDescent = descentCallback;
                 callbacks.getWidth = widthCallback;
                 
-                NSDictionary *attr = [block copy];
+                NSDictionary *dict = [attr copy];
                 
-                CTRunDelegateRef delegateRef = CTRunDelegateCreate(&callbacks, ((__bridge_retained void *)attr));
+                CTRunDelegateRef delegateRef = CTRunDelegateCreate(&callbacks, ((__bridge_retained void *)dict));
                 NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:((__bridge id)delegateRef), ((NSString *)kCTRunDelegateAttributeName), nil];
                 NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@" " attributes:attributeDictionary];
                 [string replaceCharactersInRange:[chunk range] withAttributedString:attributedString];
@@ -1143,14 +1143,22 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     
 }
 
-- (NSDictionary *)imageBlockForName:(NSString *)name
+- (NSDictionary *)imageAttrForName:(NSString *)name
 {
-    for ( NSDictionary *block in self.imageBlocks ) {
-        if ( [[block objectForKey:@"name"] isEqualToString:name] ) {
-            return block;
+    for ( NSDictionary *attr in self.imageAttrs ) {
+        if ( [[attr objectForKey:@"name"] isEqualToString:name] ) {
+            return attr;
         }
     }
     return nil;
+}
+
+
+#pragma mark -
+
+- (void)reloadAttributes
+{
+    self.text = self.originalText;
 }
 
 #pragma mark - TTTAttributedLabel
@@ -1159,11 +1167,12 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
     NSParameterAssert(!text || [text isKindOfClass:[NSAttributedString class]] || [text isKindOfClass:[NSString class]]);
 
     if ([text isKindOfClass:[NSString class]]) {
+        _originalText = [text copy];
         [self setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:nil];
         return;
     }
     
-    if ( (self.ignoreImage) || ([self.imageBlocks count]<=0) ) {
+    if ( (self.ignoreImage) || ([self.imageAttrs count]<=0) ) {
         self.attributedText = text;
     } else {
         self.attributedText = [self parseMarkup:text];
