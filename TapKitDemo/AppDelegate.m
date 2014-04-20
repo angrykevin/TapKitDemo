@@ -15,6 +15,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *str = @"abc"TBEllipsisMark;
+    NSLog(@"%@", str);
   _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   _window.rootViewController = [[TTMainViewController alloc] init];
