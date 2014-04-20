@@ -15,12 +15,12 @@ extern "C" {
 /// Degree and radian
 ///-------------------------------
 
-#define TKDegreesToRadians(__degrees) ( M_PI * __degrees / 180.0 )
-#define TKRadiansToDegrees(__radians) ( __radians * 180.0 / M_PI )
+#define TKDegreesToRadians(_dgr_) ( M_PI * (_dgr_) / 180.0 )
+#define TKRadiansToDegrees(_rdn_) ( (_rdn_) * 180.0 / M_PI )
 
 
 ///-------------------------------
-/// TimeInterval
+/// Time interval
 ///-------------------------------
 
 #define TKTimeIntervalMinute()  (60.0)
@@ -33,24 +33,31 @@ extern "C" {
 /// Variable argument lists
 ///-------------------------------
 
-#define TKValistToArray(__container, __start, __count) \
-if ( __count>0 ) { \
-  va_list __list; \
-  va_start(__list, __start); \
-  for ( int i=0; i<__count; ++i ) { \
-    id __object = va_arg(__list, id); \
-    [__container addObject:( (__object) ? __object : [NSNull null] )]; \
+#define TKValistToArray(_ary_, _stt_, _cnt_) \
+if ( (_cnt_)!=0 ) { \
+  va_list _lst_; \
+  va_start(_lst_, (_stt_)); \
+  if ( (_cnt_)>0 ) { \
+    for ( int i=0; i<(_cnt_); ++i ) { \
+      id _obj_ = va_arg(_lst_, id); \
+      [(_ary_) addObject:( (_obj_) ? _obj_ : [NSNull null] )]; \
+    } \
+  } else if ( (_cnt_)<0 ) { \
+    id _obj_ = nil; \
+    while ( (_obj_=va_arg(_lst_, id)) ) { \
+      [(_ary_) addObject:_obj_]; \
+    } \
   } \
-  va_end(__list); \
-} else if ( __count<0 ) { \
-  va_list __list; \
-  va_start(__list, __start); \
-  id __object = nil; \
-  while ( (__object=va_arg(__list, id)) ) { \
-    [__container addObject:__object]; \
-  } \
-  va_end(__list); \
+  va_end(_lst_); \
 }
+
+
+///-------------------------------
+/// Color shortcut
+///-------------------------------
+
+#define TKRGBA(_r_, _g_, _b_, _a_) ([UIColor colorWithRed:(_r_)/255.0 green:(_g_)/255.0 blue:(_b_)/255.0 alpha:(_a_)/255.0])
+#define TKRGB(_r_, _g_, _b_) ([UIColor colorWithRed:(_r_)/255.0 green:(_g_)/255.0 blue:(_b_)/255.0 alpha:1.0])
 
 
 #ifdef __cplusplus

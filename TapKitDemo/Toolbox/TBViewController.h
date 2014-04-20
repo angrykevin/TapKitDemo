@@ -16,6 +16,11 @@
   NSUInteger _appearedTimes;
 }
 
+@property (nonatomic, strong, readonly) UIView *contentView;
+
+@property (nonatomic, readonly) BOOL viewAppeared;
+@property (nonatomic, readonly) NSUInteger appearedTimes;
+
 - (void)layoutViews;
 
 @end

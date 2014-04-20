@@ -12,10 +12,10 @@
 
 typedef void (^TBOperationCompletionHandler)(id result, NSError *error);
 
-#define TBEllipsisMark @"\u2026"
+typedef void(^TBValueChangedHandler)(id newValue);
 
-#define TBRGBAColor(__r, __g, __b, __a) ([UIColor colorWithRed:__r/255.0 green:__g/255.0 blue:__b/255.0 alpha:__a/255.0])
-#define TBRGBColor(__r, __g, __b) ([UIColor colorWithRed:__r/255.0 green:__g/255.0 blue:__b/255.0 alpha:1.0])
+
+#define TBEllipsisMark @"\u2026"
 
 
 #ifdef __cplusplus
