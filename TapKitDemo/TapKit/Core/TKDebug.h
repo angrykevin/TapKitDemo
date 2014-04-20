@@ -12,9 +12,9 @@ extern "C" {
 
 
 #ifdef DEBUG
-#define TKPRINT(__fmt, ...) NSLog(@"%s: "__fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define TKPRINT(_fmt, ...) NSLog(@"%s: "_fmt_, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
-#define TKPRINT(__fmt, ...) ((void)0)
+#define TKPRINT(_fmt, ...) ((void)0)
 #endif // #ifdef DEBUG
 
 
@@ -26,9 +26,9 @@ extern "C" {
 
 
 #ifdef DEBUG
-#define TKTESTVALUE(__value, __info) NSLog(@"%s: %@ is %@", __PRETTY_FUNCTION__, __info, (__value) ? @"YES" : @"NO")
+#define TKTESTVALUE(_inf_, _vlu_) NSLog(@"%s: %@ is %@", __PRETTY_FUNCTION__, (_inf_), ((_vlu_) ? @"YES" : @"NO"))
 #else
-#define TKTESTVALUE(__value, __info) ((void)0)
+#define TKTESTVALUE(_inf_, _vlu_) ((void)0)
 #endif // #ifdef DEBUG
 
 

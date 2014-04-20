@@ -56,8 +56,8 @@ if ( (_cnt_)!=0 ) { \
 /// Color shortcut
 ///-------------------------------
 
-#define TKRGBA(_r_, _g_, _b_, _a_) ([UIColor colorWithRed:(_r_)/255.0 green:(_g_)/255.0 blue:(_b_)/255.0 alpha:(_a_)/255.0])
-#define TKRGB(_r_, _g_, _b_) ([UIColor colorWithRed:(_r_)/255.0 green:(_g_)/255.0 blue:(_b_)/255.0 alpha:1.0])
+#define TKRGBA(_r_, _g_, _b_, _a_)  ([UIColor colorWithRed:(_r_)/255.0 green:(_g_)/255.0 blue:(_b_)/255.0 alpha:(_a_)/255.0])
+#define TKRGB(_r_, _g_, _b_)        ([UIColor colorWithRed:(_r_)/255.0 green:(_g_)/255.0 blue:(_b_)/255.0 alpha:1.0])
 
 
 #ifdef __cplusplus
