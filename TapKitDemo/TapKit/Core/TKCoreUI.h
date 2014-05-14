@@ -26,7 +26,7 @@ extern const NSUInteger TKViewAutoresizingKeepMargin;
 /// Image name
 ///-------------------------------
 
-NSString *TKDeviceSpecificImageName(NSString *name);
+NSString *TKDeviceSpecificImageName(NSString *name, BOOL screen);
 
 
 ///-------------------------------

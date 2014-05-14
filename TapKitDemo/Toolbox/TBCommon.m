@@ -11,13 +11,28 @@
 
 UIImage *TBCreateImage(NSString *name)
 {
-  NSString *path = TKPathForBundleResource(nil, name);
+  NSString *fileName = TKDeviceSpecificImageName(name, NO);
+  NSString *path = TKPathForBundleResource(nil, fileName);
   return [[UIImage alloc] initWithContentsOfFile:path];
+}
+
+UIImage *TBCreateResizableImage(NSString *name, UIEdgeInsets insets)
+{
+  NSString *fileName = TKDeviceSpecificImageName(name, NO);
+  NSString *path = TKPathForBundleResource(nil, fileName);
+  UIImage *image = [[UIImage alloc] initWithContentsOfFile:path];
+  return [image resizableImageWithCapInsets:insets];
 }
 
 UIImage *TBCachedImage(NSString *name)
 {
   return [UIImage imageNamed:name];
+}
+
+UIImage *TBCachedResizableImage(NSString *name, UIEdgeInsets insets)
+{
+  UIImage *image = [UIImage imageNamed:name];
+  return [image resizableImageWithCapInsets:insets];
 }
 
 

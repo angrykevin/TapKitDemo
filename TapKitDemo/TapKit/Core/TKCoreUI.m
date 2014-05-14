@@ -30,7 +30,7 @@ const NSUInteger TKViewAutoresizingKeepMargin =
 
 #pragma mark - Image name
 
-NSString *TKDeviceSpecificImageName(NSString *name)
+NSString *TKDeviceSpecificImageName(NSString *name, BOOL screen)
 {
   if ( [UIScreen mainScreen].scale==2.0 ) {
     
@@ -41,10 +41,12 @@ NSString *TKDeviceSpecificImageName(NSString *name)
     
     NSMutableString *final = [[NSMutableString alloc] initWithString:body];
     
-    if (([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPhone)
-        && ([UIScreen mainScreen].bounds.size.height>480.0))
-    {
-      [final appendString:@"-568h"];
+    if ( screen ) {
+      if (([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPhone)
+          && ([UIScreen mainScreen].bounds.size.height>480.0))
+      {
+        [final appendString:@"-568h"];
+      }
     }
     
     [final appendString:@"@2x"];

@@ -24,7 +24,9 @@ extern "C" {
 
 
 UIImage *TBCreateImage(NSString *name);
+UIImage *TBCreateResizableImage(NSString *name, UIEdgeInsets insets);
 UIImage *TBCachedImage(NSString *name);
+UIImage *TBCachedResizableImage(NSString *name, UIEdgeInsets insets);
 
 void TBPresentMessage(NSString *message);
 
