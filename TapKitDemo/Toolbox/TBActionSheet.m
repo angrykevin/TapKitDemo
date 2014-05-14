@@ -1,6 +1,6 @@
 //
 //  TBActionSheet.m
-//  Teemo
+//  TapKitDemo
 //
 //  Created by Wu Kevin on 3/12/14.
 //  Copyright (c) 2014 xbcx. All rights reserved.

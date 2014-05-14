@@ -29,8 +29,7 @@
 		0A190AF318DEDE8600675252 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A190AF218DEDE8600675252 /* ImageIO.framework */; };
 		0A190AF518DEDE9D00675252 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A190AF418DEDE9D00675252 /* CoreText.framework */; };
 		0A190AF818DEDEFF00675252 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A190AF718DEDEFF00675252 /* QuartzCore.framework */; };
-		0A7D339118FEB7C5002C063E /* TBExpandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7D339018FEB7C5002C063E /* TBExpandView.m */; };
-		0A7D339318FEB854002C063E /* abc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A7D339218FEB854002C063E /* abc.jpg */; };
+		0A2E0CA0191BD4A30024348A /* TBUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E0C9F191BD4A30024348A /* TBUnicode.m */; };
 		BC04C7EB172D66E900F9EB2A /* TKOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7EA172D66E900F9EB2A /* TKOperation.m */; };
 		BC04C7EE172D770600F9EB2A /* UIButtonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7ED172D770500F9EB2A /* UIButtonAdditions.m */; };
 		BC04C7F2172D82FB00F9EB2A /* TKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC04C7F1172D82FB00F9EB2A /* TKSettings.m */; };
@@ -107,9 +106,8 @@
 		0A190AF218DEDE8600675252 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0A190AF418DEDE9D00675252 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0A190AF718DEDEFF00675252 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0A7D338F18FEB7C5002C063E /* TBExpandView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBExpandView.h; sourceTree = "<group>"; };
-		0A7D339018FEB7C5002C063E /* TBExpandView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBExpandView.m; sourceTree = "<group>"; };
-		0A7D339218FEB854002C063E /* abc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abc.jpg; sourceTree = "<group>"; };
+		0A2E0C9E191BD4A30024348A /* TBUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBUnicode.h; sourceTree = "<group>"; };
+		0A2E0C9F191BD4A30024348A /* TBUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBUnicode.m; sourceTree = "<group>"; };
 		BC04C7E8172D64F200F9EB2A /* TKObserverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKObserverProtocol.h; sourceTree = "<group>"; };
 		BC04C7E9172D66E900F9EB2A /* TKOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOperation.h; sourceTree = "<group>"; };
 		BC04C7EA172D66E900F9EB2A /* TKOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOperation.m; sourceTree = "<group>"; };
@@ -220,6 +218,8 @@
 				0A190AC218DEDD2B00675252 /* TBLocationManager.m */,
 				0A190AC318DEDD2B00675252 /* TBReverseGeocoder.h */,
 				0A190AC418DEDD2B00675252 /* TBReverseGeocoder.m */,
+				0A2E0C9E191BD4A30024348A /* TBUnicode.h */,
+				0A2E0C9F191BD4A30024348A /* TBUnicode.m */,
 				0A190AB218DEDD2B00675252 /* CATransitionExtentions.h */,
 				0A190AB318DEDD2B00675252 /* CATransitionExtentions.m */,
 				0A190AD118DEDD2C00675252 /* UIButtonExtentions.h */,
@@ -410,9 +410,6 @@
 				BCC6CEE417171466000A99CB /* AppDelegate.m */,
 				BC768DE31745F48000F23945 /* TTMainViewController.h */,
 				BC768DE41745F48000F23945 /* TTMainViewController.m */,
-				0A7D338F18FEB7C5002C063E /* TBExpandView.h */,
-				0A7D339018FEB7C5002C063E /* TBExpandView.m */,
-				0A7D339218FEB854002C063E /* abc.jpg */,
 				0A190AB118DEDD2B00675252 /* Toolbox */,
 				BCC6CEFF1717182B000A99CB /* TapKit */,
 				BCC6CEF1171714D5000A99CB /* Images */,
@@ -505,7 +502,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A7D339318FEB854002C063E /* abc.jpg in Resources */,
 				BCC6CEF5171714D5000A99CB /* Default-568h@2x.png in Resources */,
 				BCC6CEF6171714D5000A99CB /* Default.png in Resources */,
 				BCC6CEF7171714D5000A99CB /* Default@2x.png in Resources */,
@@ -523,7 +519,6 @@
 				BCC6CEE117171466000A99CB /* main.m in Sources */,
 				0A190ADF18DEDD2C00675252 /* TBAlertView.m in Sources */,
 				BCC6CEE517171466000A99CB /* AppDelegate.m in Sources */,
-				0A7D339118FEB7C5002C063E /* TBExpandView.m in Sources */,
 				0A190AEA18DEDD2C00675252 /* UIImageExtentions.m in Sources */,
 				BC1B948C17296B5E005C10D3 /* TKCoreCommon.m in Sources */,
 				0A190AE318DEDD2C00675252 /* TBReverseGeocoder.m in Sources */,
@@ -550,6 +545,7 @@
 				BC04C7F8172D961900F9EB2A /* TKDatabaseRow.m in Sources */,
 				0A190AE218DEDD2C00675252 /* TBLocationManager.m in Sources */,
 				BCCBC880173FF4560050F475 /* UIImageViewAdditions.m in Sources */,
+				0A2E0CA0191BD4A30024348A /* TBUnicode.m in Sources */,
 				0A190ADB18DEDD2C00675252 /* CATransitionExtentions.m in Sources */,
 				BCCBC887173FF8C90050F475 /* UITableViewAdditions.m in Sources */,
 				0A190AE718DEDD2C00675252 /* TBGIFLayer.m in Sources */,

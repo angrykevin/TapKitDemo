@@ -1,6 +1,6 @@
 //
 //  UIImageExtentions.h
-//  Teemo
+//  TapKitDemo
 //
 //  Created by Wu Kevin on 12/2/13.
 //  Copyright (c) 2013 xbcx. All rights reserved.
